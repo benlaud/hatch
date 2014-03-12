@@ -1,5 +1,11 @@
-module.exports = function(grunt) {
+module.exports = function( grunt ) {
+  'use strict';
+
+  // Load all grunt tasks
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
   grunt.initConfig({
+
     pkg: grunt.file.readJSON('package.json'),
 
     sass: {
@@ -12,7 +18,7 @@ module.exports = function(grunt) {
         },
         files: {
           'css/app.css': 'scss/app.scss'
-        }        
+        }
       }
     },
 
@@ -50,7 +56,13 @@ module.exports = function(grunt) {
 
     watch: {
       grunt: { files: ['Gruntfile.js'] },
-
+	  js : {
+		  files : [
+	        'js/foundation/js/foundation.min.js',
+	        'js/init-foundation.js'
+	      ],
+		  tasks : ['concat']
+	  },
       sass: {
         files: 'scss/**/*.scss',
         tasks: ['sass']
@@ -58,13 +70,9 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-
   grunt.registerTask('build', ['sass']);
   grunt.registerTask('default', ['copy', 'uglify', 'concat', 'watch']);
+
+  grunt.util.linefeed = '\n';
 
 }
