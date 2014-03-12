@@ -1,13 +1,27 @@
 {
   "name": "foundation-libsass-template",
-  "version": "0.0.1",
+  "title": "Foundation Libsass Template",
+  "version": "0.0.2",
+  "description":"Expanding upon the Base Foundation Libsass Theme by Ole Frerick",
+  "homepage": "http://linchpinagency.com",
+  "author": {
+    "name": "Aaron Ware",
+    "email": "aware@linchpinagency.com",
+    "url": "http://linchpinagency.com"
+  },
   "devDependencies": {
-    "node-sass": "~0.7.0",
     "grunt": "~0.4.1",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-sass": "~0.8.0",
-    "grunt-contrib-copy": "~0.4.1",
+    "matchdep": "~0.1.2",
+    "node-sass": "~0.7.0",
     "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-uglify": "~0.2.7"
-  }
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-cssmin": "~0.6.0",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-sass": "~0.2.2",
+    "grunt-notify":"~0.2.0"
+  },
+  "keywords": []
 }
