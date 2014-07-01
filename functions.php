@@ -8,12 +8,12 @@
  *
  */
 
-include_once( 'includes/classes/Theme.php' );
 include_once( 'includes/classes/CustomPostTypes.php' );
-include_once( 'includes/classes/Foundation/Foundation.php' );
+include_once( 'includes/classes/Foundation/Foundation_Walker_Nav_Menu.php' );
 include_once( 'includes/classes/Foundation/Foundation_Clearing.php' );
 include_once( 'includes/classes/Foundation/Foundation_Utilities.php' );
-include_once( 'includes/classes/Foundation/Foundation_Walker_Nav_Menu.php' );
+include_once( 'includes/classes/Foundation/Foundation.php' );
+include_once( 'includes/classes/Theme.php' );
 
 /**
  *	Instantiate our classes.
