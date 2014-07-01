@@ -173,7 +173,7 @@ function foundationPress_top_bar_r() {
 /**
  * Footer
  */
-function foundationPress_top_bar_r() {
+function foundationPress_footer() {
     wp_nav_menu(array(
         'container' => false,                           // remove nav container
         'container_class' => '',                        // class of container
