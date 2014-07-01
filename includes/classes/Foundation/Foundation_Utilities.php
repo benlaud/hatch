@@ -102,6 +102,7 @@ $foundation_utilities = new Foundation_Utilities();
  * @return void
  */
 function FoundationPress_menu_fallback() {
+	global $foundation_utilities;
 	echo $foundation_utilities->menu_fallback();
 }
 
@@ -113,7 +114,8 @@ function FoundationPress_menu_fallback() {
  * @param mixed $next_text
  * @return void
  */
-function FoundationPress_pagination($prev_text, $next_text) {
+function FoundationPress_pagination($prev_text="", $next_text="") {
+	global $foundation_utilities;
 	echo $foundation_utilities->paginate_links($prev_text, $next_text);
 }
 
