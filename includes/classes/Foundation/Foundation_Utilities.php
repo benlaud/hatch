@@ -103,6 +103,7 @@ $foundation_utilities = new Foundation_Utilities();
  */
 function FoundationPress_menu_fallback() {
 	global $foundation_utilities;
+
 	echo $foundation_utilities->menu_fallback();
 }
 
@@ -114,8 +115,9 @@ function FoundationPress_menu_fallback() {
  * @param mixed $next_text
  * @return void
  */
-function FoundationPress_pagination($prev_text="", $next_text="") {
+function FoundationPress_pagination($prev_text = '', $next_text = '') {
 	global $foundation_utilities;
+
 	echo $foundation_utilities->paginate_links($prev_text, $next_text);
 }
 
@@ -160,8 +162,8 @@ function foundationPress_top_bar_r() {
         'container' => false,                           // remove nav container
         'container_class' => '',                        // class of container
         'menu' => '',                                   // menu name
-        'menu_class' => 'top-bar-menu left',            // adding custom nav class
-        'theme_location' => 'top-bar-r',                // where it's located in the theme
+        'menu_class' => 'top-bar-menu right',            // adding custom nav class
+        'theme_location' => 'top-bar',                // where it's located in the theme
         'before' => '',                                 // before each link <a>
         'after' => '',                                  // after each link </a>
         'link_before' => '',                            // before each link text
