@@ -14,7 +14,7 @@
     <link rel="apple-touch-icon-precomposed" href="<?php echo get_stylesheet_directory_uri() ; ?>/assets/img/icons/apple-touch-icon-precomposed.png">
 
     <?php wp_head(); ?>
-    
+
     <!--[if lt IE 9]>
 		<link rel="stylesheet" type="text/css" href="css/ie8.css" />
 	<![endif]-->
@@ -28,8 +28,8 @@
   <?php do_action('foundationPress_layout_start'); ?>
 
   <nav class="tab-bar show-for-small-only">
-    <section class="left-small">
-      <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+    <section class="right-small">
+      <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
     </section>
     <section class="middle tab-bar-section">
 
@@ -38,8 +38,8 @@
     </section>
   </nav>
 
-  <aside class="left-off-canvas-menu">
-    <?php  foundationPress_mobile_off_canvas(); ?>
+  <aside class="right-off-canvas-menu">
+    <?php foundationPress_mobile_off_canvas(); ?>
   </aside>
 
 	<div class="top-bar-container contain-to-grid show-for-medium-up">
