@@ -182,7 +182,7 @@ function foundationPress_footer() {
         'container' => false,                           // remove nav container
         'container_class' => '',                        // class of container
         'menu' => '',                                   // menu name
-        'menu_class' => 'footer-menu',           // adding custom nav class
+        'menu_class' => 'inline-list footer-menu',           // adding custom nav class
         'theme_location' => 'footer',                // where it's located in the theme
         'before' => '',                                 // before each link <a>
         'after' => '',                                  // after each link </a>
