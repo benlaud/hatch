@@ -1,8 +1,12 @@
 # FoundationPress
 
-This is a WordPress starter theme based on Foundation 5 by Zurb. The purpose of FoundationPress, is to act as a small and handy toolbox that contains the essentials needed to build any design. FoundationPress is meant to be a starting point, not the final product. If you're looking for an all-in-one theme with built-in shortcodes, plugins, fancypancy portfolio templates or whatnot, I'm afraid you have to look elsewhere.
+This is a WordPress starter theme based on FoundationPress which in turn is based on Foundation 5 by Zurb. The purpose of This theme and FoundationPress, is to act as a small and handy toolbox that contains the essentials needed to build any design. This theme and Foundation Press are meant to be a starting point.
 
-Please fork, copy, modify, delete, share or do whatever you like with this. 
+* The biggest difference between this and FoundationPress is Linchpin coding methodologies, processes and some additional mixins that we utilize daily. *
+
+Additionally the original author is dequeueing libraries that are available with core. Based on this we decided to do our own fork.
+
+Please fork, copy, modify, delete, share or do whatever you like with this.
 
 All contributions are welcome!
 
@@ -18,7 +22,7 @@ All contributions are welcome!
 
 ```bash
 cd my-wordpress-folder/wp-content/themes/
-git clone git@github.com:olefredrik/FoundationPress.git
+git clone git@github.com:aaronware/FoundationPress.git
 mv FoundationPress your-theme-name
 cd your-theme-name
 npm install && bower install
@@ -31,7 +35,7 @@ While you're working on your project, run:
 And you're set!
 
 Check for Foundation Updates? Run:
-`foundation update` 
+`foundation update`
 (this requires the foundation gem to be installed in order to work. Please see the [docs](http://foundation.zurb.com/docs/sass.html) for details.)
 
 
@@ -50,7 +54,7 @@ Check for Foundation Updates? Run:
   * `css/app.css`: All Sass files are minified and compiled to this file
 
 ## Script Folder Strucutre
-  
+
   * `bower_components/`: This is the source folder where all Foundation scripts are located. `foundation update` will check and update scripts in this folder
   * `js/`: jQuery, Modernizr and Foundation scripts are copied from `bower_components/` to this directory, where they are minified and concatinated and enqueued in WordPress
   * Please note that you must run `grunt` in your terminal for the scripts to be copied. See [Gruntfile.js](https://github.com/olefredrik/FoundationPress/blob/master/Gruntfile.js) for details
@@ -65,5 +69,5 @@ Check for Foundation Updates? Run:
 
 ## Demo
 
-* [Clean FoundationPress install](http://foundationpress.olefredrik.com/)
+* [Clean FoundationPress install](http://foundationpress.linchpinagency.com/)
 * [FoundationPress Kitchen Sink - see every single element in action](http://foundationpress.olefredrik.com/kitchen-sink/)

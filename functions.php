@@ -1,32 +1,23 @@
 <?php
-/*
-Author: Ole Fredrik Lie
-URL: http://olefredrik.com
-*/
 
+/**
+ *
+ * Include all of our needed Classes and scripts
+ * Originally based on the work done by Ole Fredrik Lie (http://olefredrik.com)
+ * Forked by Linchpin
+ *
+ */
 
-// Various clean up functions
-require_once('library/cleanup.php'); 
+include_once( 'includes/classes/Theme.php' );
+include_once( 'includes/classes/CustomPostTypes.php' );
+include_once( 'includes/classes/Foundation/Foundation.php' );
+include_once( 'includes/classes/Foundation/Foundation_Clearing.php' );
+include_once( 'includes/classes/Foundation/Foundation_Utilities.php' );
+include_once( 'includes/classes/Foundation/Foundation_Walker_Nav_Menu.php' );
 
-// Required for Foundation to work properly
-require_once('library/foundation.php');
+/**
+ *	Instantiate our classes.
+ */
 
-// Register all navigation menus
-require_once('library/navigation.php');
-
-// Add menu walker
-require_once('library/menu-walker.php');
-
-// Create widget areas in sidebar and footer
-require_once('library/widget-areas.php');
-
-// Return entry meta information for posts
-require_once('library/entry-meta.php');
-
-// Enqueue scripts
-require_once('library/enqueue-scripts.php');
-
-// Add theme support
-require_once('library/theme-support.php');
-
-?>
+$theme	= new Theme();
+$cpt 	= new CustomPostTypes();
