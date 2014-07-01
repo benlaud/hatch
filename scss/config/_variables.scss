@@ -1,4 +1,179 @@
-/**
- * Custom variables
- * ----------------------------------------------------------------------------
- */
+$default: #999;
+
+/* @function calculateRem
+ *
+ * Returns calculated rem given the $size passed from font-size mixin.
+ * * */
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+
+/* @mixin font-size
+ * 
+ * Accepts 1 parameter
+ *  Font-size in pixels
+ *
+ * Returns font-size in pixels and rem
+ *
+ * Usage: 	@include font-size(18px);
+ * * */
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+
+/* @mixin angle-gradient
+ *
+ * Accepts 3 parameters
+ *	Start color (equal to hex, rgb, color or sass color variable)
+ *	End color (equal to hex, rgb, color or sass color variable)
+ *  Angle (equal to a positive integer)
+ *
+ * Usage:	@include angle-gradient($from: red, $to: black, $angle: 90);
+ * * */
+
+@mixin angle-gradient ( $from: $default, $to: darken($default, 15%), $angle: 45 ) {
+	background-color: $from;
+    background: -webkit-linear-gradient(#{$angle}deg, $from, $to);
+    background: -o-linear-gradient(#{$angle}deg, $from, $to);
+    background: -moz-linear-gradient(#{$angle}deg, $from, $to);
+    background: linear-gradient(#{$angle}deg, $from, $to);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+}
+
+
+/* @mixin linear-gradient
+ *
+ * Accepts 2 parameters, repurposes the angle-gradient
+ *  Start color
+ *  End color
+ *
+ * Usage:	@include linear-gradient($from: red, $to: black);
+ * * */
+
+@mixin linear-gradient($from: $default, $to: darken($default, 15%)) {
+	@include angle-gradient ( $from, $to, 180 );
+}
+
+
+/* @mixin placeholder-color
+ *
+ * Accepts one parameter equal to a hex value, rgb, color name or sass color variable
+ * Defaults to $darkGrey color variable for Dioptics
+ *
+ * Usage: 	@include placeholder-color;
+ *			@include placeholder-color($color: red);
+ * * */
+
+@mixin placeholder-color ( $color: $default ) {
+	&::-webkit-input-placeholder {
+	   color: $color;
+	}
+
+	&:-moz-placeholder { /* Firefox 18- */
+	   color: $color;
+	}
+
+	&::-moz-placeholder {  /* Firefox 19+ */
+	   color: $color;
+	}
+
+	&:-ms-input-placeholder {
+	   color: $color;
+	}
+}
+
+
+/* @mixin clearfix
+ * 
+ * Standard clearfix, for parents of floated elements.
+ * * */
+ 
+@mixin clearfix {
+	*zoom: 1;
+	&:before, &:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+
+/* @mixin opacity
+ *
+ * Accepts one parameter in the range of 0.0 to 1.0
+ * * */
+ 
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+/* @mixin transition
+ * 
+ * Accepts one parameter for transition arguments
+ *
+ * Usage: 	@include transition( 250ms color linear )
+ *			@include transition( 250ms all linear )
+ * * */
+@mixin transition($args) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+
+/* CSS Arrows */
+$directions: top, right, bottom, left;
+
+/* @mixin arrow
+ *
+ * Accepts 3 paremeters
+ *	$dir: Can equal top right bottom or left
+ *	$size: Arrow size in pixels
+ *	$color: Color of the arrow
+ * * */
+@mixin arrow ( $dir: bottom, $size: 20px, $color: $default ) {
+
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-width: $size;
+  border-style: solid;
+  
+  @if $dir == top {
+    border-bottom-color: $color;
+  } @else if $dir == right {
+    border-left-color: $color;
+  } @else if $dir == bottom {
+    border-top-color: $color;
+  } @else if $dir == left {
+    border-right-color: $color;
+  }
+  
+}
+
+@each $direction in $directions {
+  .arrow-#{$direction} {
+    @include arrow($dir: #{$direction});
+  }
+}
+
+
+
+
+
+
+
+
