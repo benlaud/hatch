@@ -71,3 +71,4 @@ Check for Foundation Updates? Run:
 
 * [Clean FoundationPress install](http://foundationpress.linchpinagency.com/)
 * [FoundationPress Kitchen Sink - see every single element in action](http://foundationpress.olefredrik.com/kitchen-sink/)
+* [FoundationPSD - Photoshop template for Foundation](http://foundationpress.olefredrik.com/downloads/foundation-psd-template/)
