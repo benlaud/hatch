@@ -1,8 +1,12 @@
-# FoundationPress
+# FoundationPress (Linchpin Remix)
 
-This is a WordPress starter theme based on FoundationPress which in turn is based on Foundation 5 by Zurb. The purpose of This theme and FoundationPress, is to act as a small and handy toolbox that contains the essentials needed to build any design. This theme and Foundation Press are meant to be a starting point.
+This is a WordPress starter theme based on FoundationPress which in turn is based on Foundation 5 by Zurb. The purpose of our version of this project is to act as a small and handy toolbox that contains the essentials needed to build any design. This theme and Foundation Press are meant to be a starting point.
 
-* The biggest difference between this and FoundationPress is Linchpin coding methodologies, processes and some additional mixins that we utilize daily. *
+*The biggest difference between this Fork and FoundationPress*
+  * Coding methodologies
+  * Crocesses
+  * Some theme options
+  * and some additional mixins that we utilize daily.
 
 Additionally the original author is dequeueing libraries that are available with core. Based on this we decided to do our own fork.
 
