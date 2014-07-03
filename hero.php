@@ -12,7 +12,7 @@ get_header(); ?>
 		</div>
 
 		<div class="medium-6 columns end">
-			<a class="download large button hide-for-small" href="https://github.com/olefredrik/foundationpress">Download FoundationPress</a>
+			<a class="download large button hide-for-small" href="https://github.com/aaronware/foundationpress">Download FoundationPress</a>
 		</div>
 
 		<div class="floatingyeti show-for-medium-up">
@@ -24,9 +24,9 @@ get_header(); ?>
 
 	<div class="row">
 		<div class="small-12 large-8 columns" role="main">
-		
+
 		<?php do_action('foundationPress_before_content'); ?>
-		
+
 		<?php while (have_posts()) : the_post(); ?>
 			<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 				<header>
@@ -51,5 +51,5 @@ get_header(); ?>
 		</div>
 
 	<?php get_sidebar(); ?>
-</div>		
+</div>
 <?php get_footer(); ?>
