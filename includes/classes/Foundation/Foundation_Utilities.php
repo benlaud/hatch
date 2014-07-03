@@ -26,7 +26,7 @@ class FoundationUtilities {
 	 * @param string $next (default: '&raquo')
 	 * @return void
 	 */
-	function paginate_links($prev_text = '&laquo', $next = '&raquo' ) {
+	static function paginate_links($prev_text = '&laquo', $next = '&raquo' ) {
 
     	global $wp_query;
 
@@ -114,9 +114,7 @@ function FoundationPress_menu_fallback() {
  * @return void
  */
 function FoundationPress_pagination($prev_text = '', $next_text = '') {
-	global $foundation_utilities;
-
-	echo $foundation_utilities->paginate_links($prev_text, $next_text);
+	echo FoundationUtilities::paginate_links($prev_text, $next_text);
 }
 
 /**

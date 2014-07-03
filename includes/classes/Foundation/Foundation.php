@@ -1,5 +1,7 @@
 <?php
 
+global $foundation_utilities;
+
 $foundation_classes_dir = get_template_directory() . '/includes/classes/Foundation/';
 
 include_once( $foundation_classes_dir . 'Foundation_Utilities.php' );
