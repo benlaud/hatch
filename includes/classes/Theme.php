@@ -56,10 +56,21 @@ class Theme {
 			'id'            => 'home-widgets',
 			'description'   => 'Widgets that are displayed on the home page.',
 			'class'         => 'home-widgets',
-			'before_widget' => '<div id="%1$s" class="widget columns %2$s">',
+			'before_widget' => '<div id="%1$s" class="widget small-4 columns %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h3 class="widgettitle">',
 			'after_title'   => '</h3>',
+		) );
+
+		register_sidebar( array(
+			'name'          => 'Page Widgets',
+			'id'            => 'page-widgets',
+			'description'   => 'Widgets that are displayed on interior pages.',
+			'class'         => 'page-widgets',
+			'before_widget' => '<div id="%1$s" class="%2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h4 class="widgettitle">',
+			'after_title'   => '</h4>',
 		) );
 
 		register_sidebar( array(

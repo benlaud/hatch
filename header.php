@@ -39,7 +39,7 @@
   </nav>
 
   <aside class="right-off-canvas-menu">
-    <?php foundationPress_mobile_off_canvas(); ?>
+  	<?php foundationPress_mobile_off_canvas(); ?>
   </aside>
 
 	<div class="top-bar-container contain-to-grid show-for-medium-up">
