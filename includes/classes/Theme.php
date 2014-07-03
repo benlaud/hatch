@@ -60,6 +60,17 @@ class Theme {
 			'before_title'  => '<h3 class="widgettitle">',
 			'after_title'   => '</h3>',
 		) );
+
+		register_sidebar( array(
+			'name'          => 'Footer Widgets',
+			'id'            => 'footer-widgets',
+			'description'   => 'Widgets that are displayed in the footer.',
+			'class'         => 'footer-widgets',
+			'before_widget' => '<div id="%1$s" class="right %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h5 class="widgettitle">',
+			'after_title'   => '</h5>',
+		) );
 	}
 
 	/**

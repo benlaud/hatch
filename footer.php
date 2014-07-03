@@ -2,10 +2,11 @@
 <footer class="row">
 	<?php do_action('foundationPress_before_footer'); ?>
 	<?php dynamic_sidebar("footer-widgets"); ?>
+	<?php foundationPress_footer(); ?>
 	<?php do_action('foundationPress_after_footer'); ?>
 </footer>
 <a class="exit-off-canvas"></a>
-	
+
   <?php do_action('foundationPress_layout_end'); ?>
   </div>
 </div>
