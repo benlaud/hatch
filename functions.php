@@ -18,9 +18,6 @@ include_once( 'includes/classes/Linchpin/Launchpad.php' );
 
 // Foundation Classes
 
-include_once( 'includes/classes/Foundation/Foundation_Walker_Nav_Menu.php' );
-include_once( 'includes/classes/Foundation/Foundation_Clearing.php' );
-include_once( 'includes/classes/Foundation/Foundation_Utilities.php' );
 include_once( 'includes/classes/Foundation/Foundation.php' );
 
 // Theme Class

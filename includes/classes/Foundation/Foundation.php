@@ -1,5 +1,12 @@
 <?php
 
+$foundation_classes_dir = get_template_directory() . '/includes/classes/Foundation/';
+
+include_once( $foundation_classes_dir . 'Foundation_Utilities.php' );
+include_once( $foundation_classes_dir . 'Foundation_Cleanup.php' );
+include_once( $foundation_classes_dir . 'Foundation_Shortcodes.php' );
+include_once( $foundation_classes_dir . 'Foundation_Clearing.php' );
+
 class Foundation {
 
 	/**
@@ -9,6 +16,11 @@ class Foundation {
 	 * @return void
 	 */
 	function __construct() {
+
+		$foundation_utilities = new FoundationUtilities();
+		$foundation_cleanup   = new FoundationCleanup();
+		$foundation_clearing  = new FoundationClearing();
+
 		add_filter( 'wp_list_pages',      array( $this, 'wp_list_pages' ), 10, 2 );
 		add_filter( 'nav_menu_css_class', array( $this, 'add_active_nav_class' ), 10, 2 );
 
@@ -56,9 +68,8 @@ class Foundation {
 	 * @return void
 	 */
 	function enqueue_kitchen_sink_scripts() {
-		if ( is_page_template('kitchen-sink.php') ) {
+		if ( is_page_template('kitchen-sink.php') )
 	    	wp_enqueue_script( 'kitchen-sink', get_template_directory_uri() . '/js/kitchen-sink.js', array('jquery'), '1.0.0', true );
-		}
 	}
 
 	/**
@@ -71,9 +82,10 @@ class Foundation {
 	 * @return void
 	 */
 	function add_active_nav_class( $classes, $item ) {
-	    if ( $item->current == 1 || $item->current_item_ancestor == true ) {
+
+	    if ( $item->current == 1 || $item->current_item_ancestor == true )
 	        $classes[] = 'active';
-	    }
+
 	    return $classes;
 	}
 }

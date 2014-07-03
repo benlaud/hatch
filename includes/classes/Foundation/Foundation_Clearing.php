@@ -1,6 +1,6 @@
 <?php
 
-class Foundation_Clearing {
+class FoundationClearing {
 
 	function __construct() {
 		add_action( 'after_setup_theme', array($this, 'setup_gallery_shortcode') );

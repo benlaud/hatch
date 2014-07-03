@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Foundation_Utilities class.
+ * FoundationUtilities class.
  */
-class Foundation_Utilities {
+class FoundationUtilities {
 
 	/**
 	 * __construct function.
@@ -87,8 +87,6 @@ class Foundation_Utilities {
 	  	return $html;
   	}
 }
-
-$foundation_utilities = new Foundation_Utilities();
 
 /**
  *	Some backwards compatability
