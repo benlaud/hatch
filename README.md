@@ -4,9 +4,10 @@ This is a WordPress starter theme based on FoundationPress which in turn is base
 
 *The biggest difference between this Fork and FoundationPress*
   * Coding methodologies
-  * Crocesses
+  * Processes
   * Some theme options
   * and some additional mixins that we utilize daily.
+  * We've updated the Grunt.js slightly to watch different files.
 
 Additionally the original author is dequeueing libraries that are available with core. Based on this we decided to do our own fork.
 
