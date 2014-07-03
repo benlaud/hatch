@@ -9,10 +9,10 @@
 class LaunchpadOptions {
 
 	function __construct() {
-		add_action('admin_init', 				array( &$this, 'init' ) );
-		add_action('admin_menu', 				array( &$this, 'theme_options_add_page' ) );
-		add_action('admin_enqueue_scripts', 	array( &$this, 'admin_enqueue_scripts' ) );
-		add_action('admin_notices',				array( &$this, 'validate_required_settings' ) );
+		add_action('admin_init', 			array( $this, 'init' ) );
+		add_action('admin_menu', 			array( $this, 'theme_options_add_page' ) );
+		add_action('admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action('admin_notices',			array( $this, 'validate_required_settings' ) );
 	}
 
 	/**
@@ -362,8 +362,6 @@ class LaunchpadOptions {
 	}
 
 }
-
-$launchpad_option_controls = new LaunchpadOptions();
 
 /**
  * launchpad_get_theme_options function.

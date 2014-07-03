@@ -14,10 +14,7 @@
 
 // Launchpad Classes
 
-include_once( 'includes/classes/Linchpin/LaunchpadOptions.php' );
-include_once( 'includes/classes/Linchpin/LaunchpadCustomerHeader.php' );
-include_once( 'includes/classes/Linchpin/LaunchpadActivate.php' );
-include_once( 'includes/classes/Linchpin/CustomPostTypes.php' );
+include_once( 'includes/classes/Linchpin/Launchpad.php' );
 
 // Foundation Classes
 

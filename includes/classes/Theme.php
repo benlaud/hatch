@@ -21,6 +21,7 @@ class Theme {
 
 		$foundation = new Foundation();
 		$clearing   = new Foundation_Clearing();
+		$launchpad  = new Launchpad();
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts') );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_styles') );

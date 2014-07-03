@@ -5,7 +5,7 @@ if (is_admin() && isset($_GET['activated']) && 'themes.php' == $GLOBALS['pagenow
   exit;
 }
 
-class LaunchpadActivation {
+class LaunchpadActivate {
 
 	function __construct() {
 
@@ -25,7 +25,7 @@ class LaunchpadActivation {
 	 * @return void
 	 */
 	function deactivation_action() {
-	  update_option('launchpad_theme_activation_options', launchpad_get_default_theme_activation_options());
+	  update_option('launchpad_theme_activation_options', launchpad_get_default_theme_activation_options() );
 	}
 
 	/**
@@ -34,9 +34,9 @@ class LaunchpadActivation {
 	 * @access private
 	 * @return void
 	 */
-	private function theme_activation_options() {
+	function theme_activation_options() {
 	    if (launchpad_get_theme_activation_options() === false) {
-	    	add_option('launchpad_theme_activation_options', launchpad_get_default_theme_activation_options());
+	    	add_option('launchpad_theme_activation_options', launchpad_get_default_theme_activation_options() );
 		}
 
 	    register_setting(
@@ -53,7 +53,7 @@ class LaunchpadActivation {
 	 * @param mixed $capability
 	 * @return void
 	 */
-	private function activation_options_page_capability($capability) {
+	function activation_options_page_capability($capability) {
 		return 'edit_theme_options';
 	}
 
@@ -67,7 +67,7 @@ class LaunchpadActivation {
 	 * @access private
 	 * @return void
 	 */
-	private function theme_activation_options_add_page() {
+	function theme_activation_options_add_page() {
 	  $launchpad_activation_options = launchpad_get_theme_activation_options();
 	  if (!$launchpad_activation_options['first_run']) {
 	    $theme_page = add_theme_page(
@@ -124,6 +124,7 @@ class LaunchpadActivation {
 	    }
 
 	    $home = get_page_by_title('Home');
+
 	    update_option('show_on_front', 'page');
 	    update_option('page_on_front', $home->ID);
 
@@ -139,12 +140,12 @@ class LaunchpadActivation {
 
 	    $launchpad_nav_theme_mod = false;
 
-	    if (!has_nav_menu('primary_navigation')) {
+	    if ( !has_nav_menu('primary_navigation') ) {
 	      $primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
 	      $launchpad_nav_theme_mod['primary_navigation'] = $primary_nav_id;
 	    }
 
-	    if (!has_nav_menu('utility_navigation')) {
+	    if (!has_nav_menu('utility_navigation') ) {
 	      $utility_nav_id = wp_create_nav_menu('Utility Navigation', array('slug' => 'utility_navigation'));
 	      $launchpad_nav_theme_mod['utility_navigation'] = $utility_nav_id;
 	    }
@@ -154,11 +155,9 @@ class LaunchpadActivation {
 	    }
 	  }
 
-	  update_option('launchpad_theme_activation_options', $launchpad_theme_activation_options);
+	  update_option('launchpad_theme_activation_options', $launchpad_theme_activation_options );
 	}
 }
-
-$launchpad_activate = new LaunchpadActivation();
 
 /**
  * @author aware

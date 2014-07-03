@@ -31,9 +31,6 @@ class LaunchpadCustomHeader {
 
 }
 
-
-
-
 if ( ! function_exists( 'launchpad_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog
