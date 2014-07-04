@@ -18,6 +18,10 @@
 
 </header>
 
+	<div class="row">
+		<?php lphive_promo_slider(); ?>
+	</div>
+
 	<div class="row cta">
 		<?php dynamic_sidebar("home-widgets"); ?>
 	</div>
