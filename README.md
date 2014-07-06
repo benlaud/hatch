@@ -51,7 +51,7 @@ Check for Foundation Updates? Run:
 
 ## Stylesheet Folder Structure
 
-  * `style.css`: Do not worry about this file. (For some reason) it's required by WordPress. All styling are handled in the Sass files described below
+  * `style.css`: (Used for theme description/details) All styling are handled in the Sass files described below
 
   * `scss/app.scss`: Sass imports for global config, foundation and site structure
 
