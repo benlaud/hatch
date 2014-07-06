@@ -1,12 +1,12 @@
 # FoundationPress (Linchpin Remix)
 
 *This is a WordPress starter theme based on*
- * FoundationPress 
- * [_s](https://github.com/automattic/_s) (underscore) from [automattic](http://automattic.com)
+ * FoundationPress
  * which in turn is based on [Foundation 5](http://foundation.zurb.com) by Zurb.
+ * Some snippets from [_s](https://github.com/automattic/_s) (underscore) from [Automattic](http://automattic.com)
  * And a bunch of our own cooking.
 
-The purpose of our version of this project is to act as a small and handy toolbox that contains the essentials needed to build any design. This theme and Foundation Press are meant to be a starting point.
+The purpose of our version of this project is to act as a small and handy toolbox that contains the essentials needed to a responsive theme based on Foundation 5.x. This theme and Foundation Press are meant to be a starting point not a parent theme.
 
 *The biggest difference between this Fork and FoundationPress*
   * Coding methodologies
@@ -14,10 +14,9 @@ The purpose of our version of this project is to act as a small and handy toolbo
   * Some theme options (Kind of a mishmash of our stuff and the _s theme)
   * and some additional mixins that we utilize daily.
   * We've updated the Grunt.js slightly to watch different files.
+  * Additionally the original FoundationPress project is dequeueing libraries that are available with WordPress core. Based on this we decided to do our own fork.
 
-Additionally the original FoundationPress project is dequeueing libraries that are available with WordPress core. Based on this we decided to do our own fork.
-
-Please fork, copy, modify, delete, share or do whatever you like with this.
+*Please fork, copy, modify, delete, share or do whatever you like with this.*
 
 All contributions are welcome!
 
