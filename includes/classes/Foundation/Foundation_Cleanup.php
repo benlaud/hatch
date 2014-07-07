@@ -14,13 +14,29 @@ class FoundationCleanup {
 	 */
 	function start_cleanup() {
 
-	    add_action( 'wp_head', 'remove_recent_comments_style', 1); 	    // clean up comment styles in the head
+	    add_action( 'wp_head', 'remove_recent_comments_style', 1); 	    										// clean up comment styles in the head
 
-	    add_filter( 'gallery_style', 		array( $this, 'gallery_style' ) ); 					// clean up gallery output in wp
-	    add_filter( 'wp_head', 				array( $this, 'remove_wp_widget_recent_comments_style' ) , 1 );	   // remove injected css for recent comments widget
-	    add_filter( 'get_image_tag_class',  array( $this, 'image_tag_class' ), 0, 4);    // additional post related cleaning
+	    add_filter( 'gallery_style', 		array( $this, 'gallery_style' ) ); 									// clean up gallery output in wp
+	    add_filter( 'wp_head', 				array( $this, 'remove_wp_widget_recent_comments_style' ) , 1 );	    // remove injected css for recent comments widget
+	    add_filter( 'get_image_tag_class',  array( $this, 'image_tag_class' ), 0, 4);    						// additional post related cleaning
 	    add_filter( 'get_image_tag',		array( $this, 'image_editor' ), 0, 4);
 	    add_filter( 'the_content', 			array( $this, 'img_unautop' ), 30 );
+
+	    add_filter( 'edit_comment_link',	array( $this, 'edit_comment_link' ) );
+	}
+
+	/**
+	 * edit_comment_link function.
+	 *
+	 * @access public
+	 * @param mixed $link
+	 * @return void
+	 */
+	function edit_comment_link( $link ) {
+
+		$link = str_replace('class="comment-edit-link"', 'class="comment-edit-link button tiny error"', $link);
+
+		return $link;
 	}
 
 	/**
