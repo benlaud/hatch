@@ -26,21 +26,23 @@ class FoundationUtilities {
 	 * @param string $next (default: '&raquo')
 	 * @return void
 	 */
-	static function paginate_links($prev_text = '&laquo', $next = '&raquo' ) {
+
+	static function paginate_links($prev_text = '&laquo;' , $next_text = '&raquo;' ) {
 
     	global $wp_query;
 
 		$big = 999999999; // need an unlikely integer
 		$pagination = '';
+		$current = max( 1, get_query_var('paged') );
 
 		$pages = paginate_links( array(
             'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
             'format' => '?paged=%#%',
-            'current' => max( 1, get_query_var('paged') ),
+            'current' => $current,
             'total' => $wp_query->max_num_pages,
             'prev_next' => false,
             'type'  => 'array',
-            'prev_next'  => TRUE,
+            'prev_next'  => true,
 			'prev_text'    => __( $prev_text ),
 			'next_text'    => __( $next_text ),
         ) );
@@ -50,8 +52,11 @@ class FoundationUtilities {
 
             $pagination 	.= '<ul class="pagination">';
 
+			$page_count = 0;
+
             foreach ( $pages as $page ) {
-            	$pagination .=  "<li>$page</li>";
+            	$pagination .=  "<li" . ( ($page_count == $paged)? ' class="current"' : '' ) . ">$page</li>";
+            	$page_count++;
             }
 
 			$pagination 	.=  '</ul>';
@@ -113,7 +118,7 @@ function FoundationPress_menu_fallback() {
  * @param mixed $next_text
  * @return void
  */
-function FoundationPress_pagination($prev_text = '', $next_text = '') {
+function FoundationPress_pagination($prev_text, $next_text) {
 	echo FoundationUtilities::paginate_links($prev_text, $next_text);
 }
 
