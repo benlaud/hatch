@@ -26,7 +26,7 @@ $icon-font: 'linchpin';
 		font-weight: normal;
 		font-style: normal;
 	}
-	
+
 	@media screen and ( -webkit-min-device-pixel-ratio: 0 ) {
 		@font-face {
 			font-family: '#{$name}';
@@ -53,7 +53,7 @@ $icon-font: 'linchpin';
 
 
 /* @mixin font-size
- * 
+ *
  * Accepts 1 parameter
  *  Font-size in pixels
  *
@@ -130,10 +130,10 @@ $icon-font: 'linchpin';
 
 
 /* @mixin clearfix
- * 
+ *
  * Standard clearfix, for parents of floated elements.
  * * */
- 
+
 @mixin clearfix {
 	*zoom: 1;
 	&:before, &:after {
@@ -150,7 +150,7 @@ $icon-font: 'linchpin';
  *
  * Accepts one parameter in the range of 0.0 to 1.0
  * * */
- 
+
 @mixin opacity($opacity) {
 	opacity: $opacity;
 	$opacity-ie: $opacity * 100;
@@ -159,7 +159,7 @@ $icon-font: 'linchpin';
 
 
 /* @mixin transition
- * 
+ *
  * Accepts one parameter for transition arguments
  *
  * Usage: 	@include transition( 250ms color linear )
@@ -192,7 +192,7 @@ $directions: top, right, bottom, left;
   border-color: transparent;
   border-width: $size;
   border-style: solid;
-  
+
   @if $dir == top {
     border-bottom-color: $color;
   } @else if $dir == right {
@@ -202,7 +202,7 @@ $directions: top, right, bottom, left;
   } @else if $dir == left {
     border-right-color: $color;
   }
-  
+
 }
 
 @each $direction in $directions {

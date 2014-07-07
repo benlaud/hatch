@@ -14,10 +14,12 @@
 	</header>
 	<div class="entry-content">
 		<?php the_content(__('Continue reading...', 'FoundationPress')); ?>
-		<?php edit_post_link( __('Edit Content', 'FoundationPress') , '<div class="row"><div class="small-6 right">', '</div></div>'); ?>
 	</div>
 	<footer>
 		<?php $tag = get_the_tags(); if (!$tag) { } else { ?><p><?php the_tags(); ?></p><?php } ?>
 	</footer>
+	<ul class="button-group utility right">
+		<?php edit_post_link( __('Edit Content', 'FoundationPress') , '<li class="tiny button">', '</li>'); ?>
+	</ul>
 	<hr />
 </article>

@@ -32,7 +32,7 @@ All contributions are welcome!
 
 ```bash
 cd my-wordpress-folder/wp-content/themes/
-git clone git@github.com:aaronware/FoundationPress.git
+git clone git@github.com:linchpinagency/FoundationPress.git
 mv FoundationPress your-theme-name
 cd your-theme-name
 npm install && bower install

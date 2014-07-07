@@ -135,7 +135,7 @@ figcaption {
 
 					.comment-edit-link {
 						float: right;
-						padding-right: rem-calc(10);
+						margin-right: rem-calc(10);
 					}
 
 				}
@@ -180,7 +180,9 @@ figcaption {
 	 * ------------------------------------
 	 */
 
-	// Insert styles here
+	.button-group.utility {
+		margin-bottom: rem-calc(20);
+	}
 
 
 	/**
@@ -188,7 +190,9 @@ figcaption {
 	 * ------------------------------------
 	 */
 
-	// Insert styles here
+	.button a {
+		color: $button-font-color;
+	}
 
 
 /**
