@@ -5,6 +5,9 @@ Template Name: Left Sidebar
 get_header(); ?>
 
 <div class="row">
+
+	<?php Launchpad_breadcrumbs(); ?>
+
 	<?php get_sidebar(); ?>
 
 	<div class="small-12 large-8 columns" role="main">

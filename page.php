@@ -4,6 +4,8 @@
 
 	<div class="small-12 large-8 columns" role="main">
 
+	<?php Launchpad_breadcrumbs(); ?>
+
 	<?php do_action('foundationPress_before_content'); ?>
 
 	<?php while (have_posts()) : the_post(); ?>
