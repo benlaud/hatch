@@ -2,9 +2,11 @@
 
 	<?php get_template_part('hero'); ?>
 
-	<div class="row">
-		<?php lphive_promo_slider(); ?>
-	</div>
+	<?php if ( function_exists( 'lphive_promo_slider' ) ) : ?>
+		<div class="row">
+			<?php lphive_promo_slider(); ?>
+		</div>
+	<?php endif; ?>
 
 	<div class="row cta">
 		<?php dynamic_sidebar("home-widgets"); ?>

@@ -14,7 +14,7 @@ class FoundationCleanup {
 	 */
 	function start_cleanup() {
 
-	    add_action( 'wp_head', 'remove_recent_comments_style', 1); 	    										// clean up comment styles in the head
+	    add_action( 'wp_head', 				array( $this, 'remove_recent_comments_style' ), 1 ); 	    										// clean up comment styles in the head
 
 	    add_filter( 'gallery_style', 		array( $this, 'gallery_style' ) ); 									// clean up gallery output in wp
 	    add_filter( 'wp_head', 				array( $this, 'remove_wp_widget_recent_comments_style' ) , 1 );	    // remove injected css for recent comments widget
