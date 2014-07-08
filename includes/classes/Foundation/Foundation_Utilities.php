@@ -12,7 +12,7 @@ class FoundationUtilities {
 	 * @return void
 	 */
 	function __construct() {
-
+		include_once( 'Foundation_Walker_Nav_Menu.php' );
 	}
 
 	/**
