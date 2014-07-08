@@ -5,6 +5,29 @@ class LaunchpadCustomHeader {
 	function __construct() {
 		add_action( 'after_setup_theme',  array( $this, 'custom_header_setup' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ), 999 );
+		add_action( 'customize_register', array( $this, 'customize_register' ) );
+	}
+
+	/**
+	 * launchpad_customize function.
+	 *
+	 * @access public
+	 * @param mixed $wp_customize
+	 * @return void
+	 */
+	function customize_register( $wp_customize ) {
+
+		$wp_customize->add_setting( 'header_bg_color' , array(
+		    'default' => '#074e68',
+		    'sanitize_callback' => 'sanitize_hex_color',
+		) );
+
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_bg_color_control',
+		array(
+			'label'      => __( 'Header BG Color', 'launchpad' ),
+			'section'    => 'colors',
+			'settings'   => 'header_bg_color',
+		) ) );
 	}
 
 	/**
@@ -15,14 +38,17 @@ class LaunchpadCustomHeader {
 	 */
 	function wp_enqueue_scripts() {
 
-		$hero  = '.header-hero {';
+		$hero  = '#homepage-hero {';
 		$hero .= 'background-image:url(' . get_custom_header()->url . ');';
+		$hero .= 'background-color:' . get_theme_mod('header_bg_color') . ';';
 		$hero .= 'padding: 1.25rem 0;';
 		$hero .= 'margin: -2rem 0 2rem;';
 		$hero .= 'position: relative;';
 		$hero .= 'text-align: left;';
 		$hero .= 'height: auto;';
 		$hero .= '}';
+
+		$hero .= '#homepage-hero h1 a, #homepage-hero h4 {color:#' . get_header_textcolor() . '}';
 
 		wp_add_inline_style( 'app-css', $hero );
 	}
