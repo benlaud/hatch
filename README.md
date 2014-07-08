@@ -48,7 +48,6 @@ Check for Foundation Updates? Run:
 `foundation update`
 (this requires the foundation gem to be installed in order to work. Please see the [docs](http://foundation.zurb.com/docs/sass.html) for details.)
 
-
 ## Stylesheet Folder Structure
 
   * `style.css`: (Used for theme description/details) All styling are handled in the Sass files described below
@@ -68,6 +67,9 @@ Check for Foundation Updates? Run:
   * `bower_components/`: This is the source folder where all Foundation scripts are located. `foundation update` will check and update scripts in this folder
   * `js/`: jQuery, Modernizr and Foundation scripts are copied from `bower_components/` to this directory, where they are minified and concatinated and enqueued in WordPress
   * Please note that you must run `grunt` in your terminal for the scripts to be copied. See [Gruntfile.js](https://github.com/linchpinagency/FoundationPress/blob/master/Gruntfile.js) for details
+
+## You may also find the following plugin(s) useful
+* [Linchpin Useful Plugins](http://github.com/linchpinagency/shortcodes/)
 
 ## How to get started with Foundation
 
