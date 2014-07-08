@@ -108,8 +108,6 @@ class LaunchpadOptions {
 	      <div id="launchpad-wrap">
 	        <ul class="nav-tab-wrapper">
 	          <li><a href="#theme-options" class="nav-tab"><?php printf(__('%s Options', 'launchpad'), get_current_theme()); ?></a></li>
-	          <li><a href="#client-details" class="nav-tab"><?php _e('Client Details', 'launchpad'); ?></a></li>
-	          <li><a href="#integration-options" class="nav-tab"><?php printf(__('Integration Options', 'launchpad'), get_current_theme()); ?></a></li>
 	          <li><a href="#extra-options" class="nav-tab"><?php _e('Setup', 'launchpad'); ?></a></li>
 	        </ul>
 	        <?php settings_errors(); ?>
