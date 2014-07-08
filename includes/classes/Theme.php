@@ -107,7 +107,6 @@ class Theme {
 	    add_theme_support( 'menus' );
 	    add_theme_support( 'post-thumbnails' );
 	    add_theme_support( 'automatic-feed-links' );
-		add_theme_support( 'custom-background' );
 	}
 
 	/**
@@ -129,6 +128,7 @@ class Theme {
 	 * @return void
 	 */
 	function wp_enqueue_styles() {
+		wp_enqueue_style( 'app-css', get_stylesheet_directory_uri() . '/css/app.css' );
 		wp_enqueue_style( 'gravity-forms', get_stylesheet_directory_uri() . '/css/gravityforms.css', array( 'gforms_formsmain_css' ) );
 	}
 }

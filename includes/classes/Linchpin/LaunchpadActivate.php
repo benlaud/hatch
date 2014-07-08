@@ -68,8 +68,11 @@ class LaunchpadActivate {
 	 * @return void
 	 */
 	function theme_activation_options_add_page() {
+
 	  $launchpad_activation_options = launchpad_get_theme_activation_options();
-	  if (!$launchpad_activation_options['first_run']) {
+
+	  if ( ! $launchpad_activation_options['first_run'] ) {
+
 	    $theme_page = add_theme_page(
 	      __('Launchpad Setup', 'launchpad'),
 	      __('Launchpad Setup', 'launchpad'),
@@ -100,6 +103,7 @@ class LaunchpadActivate {
 	  $launchpad_theme_activation_options = launchpad_get_theme_activation_options();
 
 	  if ($launchpad_theme_activation_options['create_front_page']) {
+
 	    $launchpad_theme_activation_options['create_front_page'] = false;
 
 	    $default_pages = array('Home');
@@ -132,21 +136,26 @@ class LaunchpadActivate {
 	      'ID' => $home->ID,
 	      'menu_order' => -1
 	    );
+
 	    wp_update_post($home_menu_order);
+
 	  }
 
-	  if ($launchpad_theme_activation_options['create_navigation_menus']) {
+	  if ( $launchpad_theme_activation_options['create_navigation_menus'] ) {
+
 	    $launchpad_theme_activation_options['create_navigation_menus'] = false;
 
 	    $launchpad_nav_theme_mod = false;
 
-	    if ( !has_nav_menu('primary_navigation') ) {
+	    if ( ! has_nav_menu('primary_navigation') ) {
 	      $primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
+
 	      $launchpad_nav_theme_mod['primary_navigation'] = $primary_nav_id;
 	    }
 
-	    if (!has_nav_menu('utility_navigation') ) {
+	    if ( ! has_nav_menu('utility_navigation') ) {
 	      $utility_nav_id = wp_create_nav_menu('Utility Navigation', array('slug' => 'utility_navigation'));
+
 	      $launchpad_nav_theme_mod['utility_navigation'] = $utility_nav_id;
 	    }
 

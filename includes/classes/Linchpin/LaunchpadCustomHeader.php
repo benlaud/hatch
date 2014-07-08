@@ -3,7 +3,28 @@
 class LaunchpadCustomHeader {
 
 	function __construct() {
-		add_action( 'after_setup_theme', array( $this, 'custom_header_setup' ) );
+		add_action( 'after_setup_theme',  array( $this, 'custom_header_setup' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ), 999 );
+	}
+
+	/**
+	 * wp_enqueue_scripts function.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	function wp_enqueue_scripts() {
+
+		$hero  = '.header-hero {';
+		$hero .= 'background-image:url(' . get_custom_header()->url . ');';
+		$hero .= 'padding: 1.25rem 0;';
+		$hero .= 'margin: -2rem 0 2rem;';
+		$hero .= 'position: relative;';
+		$hero .= 'text-align: left;';
+		$hero .= 'height: auto;';
+		$hero .= '}';
+
+		wp_add_inline_style( 'app-css', $hero );
 	}
 
 	/**
@@ -14,7 +35,7 @@ class LaunchpadCustomHeader {
 	 */
 	function custom_header_setup() {
 
-		define( 'HEADER_TEXTCOLOR', '000' );	// The default header text color
+		define( 'HEADER_TEXTCOLOR', 'FFF' );	// The default header text color
 		define( 'HEADER_IMAGE', '' ); 			// By leaving empty, we allow for random image rotation.
 
 		// The height and width of your custom header.
@@ -23,12 +44,20 @@ class LaunchpadCustomHeader {
 		define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'launchpad_header_image_height', 250 ) );
 
 		// Turn on random header image rotation by default.
-		add_theme_support( 'custom-header', array( 'random-default' => true ) );
 
-		// Add a way for the custom header to be styled in the admin panel that controls custom headers
-		add_custom_image_header( 'launchpad_header_style', 'launchpad_admin_header_style', 'launchpad_admin_header_image' );
+		$header_args = array(
+			'width'         => HEADER_IMAGE_WIDTH,
+			'height'        => HEADER_IMAGE_HEIGHT,
+			'flex-height'   => true,
+			'flex-width'    => true,
+			'default-image' => 'http://foundation.zurb.com/assets/img/marquee-stars.svg',
+			'uploads'       => true,
+			'admin-head-callback'    => array( $this, 'launchpad_header_style' ),
+			'admin-preview-callback' => array( $this, 'launchpad_admin_header_style' ),
+		);
+
+		add_theme_support( 'custom-header' );
 	}
-
 }
 
 if ( ! function_exists( 'launchpad_header_style' ) ) :
@@ -78,26 +107,19 @@ if ( ! function_exists( 'launchpad_admin_header_style' ) ) :
 	 *
 	 * @since _s 1.0
 	 */
-	function launchpad_admin_header_style() {
-?>
-<style type="text/css">
-.appearance_page_custom-header #headimg {
-  border: none;
-}
-#headimg h1,
-#desc {
-}
-#headimg h1 {
-}
-#headimg h1 a {
-}
-#desc {
-}
-#headimg img {
-}
-</style>
-<?php
-	}
+	function launchpad_admin_header_style() { ?>
+	<style type="text/css">
+		.appearance_page_custom-header #headimg {
+		  border: none;
+		}
+		#headimg h1,
+		#desc {}
+		#headimg h1 {}
+		#headimg h1 a {}
+		#desc {}
+		#headimg img {}
+	</style>
+	<?php }
 endif; // launchpad_admin_header_style
 
 if ( ! function_exists( 'launchpad_admin_header_image' ) ) :
