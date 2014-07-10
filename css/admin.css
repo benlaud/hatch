@@ -1,0 +1,13 @@
+#wp-admin-bar-staging_flag.production,
+#wp-admin-bar-staging_flag.production a,
+#wp-admin-bar-staging_flag.production a:hover {
+	background:#f00;
+	color:#c00;
+}
+
+#wp-admin-bar-staging_flag.staging,
+#wp-admin-bar-staging_flag.staging a,
+#wp-admin-bar-staging_flag.staging a:hover {
+	background:#c4ff6b;
+	color:#4d6627;
+}

@@ -23,7 +23,7 @@ class Foundation {
 		$foundation_cleanup   = new FoundationCleanup();
 		$foundation_clearing  = new FoundationClearing();
 
-		add_action( 'wp_enqueue_scripts'. array( $this, 'wp_enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 
 		add_filter( 'wp_list_pages',      array( $this, 'wp_list_pages' ), 10, 2 );
 		add_filter( 'nav_menu_css_class', array( $this, 'add_active_nav_class' ), 10, 2 );
