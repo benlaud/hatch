@@ -23,7 +23,7 @@ class LaunchpadUtilities {
 	 * @access public
 	 * @return bool
 	 */
-	function launchpad_categorized_blog() {
+	static function launchpad_categorized_blog() {
 		if ( false === ( $all_the_cool_cats = get_transient( 'launchpad_categories' ) ) ) {
 			// Create an array of all the categories that are attached to posts.
 			$all_the_cool_cats = get_categories( array(
@@ -132,4 +132,14 @@ class LaunchpadUtilities {
  */
 function Launchpad_breadcrumbs() {
 	LaunchpadUtilities::breadcrumbs();
-} ?>
+}
+
+/**
+ * launchpad_categorized_blog function.
+ *
+ * @access public
+ * @return void
+ */
+function launchpad_categorized_blog() {
+	LaunchpadUtilities::launchpad_categorized_blog();
+}
