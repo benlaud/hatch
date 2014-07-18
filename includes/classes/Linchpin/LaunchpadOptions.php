@@ -103,29 +103,47 @@ class LaunchpadOptions {
 
 	  ?>
 	  <div class="wrap">
-	    <form method="post" action="options.php">
 	      <?php screen_icon(); ?>
 	      <div id="launchpad-wrap">
-	        <ul class="nav-tab-wrapper">
-	          <li><a href="#theme-options" class="nav-tab"><?php printf(__('%s Options', 'launchpad'), get_current_theme()); ?></a></li>
-	          <li><a href="#extra-options" class="nav-tab"><?php _e('Setup', 'launchpad'); ?></a></li>
-	        </ul>
+
+			<?php $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'display_options'; ?>
+
+		    <h2 class="nav-tab-wrapper">
+		    	<a href="?page=theme_options&tab=display_options" class="nav-tab <?php echo $active_tab == 'display_options' ? 'nav-tab-active' : ''; ?>"><?php printf(__('%s Options', 'launchpad'), get_current_theme()); ?></a>
+		    	<a href="?page=theme_options&tab=script_options" class="nav-tab <?php echo $active_tab == 'script_options' ? 'nav-tab-active' : ''; ?>"><?php printf(__('Additional Scripts', 'launchpad'), get_current_theme()); ?></a>
+				<a href="?page=theme_options&tab=install_options" class="nav-tab <?php echo $active_tab == 'install_options' ? 'nav-tab-active' : ''; ?>"><?php _e('Setup', 'launchpad'); ?></a>
+			</h2>
+
+
 	        <?php settings_errors(); ?>
-	        <p class="top-notice"><?php _e('Customize the client/blog setup with these settings. ','launchpad'); ?></p>
-	        <?php
-	        settings_fields('launchpad_options');
-	        $launchpad_options = launchpad_get_theme_options();
-	        $launchpad_default_options = self::get_default_theme_options();
-	        ?>
-	        <?php require_once locate_template('/inc/admin/launchpad-options/theme-options.php'); ?>
-	        <?php require_once locate_template('/inc/admin/launchpad-options/client-details.php'); ?>
-	        <?php require_once locate_template('/inc/admin/launchpad-options/integration-options.php'); ?>
-	        <?php require_once locate_template('/inc/admin/launchpad-options/extra-options.php'); ?>
 
-	        <input type="hidden" value="1" name="launchpad_theme_options[first_run]" />
+		        <form method="post" action="options.php">
 
-	        <?php submit_button(); ?>
-	    </form>
+		        <?php settings_fields('launchpad_options');
+		        $launchpad_options = launchpad_get_theme_options();
+		        $launchpad_default_options = self::get_default_theme_options();
+		        ?>
+
+		        <?php
+
+				if( $active_tab == 'display_options' ) {
+
+		        	require_once locate_template('/includes/launchpad-options/theme-options.php');
+
+		        } elseif ( $active_tab == 'script_options' ) {
+
+		        	require_once locate_template('/includes/launchpad-options/integration-options.php');
+
+		        } elseif ( $active_tab == 'script_options' ) {
+
+		        	require_once locate_template('/includes/launchpad-options/extra-options.php');
+
+				} ?>
+		        <input type="hidden" value="1" name="launchpad_theme_options[first_run]" />
+
+		        <?php submit_button(); ?>
+
+			</form>
 	  </div>
 	  <?php
 	}
@@ -151,12 +169,12 @@ class LaunchpadOptions {
 		    // Enque our Scripts
 
 		    $scripts = array(
-    				'jquery-cookie' 		=> array('/js/jquery.cookie.js', array('jquery') ),
-    				'codemirror'			=> array('/inc/admin/codemirror/lib/codemirror.js'),
-    				'codemirror-xml'		=> array('/inc/admin/codemirror/mode/xml/xml.js'),
-    				'codemirror-css'		=> array('/inc/admin/codemirror/mode/css/css.js'),
-    				'codemirror-js'			=> array('/inc/admin/codemirror/mode/javascript/javascript.js'),
-    				'codemirror-htmlmixed'	=> array('/inc/admin/codemirror/mode/htmlmixed/htmlmixed.js'),
+    				'jquery-cookie' 		=> array('/js/jquery.cookie/jquery.cookie.js', array('jquery') ),
+    				'codemirror'			=> array('/includes/codemirror/lib/codemirror.js'),
+    				'codemirror-xml'		=> array('/includes/codemirror/mode/xml/xml.js'),
+    				'codemirror-css'		=> array('/includes/codemirror/mode/css/css.js'),
+    				'codemirror-js'			=> array('/includes/codemirror/mode/javascript/javascript.js'),
+    				'codemirror-htmlmixed'	=> array('/includes/codemirror/mode/htmlmixed/htmlmixed.js'),
     				'admin-controls'		=> array('/js/admin.js', array('jquery', 'jquery-ui-core', 'jquery-ui-tabs') ),
     		   );
 
@@ -165,7 +183,7 @@ class LaunchpadOptions {
 		    wp_enqueue_style('thickbox');
 
 		    $styles = array (
-    			'codemirror_css' 		 => array('/inc/admin/codemirror/lib/codemirror.css'),
+    			'codemirror_css' 		 => array('/includes/codemirror/lib/codemirror.css'),
     			'launchpad_wp_admin_css' => array('/css/admin.css'),
     		  );
 		 }

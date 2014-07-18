@@ -3,19 +3,6 @@
 
     <table class="form-table">
         <tbody>
-            <?php
-            $wp_seo_active = is_plugin_active('wordpress-seo/wp-seo.php');
-
-            if ($wp_seo_active) : ?>
-
-            <tr valign="top">
-                <td colspan="2">
-                    <div class="error fade">
-                        <p><?php _e('Hey there! It looks like you have WordPress SEO enabled so we have disabled our Google Webmaster related field(s) below.', 'launchpad'); ?></p>
-                    </div>
-                </td>
-            </tr><?php endif; ?>
-
             <tr valign="top">
                 <th scope="row"><?php _e('Typekit ID', 'launchpad'); ?></th>
 
@@ -39,48 +26,41 @@
             <tr valign="top">
                 <td colspan="2">
                     <div id="additional-scripts">
-                        <ul>
-                            <li><a href="#head-scripts" class="nav-tab"><?php _e('Additional Head Scripts', 'launchpad'); ?></a></li>
-                            <li><a href="#footer-scripts" class="nav-tab"><?php _e('Additional Footer Scripts', 'launchpad'); ?></a></li>
-                        </ul>
-                        <div id="head-scripts">
-                            <table class="form-table">
-                                <tbody>
-                                    <tr valign="top">
-                                        <th scope="row"><?php _e('Additional Header Scripts', 'launchpad'); ?></th>
-                                        <td>
-                                            <div>
-                                                <label class="screen-reader-text" for="additional_header_scripts"><span><?php _e('Additional Head Scripts', 'launchpad'); ?></span></label>
-                                                <textarea name="launchpad_theme_options[additional_header_scripts]" class="html-textarea" id="additional_header_scripts">
+
+                        <table class="form-table">
+                            <tbody>
+                                <tr valign="top">
+                                    <th scope="row"><?php _e('Additional Header Scripts', 'launchpad'); ?></th>
+                                    <td>
+                                        <div>
+                                            <label class="screen-reader-text" for="additional_header_scripts"><span><?php _e('Additional Head Scripts', 'launchpad'); ?></span></label>
+                                            <textarea name="launchpad_theme_options[additional_header_scripts]" class="html-textarea" id="additional_header_scripts">
 <?php echo esc_attr($launchpad_options['additional_header_scripts']); ?>
 </textarea>
-                                                <p class="description"><?php printf(__('This area will include scripts within the <strong>&lt;HEAD&gt;</strong> tag of your website. In most cases you can use the footer scripts below. Through some scripts require being loaded within the <strong>&lt;HEAD&gt;</strong> tag.', 'launchpad')); ?></p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                            <p class="description"><?php printf(__('This area will include scripts within the <strong>&lt;HEAD&gt;</strong> tag of your website. In most cases you can use the footer scripts below. Through some scripts require being loaded within the <strong>&lt;HEAD&gt;</strong> tag.', 'launchpad')); ?></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                        <div id="footer-scripts">
-                            <table class="form-table">
-                                <tbody>
-                                    <tr valign="top">
-                                        <th scope="row"><?php _e('Additional Footer Scripts', 'launchpad'); ?></th>
+                        <table class="form-table">
+                            <tbody>
+                                <tr valign="top">
+                                    <th scope="row"><?php _e('Additional Footer Scripts', 'launchpad'); ?></th>
 
-                                        <td>
-                                            <div>
-                                                <label class="screen-reader-text" for="additional_footer_scripts"><span><?php _e('Additional Footer Scripts', 'launchpad'); ?></span></label>
-                                                <textarea name="launchpad_theme_options[additional_footer_scripts]" class="html-textarea" id="additional_footer_scripts">
+                                    <td>
+                                        <div>
+                                            <label class="screen-reader-text" for="additional_footer_scripts"><span><?php _e('Additional Footer Scripts', 'launchpad'); ?></span></label>
+                                            <textarea name="launchpad_theme_options[additional_footer_scripts]" class="html-textarea" id="additional_footer_scripts">
 <?php echo esc_attr($launchpad_options['additional_footer_scripts']); ?>
 </textarea>
-                                                <p class="description"><?php printf(__('Within this area you can include any additional 3rd party scripts. Examples would include javascript needed for Twitter, HubSpot and other features not included by default with the Linchpin Launchpad or your theme', 'launchpad')); ?></p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                            <p class="description"><?php printf(__('Within this area you can include any additional 3rd party scripts. Examples would include javascript needed for Twitter, HubSpot and other features not included by default with the Linchpin Launchpad or your theme', 'launchpad')); ?></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </td>
             </tr>

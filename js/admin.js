@@ -86,7 +86,7 @@ jQuery(function($) {
 
 	utils.init();
 
-	$( "#launchpad-wrap" ).tabs({ cookie: { expires: 30 } });
-	$( "#additional-scripts" ).tabs({ cookie: { expires: 30 } });
+//	$( "#launchpad-wrap" ).tabs({ cookie: { expires: 30 } });
+//	$( "#additional-scripts" ).tabs({ cookie: { expires: 30 } });
 
 });
