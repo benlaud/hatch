@@ -78,7 +78,9 @@ class LaunchpadUtilities {
 
 			<?php if ( is_category() || is_single() ) : ?>
 
-	    		<li><?php the_category(); ?></li>
+				<?php if ( $categories = get_the_category() ) : ?>
+		    		<li><a href="<?php echo get_term_link( current( $categories ), 'category' ); ?>"><?php echo current( $categories )->name; ?></a></li>
+		    	<?php endif; ?>
 
 				<?php if ( is_single() ) : ?>
 	    			<li><?php the_title(); ?></li>
