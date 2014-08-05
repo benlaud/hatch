@@ -23,7 +23,7 @@ class LaunchpadUtilities {
 	 * @access public
 	 * @return bool
 	 */
-	function launchpad_categorized_blog() {
+	static function launchpad_categorized_blog() {
 		if ( false === ( $all_the_cool_cats = get_transient( 'launchpad_categories' ) ) ) {
 			// Create an array of all the categories that are attached to posts.
 			$all_the_cool_cats = get_categories( array(
@@ -92,7 +92,9 @@ class LaunchpadUtilities {
 
 			<?php if ( is_category() || is_single() ) : ?>
 
-	    		<li><?php the_category(); ?></li>
+				<?php if ( $categories = get_the_category() ) : ?>
+		    		<li><a href="<?php echo get_term_link( current( $categories ), 'category' ); ?>"><?php echo current( $categories )->name; ?></a></li>
+		    	<?php endif; ?>
 
 				<?php if ( is_single() ) : ?>
 	    			<li><?php the_title(); ?></li>
@@ -146,4 +148,14 @@ class LaunchpadUtilities {
  */
 function Launchpad_breadcrumbs() {
 	LaunchpadUtilities::breadcrumbs();
-} ?>
+}
+
+/**
+ * launchpad_categorized_blog function.
+ *
+ * @access public
+ * @return void
+ */
+function launchpad_categorized_blog() {
+	LaunchpadUtilities::launchpad_categorized_blog();
+}

@@ -212,9 +212,122 @@ $directions: top, right, bottom, left;
 }
 
 
+/* @mixin box-shadow
+ *
+ * Accepts 6 parameters
+ *  $horizontal: 	offset of the shadow, positive means the shadow will be on the right of the box, a negative offset will put the 					shadow on the left of the box
+ *  $vertical: 		offset of the shadow, a negative one means the box-shadow will be above the box, a positive one means the shadow 					will be below the box
+ *  $blur: 			radius, if set to 0 the shadow will be sharp, the higher the number, the more blurred it will be
+ *	$spread: 		radius (optional), positive values increase the size of the shadow, negative values decrease the size. Default is 					0 (the shadow is same size as blur)
+ *	$color: 		hex or rgba with alpha
+ *	$inset: 		true for inner shadow (full/all sides)
+ * * */
+@mixin box-shadow($horizontal, $vertical, $blur, $spread, $color, $inset: false) {
+	@if $inset {
+		-webkit-box-shadow:inset $horizontal $vertical $blur $spread $color;
+		-moz-box-shadow:inset $horizontal $vertical $blur $spread $color;
+		box-shadow:inset $horizontal $vertical $blur $spread $color;
+	} @else {
+		-webkit-box-shadow: $horizontal $vertical $blur $spread $color;
+		-moz-box-shadow: $horizontal $vertical $blur $spread $color;
+		box-shadow: $horizontal $vertical $blur $spread $color;
+	}
+}
+
+/* @function calculateRem
+ *
+ * Returns calculated rem given the $size passed from font-size mixin.
+ * * */
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function calculateRem($size) {
+  $remSize: $size / $base-font-size;
+  @return $remSize * 1rem;
+}
+
+@function calculateSpaceRem ($size) {
+	$remSize: $size / strip-unit($base-font-size);
+	@return $remSize * 1rem;
+}
 
 
+/* @function
+ *
+ * Returns unitless digit to a pixel value.
+ * * */
+@function calculatePixel($size) {
+  @return $size * 1px;
+}
 
+
+/* @mixin font-size
+ *
+ * Accepts 1 parameter
+ *  Font-size in pixels
+ *
+ * Returns font-size in pixels and rem
+ *
+ * Usage: 	@include font-size(18px);
+ * * */
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+
+@mixin calc-space ( $type: null, $spaces: $space ) {
+  $len: length($spaces);
+
+  $i: 1;
+  $pix: 0;
+  $rem: 0;
+
+  @while $i <= $len {
+    $the_space: nth($spaces, $i);
+
+    @if ( $i == 1 ) {
+      $pix: calculatePixel($the_space);
+      $rem: calculateSpaceRem($the_space);
+    } @else if ( type-of($the_space) == string ) {
+      $pix: #{$pix} #{$the_space};
+      $rem: #{$rem} #{$the_space};
+    } @else {
+      $pix: $pix calculatePixel($the_space);
+      $rem: $rem calculateSpaceRem($the_space);
+    }
+
+    $i: $i + 1;
+  }
+
+  #{$type}: $pix;
+  //#{$type}: $rem;
+}
+
+
+/* @mixin box-shadow
+ *
+ * Accepts 6 parameters
+ *  $horizontal: 	offset of the shadow, positive means the shadow will be on the right of the box, a negative offset will put the 					shadow on the left of the box
+ *  $vertical: 		offset of the shadow, a negative one means the box-shadow will be above the box, a positive one means the shadow 					will be below the box
+ *  $blur: 			radius, if set to 0 the shadow will be sharp, the higher the number, the more blurred it will be
+ *	$spread: 		radius (optional), positive values increase the size of the shadow, negative values decrease the size. Default is 					0 (the shadow is same size as blur)
+ *	$color: 		hex or rgba with alpha
+ *	$inset: 		true for inner shadow (full/all sides)
+ * * */
+@mixin box-shadow($horizontal, $vertical, $blur, $spread, $color, $inset: false) {
+	@if $inset {
+		-webkit-box-shadow:inset $horizontal $vertical $blur $spread $color;
+		-moz-box-shadow:inset $horizontal $vertical $blur $spread $color;
+		box-shadow:inset $horizontal $vertical $blur $spread $color;
+	} @else {
+		-webkit-box-shadow: $horizontal $vertical $blur $spread $color;
+		-moz-box-shadow: $horizontal $vertical $blur $spread $color;
+		box-shadow: $horizontal $vertical $blur $spread $color;
+	}
+}
 
 
 
