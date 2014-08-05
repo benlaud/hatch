@@ -64,6 +64,9 @@ class LaunchpadUtilities {
 	 * breadcrumbs function.
 	 * Loosely based on http://cazue.com/articles/wordpress-creating-breadcrumbs-without-a-plugin-2013
 	 *
+	 * If the site uses Breadcrumbs NavXT use that instead
+	 *
+	 *
 	 * @access public
 	 * @static
 	 * @return void
@@ -72,6 +75,17 @@ class LaunchpadUtilities {
 	    global $post; ?>
 
 	    <ul class="breadcrumbs">
+
+        <?php if( function_exists('bcn_display') ) :
+	        bcn_display();
+
+	        // Be sure to close our opening UL
+	    ?>
+
+		</ul>
+
+	    <?php return; endif; ?>
+
 	    <?php if ( !is_home() ) { ?>
 
 	        <li><a href="<?php echo get_option('home'); ?>"><?php _e('Home', 'launchpad'); ?></a></li>
