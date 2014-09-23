@@ -40,15 +40,20 @@ get_header(); ?>
 					</div><!-- .widget -->
 					<?php endif; ?>
 
-					<?php
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( __( 'Try looking in the monthly archives. %1$s', 'launchpad' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
-					?>
+					<div class="entry-content">
+						<div class="error">
+							<p class="bottom"><?php _e('The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'FoundationPress'); ?></p>
+						</div>
+						<p><?php _e('Please try the following:', 'FoundationPress'); ?></p>
+						<ul>
+							<li><?php _e('Check your spelling', 'FoundationPress'); ?></li>
+							<li><?php printf(__('Return to the <a href="%s">home page</a>', 'FoundationPress'), home_url()); ?></li>
+							<li><?php _e('Click the <a href="javascript:history.back()">Back</a> button', 'FoundationPress'); ?></li>
+						</ul>
+					</div>
 
 				</div><!-- .page-content -->
 			</section><!-- .error-404 -->
-
 		</main><!-- #main -->
 	</div><!-- #primary -->
 </div>

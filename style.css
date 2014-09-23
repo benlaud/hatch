@@ -1,13 +1,14 @@
 /*
 Theme Name:         Launchpad
 Theme URI:          https://github.com/aaronware/foundationpress.git
-Description:        FoundationPress is a WordPress starter theme based on Foundation 5 by Zurb
-Version:            1.0.0
-Author:             Ole Fredrik Lie
-Author URI:         http://olefredrik.com/
+Github Theme URI:   https://github.com/olefredrik/FoundationPress
+Description:        Launchpad is a WordPress starter theme based on FoundationPress which is based on Foundation 5 by Zurb
+Version:            1.1
+Author:             Ole Fredrik Lie, Linchpin
+Author URI:         http://linchpin.agency
 
-License:            MIT License
-License URI:        http://www.opensource.org/licenses/mit-license.php
+License:            GPLv3 License
+License URI:        http://opensource.org/licenses/GPL-3.0
 */
 
 /* ----------------------------------------------------------------------------
@@ -21,5 +22,8 @@ License URI:        http://www.opensource.org/licenses/mit-license.php
   Please read the README.md file before getting started. More info on how
   to use Sass with Foundation can be found here:
   http://foundation.zurb.com/docs/sass.html
+
+  If you for some reason would like to write plain css instead of using Sass,
+  you could just enqueue this file (style.css) to the header and add your styles in this file
 
 ---------------------------------------------------------------------------- */
