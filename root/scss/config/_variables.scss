@@ -1,5 +1,5 @@
 $default: #999;
-$icon-font: 'linchpin';
+$icon-font: '{%= js_safe_name }';
 
 @mixin set-font ( $icon ) {
   font-family: '#{$icon}';
