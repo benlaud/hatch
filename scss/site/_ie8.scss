@@ -1,38 +1,38 @@
 /* Visibility */
-.hidden-for-small-only
-.hidden-for-medium-only
-.hidden-for-xlarge-up
-.hidden-for-xlarge-only
+.hidden-for-small-only,
+.hidden-for-medium-only,
+.hidden-for-xlarge-up,
+.hidden-for-xlarge-only,
 .hidden-for-xxlarge-up {
 	visibility: visible;
 }
 
 
-.hidden-for-medium-up
-.hidden-for-large-only
+.hidden-for-medium-up,
+.hidden-for-large-only,
 .hidden-for-large-up {
 	visibility: hidden;
 }
 
-.show-for-medium-up
-.show-for-large-up
-.show-for-large-only
+.show-for-medium-up,
+.show-for-large-up,
+.show-for-large-only,
 
-.hide-for-small-only
-.hide-for-medium-only
-.hide-for-xlarge-only
+.hide-for-small-only,
+.hide-for-medium-only,
+.hide-for-xlarge-only,
 .hide-for-xxlarge-up {
 	display: block;
 }
-.show-for-small-only
-.show-for-medium-only
-.show-for-xlarge-up
-.show-for-xlarge-only
-.show-for-xxlarge-up
+.show-for-small-only,
+.show-for-medium-only,
+.show-for-xlarge-up,
+.show-for-xlarge-only,
+.show-for-xxlarge-up,
 
-.hide-for-medium-up
-.hide-for-large-only
-.hide-for-large-up
+.hide-for-medium-up,
+.hide-for-large-only,
+.hide-for-large-up,
 .hide-for-xlarge-up {
 	display: none;
 }
