@@ -1,6 +1,3 @@
-/**
- * Created by aware on 10/7/14.
- */
 {
     "Theme.php": "{%= js_safe_name %}.php",
     "assets/css/sass/theme.scss": "assets/css/sass/{%= js_safe_name %}.scss",
