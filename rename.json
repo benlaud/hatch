@@ -1,4 +1,5 @@
 {
     "Theme.php": "{%= js_safe_name %}.php",
-    "js/theme.js": "js/{%= js_safe_name %}.js"
+    "js/theme.js": "js/{%= js_safe_name %}.js",
+    "js/theme": "js/{%= js_safe_name %}"
 }

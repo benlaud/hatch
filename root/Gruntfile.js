@@ -38,6 +38,11 @@ module.exports = function(grunt) {
         files: {
           'js/modernizr/modernizr.min.js': ['js/modernizr/modernizr.js']
         }
+      },
+      theme: {
+        files: {
+            'js/{%= js_safe_name %}.min.js' : ['js/app.js', 'js/linchpin.js', 'js/{%= js_safe_name %}.js']
+        }
       }
     },
 
@@ -48,10 +53,22 @@ module.exports = function(grunt) {
       dist: {
         src: [
           'js/foundation/js/foundation.min.js',
-          'js/custom/*.js'
+          'js/init-foundation.js'
         ],
 
         dest: 'js/app.js'
+      },
+      linchpin: {
+        src:[
+          'js/linchpin/*.js'
+        ],
+        dest: 'js/linchpin.js'
+      },
+      theme: {
+        src:[
+          'js/{%= js_safe_name %}/*'
+        ],
+        dest: 'js/{%= js_safe_name %}.js'
       }
 
     },
@@ -62,6 +79,15 @@ module.exports = function(grunt) {
       sass: {
         files: 'scss/**/*.scss',
         tasks: ['sass']
+      },
+
+      javascript: {
+        files: [
+          'js/app.js',
+          'js/linchpin.js',
+          'js/{%= js_safe_name %}.js'
+        ],
+        tasks: ['concat', 'uglify']
       }
     }
   });
