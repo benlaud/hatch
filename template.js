@@ -85,7 +85,7 @@ exports.template = function( grunt, init, done ) {
         // Actually copy and process files
         init.copyAndProcess( files, props );
 
-        grunt.copy('wp-content/themes/theme/js/theme', 'wp-content/themes/theme/js/' + js_safe_name );
+        grunt.copy('wp-content/themes/theme/js/theme', 'wp-content/themes/theme/js/' + props.js_safe_name );
 
         // Generate package.json file
         init.writePackageJSON( 'package.json', props );
