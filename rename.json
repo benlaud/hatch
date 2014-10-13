@@ -1,5 +1,6 @@
 {
-    "Theme.php": "{%= js_safe_name %}.php",
-    "js/theme.js": "js/{%= js_safe_name %}.js",
-    "js/theme": "js/{%= js_safe_name %}"
+    "wp-content/themes/theme/Theme.php": "{%= php_class_name %}.php",
+    "wp-content/themes/theme/js/theme.js": "wp-content/themes/theme/js/{%= js_safe_name %}.js",
+    "wp-content/themes/theme/js/theme": "wp-content/themes/theme/js/{%= js_safe_name %}",
+    "wp-content/themes/theme": "wp-content/themes/{%= js_safe_name %}",
 }
