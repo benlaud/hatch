@@ -39,7 +39,6 @@ exports.template = function( grunt, init, done ) {
             message: 'PHP function prefix (alpha and underscore characters only)',
             default: 'lp_'
         },
-        init.prompt( 'description', 'A brief description about the theme' ),
         init.prompt( 'base_version', '0.1' ),
         init.prompt( 'description', 'A brief description about the theme' ),
         init.prompt( 'homepage', 'http://linchpin.agency' ),
