@@ -40,6 +40,8 @@ exports.template = function( grunt, init, done ) {
             default: 'lp_'
         },
         init.prompt( 'description', 'A brief description about the theme' ),
+        init.prompt( 'base_version', '0.1' ),
+        init.prompt( 'description', 'A brief description about the theme' ),
         init.prompt( 'homepage', 'http://linchpin.agency' ),
         init.prompt( 'author_name' ),
         init.prompt( 'author_email' ),
