@@ -67,7 +67,8 @@ exports.template = function( grunt, init, done ) {
         // Development prefix in all caps (e.g. for constants)
         props.prefix_caps = props.prefix.toUpperCase();
         // An additional value, safe to use as a JavaScript identifier.
-        props.js_safe_name = props.name.replace(/[\W_]+/g, '_').replace(/^(\d)/, '_$1');
+        props.js_name = props.php_class_name.replace( /\s+/g, '-' ).toLowerCase();
+        props.js_safe_name = props.js_name.replace(/[\W_]+/g, '_').replace(/^(\d)/, '_$1');
         props.js_object_name = props.php_class_name.replace('/[^a-z_]/i', '').toLowerCase();
         // An additional value that won't conflict with NodeUnit unit tests.
         props.js_test_safe_name = props.js_safe_name === 'test' ? 'myTest' : props.js_safe_name;
@@ -83,6 +84,8 @@ exports.template = function( grunt, init, done ) {
 
         // Actually copy and process files
         init.copyAndProcess( files, props );
+
+        grunt.copy('wp-content/themes/theme/js/theme', 'wp-content/themes/theme/js/' + js_safe_name );
 
         // Generate package.json file
         init.writePackageJSON( 'package.json', props );
