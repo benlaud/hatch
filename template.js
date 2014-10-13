@@ -67,7 +67,7 @@ exports.template = function( grunt, init, done ) {
         props.prefix_caps = props.prefix.toUpperCase();
         // An additional value, safe to use as a JavaScript identifier.
         props.js_safe_name = props.name.replace(/[\W_]+/g, '_').replace(/^(\d)/, '_$1');
-        props.js_object_name = props.classname.replace('/[^a-z_]/i', '').toLowerCase();
+        props.js_object_name = props.php_class_name.replace('/[^a-z_]/i', '').toLowerCase();
         // An additional value that won't conflict with NodeUnit unit tests.
         props.js_test_safe_name = props.js_safe_name === 'test' ? 'myTest' : props.js_safe_name;
         props.js_safe_name_caps = props.js_safe_name.toUpperCase();
