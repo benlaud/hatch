@@ -5,8 +5,9 @@ if( typeof linchpin === 'undefined' ) { // create new linchpin object if one doe
 linchpin.utils = function( $ ) {
 
 	// Private Variables
-	var $win = null,
-		$doc = null;
+	var $win  = $(window),
+        $body = $('body'),
+		$doc  = $(document);
 
 	return {
 
@@ -154,16 +155,11 @@ linchpin.utils = function( $ ) {
 						}
 					});
 
-				//	if($.browser.msie && parseInt($.browser.version, 10) == 8) { // do some funky business for IE8 and woocommerce
-				//		$('.showlogin').on('click', function() {
-				//			$('#username, input[name=username]').val('');
-				//		});
-				//	}
 				});
 			/**
 			 * On submit we want to make sure we clear out the fields so validation works properly
 			 */
-			$doc.on('click', $submit, function() {
+			$body.on('click', $submit, function() {
 				$fields.each(function() {
 					var $fld = $(this),
 						 val = $fld.val(),
@@ -192,11 +188,8 @@ linchpin.utils = function( $ ) {
 		 * @param jQuery[Object] the entire jQuery library
 		 * @since 1.2
 		 */
-		init: function( jQuery ) {
+		init: function( ) {
 			// Make sure we want infield labels before we go through our setup
-			$    = jQuery;
-			$win = $(window);
-			$doc = $(document);
 
 			if (typeof launchpad !== 'undefined') {
 				if ( launchpad.infield_labels ) {
@@ -209,7 +202,7 @@ linchpin.utils = function( $ ) {
 			 * be sure to do this "on" so if we use any ajax these methods still work
 			 * @author aware
 			 */
-			$doc.on('click', 'a.external-link, .external-link a', function(event) {
+			$body.on('click', 'a.external-link, .external-link a', function(event) {
 				event.preventDefault();
 				event.stopImmediatePropagation();
 				window.open(this.href);
@@ -238,8 +231,6 @@ linchpin.utils = function( $ ) {
 			})
 
 			.bind('gform_post_render', linchpin.utils.setup_form_fields);
-
-			$('.autosize').autosize(); // If the textfield allows. Autosize it.
 		}
 	};
 }(jQuery);

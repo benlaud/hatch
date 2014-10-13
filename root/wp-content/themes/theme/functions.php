@@ -16,7 +16,7 @@
  */
 
 // Useful global constants
-define( '{%= prefix_caps %}_VERSION', '0.1.0' );
+define( '{%= prefix_caps %}VERSION', '0.1.0' );
 define( 'SCRIPT_DEBUG', true ); // enable script debug by default
 
 include_once('includes/Linchpin/Launchpad.php');    // Launchpad Classes
