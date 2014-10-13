@@ -11,7 +11,7 @@
  *
  * We've added in a ton of functionality we utilize on a daily basis.
  * It's not necessarily meant to have a TON of options and controls.
- * Just a clean base for our build outs.
+ * Just a clean base for Linchpin build outs.
  *
  */
 
@@ -21,11 +21,11 @@ define( 'SCRIPT_DEBUG', true ); // enable script debug by default
 
 include_once('includes/Linchpin/Launchpad.php');    // Launchpad Classes
 include_once('includes/Foundation/Foundation.php'); // Foundation Classes
-include_once('includes/{%= classname %}.php');      // Theme Class
+include_once('includes/{%= php_class_name %}.php');      // Theme Class
 
 /**
  *	Instantiate our classes.
  */
 
-$theme	= new {%= classname %}();
+$theme	= new {%= php_class_name %}();
 $cpt 	= new CustomPostTypes();
