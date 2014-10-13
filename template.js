@@ -30,7 +30,7 @@ exports.template = function( grunt, init, done ) {
         // Prompt for these values.
         init.prompt( 'title', 'WP Theme / Client Name' ),
         {
-            name   : 'classname',
+            name   : 'php_class_name',
             message: 'PHP Class name used to encapsulate our code',
             default: 'Linchpin'
         },
@@ -39,7 +39,7 @@ exports.template = function( grunt, init, done ) {
             message: 'PHP function prefix (alpha and underscore characters only)',
             default: 'lp_'
         },
-        init.prompt( 'description', 'The best WordPress theme ever made!' ),
+        init.prompt( 'description', 'A brief description about the theme' ),
         init.prompt( 'homepage', 'http://linchpin.agency' ),
         init.prompt( 'author_name' ),
         init.prompt( 'author_email' ),
