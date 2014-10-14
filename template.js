@@ -53,7 +53,7 @@ exports.template = function( grunt, init, done ) {
             "node-sass": "~0.7.0",
             "matchdep": "^0.3.0",
             "grunt-contrib-concat": "~0.3.0",
-            "grunt-contrib-uglify": "~0.2.7"
+            "grunt-contrib-uglify": "~0.2.7",
             "grunt-contrib-cssmin": "~0.6.0",
             "grunt-contrib-clean": "~0.6.0",
             "grunt-contrib-jshint": "~0.1.1",
