@@ -7,24 +7,31 @@
  *
  */
 
-if( typeof(theme) == 'undefined' ) {
-    theme = {};
+// If we don't have an object for our theme create it.
+
+if( typeof({%= js_safe_name %}) == 'undefined' ) {
+    {%= js_safe_name %} = {};
 }
 
-theme.site = function ( $ ) {
+{%= js_safe_name %}.site = function ( $ ) {
     // Private Variables
     var $window = $(window),
-        $body = $('body'),
-        $doc = $(document);
+        $doc    = $(document),
+        $body   = $('body');
 
     return {
 
+        /*
+         * function init
+         * Kick off all of the business
+         */
+
         init: function() {
-            $(document).foundation(); // initialize jquery
+            $(document).foundation(); // initialize foundation
         }
     }
 }
 
-jQuery(function($) {
-    theme.site.init();
+jQuery(function( $ ) {
+    {%= js_safe_name %}.site.init();
 });
