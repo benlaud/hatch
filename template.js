@@ -32,7 +32,7 @@ exports.template = function( grunt, init, done ) {
         {
             name   : 'php_class_name',
             message: 'PHP Class name used to encapsulate our code',
-            default: 'Linchpin'
+            default: 'Launchpad'
         },
         {
             name   : 'prefix',
@@ -82,10 +82,15 @@ exports.template = function( grunt, init, done ) {
 
         console.log( files );
 
+        // module dependencies
+        var join = require("path").join;
+
         // Actually copy and process files
         init.copyAndProcess( files, props );
 
-        grunt.file.copy('wp-content/themes/theme/js/theme', 'wp-content/themes/theme/js/' + props.js_safe_name );
+        grunt.file.mkdir( init.destpath() + '/wp-content/themes/theme/js/' + props.js_safe_name );
+
+        init.copy( init.destpath() + '/wp-content/themes/theme/js/theme/init-foundation.js', init.destpath() + 'wp-content/themes/theme/js/' + props.js_safe_name + '/' );
 
         // Generate package.json file
         init.writePackageJSON( 'package.json', props );
