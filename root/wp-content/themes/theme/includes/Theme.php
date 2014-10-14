@@ -1,15 +1,12 @@
 <?php
 /**
- * Linchpin
+ * {%= title %}
  *
- * FoundationPress Theme Setup
- * @author Aaron Ware
- *
- * @package     FoundationPress
- * @created     7/1/14
+ * @author {%= author_name %}
+ * @package     Linchpin
  *
  */
-class Theme {
+class {%= php_class_name %} {
 
 	/**
 	 * __construct function.

@@ -1,12 +1,16 @@
 /**
+ * launchpad grunt scaffold
+ * heavily based on the following project
+ * Copyright (c) 2014 Aaron Ware, Linchpin
+ * Updated by aware on 10/7/14.
+ *
+ * Cleaned up and removed some unneeded elements
+ *
  * grunt-wp-theme
  * https://github.com/10up/grunt-wp-theme
  *
  * Copyright (c) 2013 Eric Mann, 10up, Aaron Ware, Linchpin
  * Licensed under the MIT License
- * Updated by aware on 10/7/14.
- *
- * Cleaned up and removed some unneeded elements
  *
  */
 
@@ -52,15 +56,15 @@ exports.template = function( grunt, init, done ) {
             'grunt': "~0.4.1",
             "node-sass": "~0.7.0",
             "matchdep": "^0.3.0",
+            "grunt-contrib-copy": "^0.6.0"
+            "grunt-contrib-uglify": "~0.2.7"
             "grunt-contrib-concat": "~0.3.0",
-            "grunt-contrib-uglify": "~0.2.7",
             "grunt-contrib-cssmin": "~0.6.0",
             "grunt-contrib-clean": "~0.6.0",
             "grunt-contrib-jshint": "~0.1.1",
             "grunt-contrib-nodeunit": "~0.1.2",
             "grunt-contrib-watch": "^0.6.1",
-            "grunt-contrib-sass": "~0.2.2",
-            "grunt-contrib-copy": "^0.6.0"
+            "grunt-contrib-sass": "~0.2.2"
         };
 
         // Sanitize names where we need to for PHP/JS
