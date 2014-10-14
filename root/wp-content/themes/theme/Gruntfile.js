@@ -45,7 +45,7 @@ module.exports = function(grunt) {
       },
       theme: {
         files: {
-            'js/{%= js_safe_name %}.min.js' : ['js/foundation.min.js', 'js/linchpin.js', 'js/{%= js_safe_name %}.js']
+            'js/{%= js_safe_name %}.min.js' : ['js/app.js', 'js/linchpin.js', 'js/{%= js_safe_name %}.js']
         }
       }
     },
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
           'js/foundation/js/foundation.min.js'
         ],
 
-        dest: 'js/foundation.min.js'
+        dest: 'js/app.js'
       },
 
       // linchpin specific libraries

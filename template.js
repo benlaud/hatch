@@ -50,14 +50,15 @@ exports.template = function( grunt, init, done ) {
         props.version = '0.1.0';
         props.devDependencies = {
             'grunt': "~0.4.1",
+            "node-sass": "~0.7.0",
             "matchdep": "^0.3.0",
-            "grunt-contrib-concat": "~0.1.2",
-            "grunt-contrib-uglify": "~0.1.1",
+            "grunt-contrib-concat": "~0.3.0",
+            "grunt-contrib-uglify": "~0.2.7"
             "grunt-contrib-cssmin": "~0.6.0",
             "grunt-contrib-clean": "~0.6.0",
             "grunt-contrib-jshint": "~0.1.1",
             "grunt-contrib-nodeunit": "~0.1.2",
-            "grunt-contrib-watch": "~0.2.0",
+            "grunt-contrib-watch": "^0.6.1",
             "grunt-contrib-sass": "~0.2.2",
             "grunt-contrib-copy": "^0.6.0"
         };
@@ -75,6 +76,15 @@ exports.template = function( grunt, init, done ) {
         // An additional value that won't conflict with NodeUnit unit tests.
         props.js_test_safe_name = props.js_safe_name === 'test' ? 'myTest' : props.js_safe_name;
         props.js_safe_name_caps = props.js_safe_name.toUpperCase();
+
+        // Template-specific notes to be displayed after question prompts.
+        exports.after = 'You should now _cd wp-content/themes/' + props.js_safe_name +
+        '_ and install project dependencies with _npm ' +
+        'install && bower install_.  After that, you may execute project tasks with _grunt_. For ' +
+        'more information about installing and configuring Grunt, please see ' +
+        'the Getting Started guide:' +
+        '\n\n' +
+        'http://gruntjs.com/getting-started';
 
         // Files to copy and process
         var files = init.filesToCopy( props );
