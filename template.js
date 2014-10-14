@@ -61,10 +61,8 @@ exports.template = function( grunt, init, done ) {
             "grunt-contrib-concat": "~0.3.0",
             "grunt-contrib-cssmin": "~0.6.0",
             "grunt-contrib-clean": "~0.6.0",
-            "grunt-contrib-jshint": "~0.1.1",
-            "grunt-contrib-nodeunit": "~0.1.2",
             "grunt-contrib-watch": "^0.6.1",
-            "grunt-contrib-sass": "~0.2.2"
+            "grunt-sass": "~0.8.0"
         };
 
         // Sanitize names where we need to for PHP/JS
