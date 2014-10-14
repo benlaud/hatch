@@ -1,23 +1,12 @@
-var utils = function ( $ ) { //
+if( typeof({%= js_safe_name %}_admin) == 'undefined' ) {
+    {%= js_safe_name %}_admin = {};
+}
+
+{%= js_safe_name %}_admin.utils = function ( $ ) { //
     // Private Variables
-    var _win = window,   // keep a reference to the window if we need it for any additional utils methods.
-        _currentTab = 0; // keep a reference to our current tab if needed later
+    var $doc = $(document);
 
     return {
-
-        /****************************
-        *    Getters and Setters    *
-        *****************************/
-
-        /**
-        * Setup the panel for the Admin
-        * Additional we store the active tab so we can re-open the tab on selection
-        * @author aware
-        */
-
-        setupAdminPanel: function () {
-
-        },
 
         /**
          * Setup our sidebar controls
@@ -25,7 +14,7 @@ var utils = function ( $ ) { //
          */
 
         setupSidebarControls: function() {
-    		$sidebars = $('.widgets-sortables');
+    		var $sidebars = $('.widgets-sortables');
 
     		$sidebars.each(function() {
     			var id	   = $(this).attr('id'),
@@ -35,7 +24,7 @@ var utils = function ( $ ) { //
     			$(this).prepend($field);
     		});
 
-    		$(document).on('change', '.sidebar-layout-select', function() {
+    		$doc.on('change', '.sidebar-layout-select', function() {
 
     		   var $this = $(this),
     		   	    data = {
@@ -76,17 +65,11 @@ var utils = function ( $ ) { //
         */
 
         init: function () {
-        	utils.loadIssueCollector();
+            {%= js_safe_name %}_admin.utils.loadIssueCollector();
         }
     };
 } ( jQuery );
 
-
 jQuery(function($) {
-
-	utils.init();
-
-//	$( "#launchpad-wrap" ).tabs({ cookie: { expires: 30 } });
-//	$( "#additional-scripts" ).tabs({ cookie: { expires: 30 } });
-
+    {%= js_safe_name %}_admin.utils.init();
 });
