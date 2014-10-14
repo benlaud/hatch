@@ -49,15 +49,17 @@ exports.template = function( grunt, init, done ) {
         props.keywords = [];
         props.version = '0.1.0';
         props.devDependencies = {
-            'grunt': '~0.4.1',
-            'matchdep': '~0.1.2',
-            'grunt-contrib-concat': '~0.1.2',
-            'grunt-contrib-uglify': '~0.1.1',
-            'grunt-contrib-cssmin': '~0.6.0',
-            'grunt-contrib-clean' : '~0.6.0',
-            'grunt-contrib-jshint': '~0.1.1',
-            'grunt-contrib-nodeunit': '~0.1.2',
-            'grunt-contrib-watch': '~0.2.0'
+            'grunt': "~0.4.1",
+            "matchdep": "^0.3.0",
+            "grunt-contrib-concat": "~0.1.2",
+            "grunt-contrib-uglify": "~0.1.1",
+            "grunt-contrib-cssmin": "~0.6.0",
+            "grunt-contrib-clean": "~0.6.0",
+            "grunt-contrib-jshint": "~0.1.1",
+            "grunt-contrib-nodeunit": "~0.1.2",
+            "grunt-contrib-watch": "~0.2.0",
+            "grunt-contrib-sass": "~0.2.2",
+            "grunt-contrib-copy": "^0.6.0"
         };
 
         // Sanitize names where we need to for PHP/JS
@@ -77,25 +79,17 @@ exports.template = function( grunt, init, done ) {
         // Files to copy and process
         var files = init.filesToCopy( props );
 
-        props.devDependencies["grunt-contrib-sass"] = "~0.2.2";
-        props.css_type = 'sass';
-
         console.log( files );
-
-        // module dependencies
-        var join = require("path").join;
 
         // Actually copy and process files
         init.copyAndProcess( files, props );
 
-        grunt.file.mkdir( init.destpath() + '/wp-content/themes/theme/js/' + props.js_safe_name );
-
         var fs = require('fs');
-
-        fs.rename(init.destpath() + '/wp-content/themes/theme/', init.destpath() + '/wp-content/themes/'+ props.js_safe_name + '/');
+            fs.rename(init.destpath() + '/wp-content/themes/theme/js/theme/', init.destpath() + '/wp-content/themes/theme/js/'+ props.js_safe_name + '/');
+            fs.rename(init.destpath() + '/wp-content/themes/theme/', init.destpath() + '/wp-content/themes/'+ props.js_safe_name + '/');
 
         // Generate package.json file
-        init.writePackageJSON( 'package.json', props );
+        init.writePackageJSON( 'wp-content/themes/'+ props.js_safe_name + '/package.json', props );
 
         // Done!
         done();

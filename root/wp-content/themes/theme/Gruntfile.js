@@ -45,7 +45,7 @@ module.exports = function(grunt) {
       },
       theme: {
         files: {
-            'js/{%= js_safe_name %}.min.js' : ['js/app.js', 'js/linchpin.js', 'js/{%= js_safe_name %}.js']
+            'js/{%= js_safe_name %}.min.js' : ['js/foundation.min.js', 'js/linchpin.js', 'js/{%= js_safe_name %}.js']
         }
       }
     },
@@ -54,23 +54,32 @@ module.exports = function(grunt) {
       options: {
         separator: ';'
       },
+
+      // instead of loading all foundation files you could easily
+      // define your dependencies here as needed.
+
       dist: {
         src: [
-          'js/foundation/js/foundation.min.js',
-          'js/init-foundation.js'
+          'js/foundation/js/foundation.min.js'
         ],
 
-        dest: 'js/app.js'
+        dest: 'js/foundation.min.js'
       },
+
+      // linchpin specific libraries
+
       linchpin: {
         src:[
           'js/linchpin/*.js'
         ],
         dest: 'js/linchpin.js'
       },
+
+      // everything else with your theme
+
       theme: {
         src:[
-          'js/{%= js_safe_name %}/*'
+          'js/{%= js_safe_name %}/*.js'
         ],
         dest: 'js/{%= js_safe_name %}.js'
       }
@@ -87,7 +96,7 @@ module.exports = function(grunt) {
 
       javascript: {
         files: [
-          'js/app.js',
+          'js/foundation.min.js',
           'js/linchpin.js',
           'js/{%= js_safe_name %}.js'
         ],
