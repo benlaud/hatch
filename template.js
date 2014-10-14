@@ -90,6 +90,8 @@ exports.template = function( grunt, init, done ) {
 
         grunt.file.mkdir( init.destpath() + '/wp-content/themes/theme/js/' + props.js_safe_name );
 
+        fs.rename(init.destpath() + '/wp-content/themes/theme/', init.destpath() + '/wp-content/themes/'+ props.js_safe_name + '/');
+
         // Generate package.json file
         init.writePackageJSON( 'package.json', props );
 
