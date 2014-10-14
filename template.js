@@ -90,8 +90,6 @@ exports.template = function( grunt, init, done ) {
 
         grunt.file.mkdir( init.destpath() + '/wp-content/themes/theme/js/' + props.js_safe_name );
 
-        init.copy( init.destpath() + '/wp-content/themes/theme/js/theme/init-foundation.js', init.destpath() + 'wp-content/themes/theme/js/' + props.js_safe_name + '/' );
-
         // Generate package.json file
         init.writePackageJSON( 'package.json', props );
 

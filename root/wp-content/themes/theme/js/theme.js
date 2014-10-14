@@ -27,7 +27,7 @@ if( typeof({%= js_safe_name %}) == 'undefined' ) {
          */
 
         init: function() {
-            $(document).foundation(); // initialize foundation
+            $doc.foundation(); // initialize foundation
         }
     }
 }
