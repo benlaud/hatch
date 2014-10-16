@@ -98,6 +98,7 @@ module.exports = function(grunt) {
         files: [
           'js/foundation.min.js',
           'js/linchpin.js',
+          'js/{%= js_safe_name %}/*.js',
           'js/{%= js_safe_name %}.js'
         ],
         tasks: ['concat', 'uglify']
