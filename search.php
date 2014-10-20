@@ -2,7 +2,7 @@
 
 	<div class="small-12 large-8 columns" role="main">
 
-		<h2><?php _e('Search Results for', 'linchpin'); ?> "<?php echo get_search_query(); ?>"</h2>
+		<h2><?php _e( 'Search Results for', 'linchpin' ); ?> "<?php echo get_search_query(); ?>"</h2>
 
 	<?php if ( have_posts() ) : ?>
 

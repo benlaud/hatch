@@ -16,11 +16,11 @@ class FoundationPress {
 		$foundation = new Foundation();
 
 		add_action( 'init', 			  array( $this, 'init' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts') );
+		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 		add_action( 'after_setup_theme',  array( $this, 'after_setup_theme' ) );
 
 		// load jquery in the footer
-		add_action( 'wp_default_scripts', array( $this, 'print_jquery_in_footer') );
+		add_action( 'wp_default_scripts', array( $this, 'print_jquery_in_footer' ) );
 	}
 
 	/**
@@ -34,7 +34,7 @@ class FoundationPress {
 		    'top-bar-right' => 'Top Bar Right', // registers the menu in the WordPress admin menu editor
 		    'footer' => 'Footer',
 		    'mobile-off-canvas' => 'Mobile (Off Canvas)'
-		));
+		) );
 	}
 
 
@@ -72,6 +72,6 @@ class FoundationPress {
 	 */
 	function wp_enqueue_scripts() {
 		wp_enqueue_script( 'modernizr',  get_template_directory_uri() . '/js/modernizr/modernizr.min.js', array(), '1.0.0', false );
-		wp_enqueue_script( 'foundation', get_template_directory_uri() . '/js/app.js', array('jquery'), '1.0.0', true );
+		wp_enqueue_script( 'foundation', get_template_directory_uri() . '/js/app.js', array('jquery' ), '1.0.0', true );
 	}
 }
