@@ -76,8 +76,8 @@ class LaunchpadOptions {
 		if ($launchpad_activation_options['first_run']) {
 
 			$theme_page = add_theme_page(
-				__('Launchpad Options', 'launchpad'),
-				__('Launchpad Options', 'launchpad'),
+				__('Additional Options', 'launchpad'),
+				__('Additional Options', 'launchpad'),
 				'edit_theme_options',
 				'theme_options',
 				array( &$this, 'theme_options_render_page' )
@@ -109,9 +109,7 @@ class LaunchpadOptions {
 			<?php $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'display_options'; ?>
 
 		    <h2 class="nav-tab-wrapper">
-		    	<a href="?page=theme_options&tab=display_options" class="nav-tab <?php echo $active_tab == 'display_options' ? 'nav-tab-active' : ''; ?>"><?php printf(__('%s Options', 'launchpad'), get_current_theme()); ?></a>
 		    	<a href="?page=theme_options&tab=script_options" class="nav-tab <?php echo $active_tab == 'script_options' ? 'nav-tab-active' : ''; ?>"><?php printf(__('Additional Scripts', 'launchpad'), get_current_theme()); ?></a>
-				<a href="?page=theme_options&tab=install_options" class="nav-tab <?php echo $active_tab == 'install_options' ? 'nav-tab-active' : ''; ?>"><?php _e('Setup', 'launchpad'); ?></a>
 			</h2>
 
 
@@ -188,7 +186,7 @@ class LaunchpadOptions {
     		  );
 		 }
 
-		wp_enqueue_script( array('jquery', 'editor', 'thickbox', 'media-upload', 'jquery-ui-core', 'jquery-ui-tabs') );
+		wp_enqueue_script( array('jquery', 'editor', 'jquery-ui-core', 'jquery-ui-tabs') );
 
 		if( !empty($scripts) ) {
 		    foreach($scripts as $key => $script) {
@@ -347,10 +345,6 @@ class LaunchpadOptions {
 			'additional_header_scripts'		=> '',
 			'terms_conditions'				=> '',
 			'footer_info'					=> '',
-
-			// Version 1.0 Options
-
-			'typekit_async'					=> '',	// Asyncronously Load TypeKit
 
 			// Version 1.1 Options
 

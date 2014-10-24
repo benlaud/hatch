@@ -66,12 +66,10 @@ class FoundationUtilities {
 		return $pagination;
 	}
 
-	/**
-	 * menu_fallback function.
-	 *
-	 * @access public
-	 * @return void
-	 */
+    /**
+     * function menu_fallback
+     * @return string
+     */
 	function menu_fallback() {
 
 		$html = '<div class="alert-box secondary">';
