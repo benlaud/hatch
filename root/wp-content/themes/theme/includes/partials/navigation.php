@@ -1,6 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: aware
  * Date: 10/7/14
  * Time: 4:29 PM
@@ -11,7 +10,10 @@
         <ul class="title-area">
             <li class="name">
                 <a href="<?php echo home_url(); ?>">
-                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/linchpin-icon-white.svg'; ?>" alt="Linchpin Creative Agency." /><img class="small" src="<?php echo get_stylesheet_directory_uri() . '/assets/img/linchpin-logo-black.svg'; ?>" alt="<?php echo bloginfo('description'); ?>" />
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/linchpin-icon-white.svg'; ?>"
+                         alt="Linchpin Creative Agency."/><img class="small"
+                                                               src="<?php echo get_stylesheet_directory_uri() . '/assets/img/linchpin-logo-black.svg'; ?>"
+                                                               alt="<?php echo bloginfo('description'); ?>"/>
                 </a>
             </li>
         </ul>
@@ -30,7 +32,7 @@
                 'link_after' => '',                             // after each link text
                 'depth' => 5,                                   // limit the depth of the nav
                 'fallback_cb' => false,                         // fallback function (see below)
-                'walker' => new Linchpin_Walker_Nav_Menu()
+                'walker' => new Foundation_Walker_Nav_Menu()
             ));
             ?>
         </section>
@@ -49,7 +51,7 @@
                 'link_after' => '',
                 'depth' => 5,
                 'fallback_cb' => false,
-                'walker' => new Linchpin_Walker_Nav_Menu()
+                'walker' => new Foundation_Walker_Nav_Menu()
             ));
             ?>
         </section>

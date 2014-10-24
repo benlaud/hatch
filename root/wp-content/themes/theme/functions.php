@@ -28,4 +28,3 @@ include_once('includes/{%= php_class_name %}.php');      // Theme Class
  */
 
 $theme	= new {%= php_class_name %}();
-$cpt 	= new CustomPostTypes();

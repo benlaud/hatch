@@ -7,7 +7,6 @@ include_once( $linchpin_classes_dir . 'LaunchpadCustomHeader.php' );
 include_once( $linchpin_classes_dir . 'LaunchpadActivate.php' );
 include_once( $linchpin_classes_dir . 'LaunchpadUtilities.php' );
 include_once( $linchpin_classes_dir . 'LaunchpadMenu.php' );
-include_once( $linchpin_classes_dir . 'CustomPostTypes.php' );
 
 class Launchpad {
 	function __construct() {

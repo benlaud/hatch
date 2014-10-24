@@ -1,5 +1,7 @@
 # FoundationPress (Linchpin Remix)
 
+The project is a grunt-init scaffold now. In order for this to work properly you will need to clone this repo into your local ```.grunt-init``` folder (typically within your user folder if on mac)
+
 *This is a WordPress starter theme based on*
  * FoundationPress
  * which in turn is based on [Foundation 5](http://foundation.zurb.com) by Zurb.
@@ -23,12 +25,35 @@ All contributions are welcome!
 ## Requirements
 
 *You'll need to have the following items installed before continuing.*
-
   * [Node.js](http://nodejs.org): Use the installer provided on the NodeJS website.
   * [Grunt](http://gruntjs.com/): Run `[sudo] npm install -g grunt-cli`
   * [Bower](http://bower.io): Run `[sudo] npm install -g bower`
+  * [grunt-init]: http://gruntjs.com/project-scaffolding
+  
+## Quickstart / Installation
 
-## Quickstart
+Once grunt-init is installed, place this template in your `~/.grunt-init/` directory. It's recommended that you use git to clone this template into that directory, as follows:
+
+### Linux/Mac Users
+
+```
+git clone git@github.com:linchpinagency/foundationpress.git ~/.grunt-init/launchpad
+```
+
+### Windows Users
+
+```
+git clone git@github.com:linchpinagency/foundationpress.git %USERPROFILE%/.grunt-init/launchpad
+```
+
+## Usage
+
+At the command-line, cd into an empty directory, run this command and follow the prompts.
+
+```
+grunt-init launchpad
+```
+## Old Quickstart (before it was grunt-init)
 
 ```bash
 cd my-wordpress-folder/wp-content/themes/
