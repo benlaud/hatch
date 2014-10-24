@@ -1,4 +1,4 @@
-# FoundationPress (Linchpin Remix)
+# Hatch a remix of FoundationPress
 
 The project is a grunt-init scaffold now. In order for this to work properly you will need to clone this repo into your local ```.grunt-init``` folder (typically within your user folder if on mac)
 
@@ -13,6 +13,7 @@ The purpose of our version of this project is to act as a small and handy toolbo
 *The biggest difference between this Fork and FoundationPress*
   * Coding methodologies
   * Internal development process.
+  * Grunt Scaffold
   * Some theme options (Kind of a mishmash of our stuff and the _s theme)
   * and some additional mixins that we utilize daily.
   * We've updated the Grunt.js slightly to watch different files.
@@ -28,7 +29,7 @@ All contributions are welcome!
   * [Node.js](http://nodejs.org): Use the installer provided on the NodeJS website.
   * [Grunt](http://gruntjs.com/): Run `[sudo] npm install -g grunt-cli`
   * [Bower](http://bower.io): Run `[sudo] npm install -g bower`
-  * [grunt-init]: http://gruntjs.com/project-scaffolding
+  * [grunt-init](http://gruntjs.com/project-scaffolding): Run `[sudo] npm install -g grunt-init`
   
 ## Quickstart / Installation
 
@@ -37,13 +38,13 @@ Once grunt-init is installed, place this template in your `~/.grunt-init/` direc
 ### Linux/Mac Users
 
 ```
-git clone git@github.com:linchpinagency/foundationpress.git ~/.grunt-init/launchpad
+git clone git@github.com:linchpinagency/hatch.git ~/.grunt-init/hatch
 ```
 
 ### Windows Users
 
 ```
-git clone git@github.com:linchpinagency/foundationpress.git %USERPROFILE%/.grunt-init/launchpad
+git clone git@github.com:linchpinagency/hatch.git %USERPROFILE%/.grunt-init/hatch
 ```
 
 ## Usage
@@ -51,16 +52,7 @@ git clone git@github.com:linchpinagency/foundationpress.git %USERPROFILE%/.grunt
 At the command-line, cd into an empty directory, run this command and follow the prompts.
 
 ```
-grunt-init launchpad
-```
-## Old Quickstart (before it was grunt-init)
-
-```bash
-cd my-wordpress-folder/wp-content/themes/
-git clone git@github.com:linchpinagency/FoundationPress.git
-mv FoundationPress your-theme-name
-cd your-theme-name
-npm install && bower install
+grunt-init hatch
 ```
 
 While you're working on your project, run:
@@ -69,8 +61,7 @@ While you're working on your project, run:
 
 And you're set!
 
-Check for Foundation Updates? Run:
-`foundation update`
+Check for Foundation Updates? Run: `foundation update`
 (this requires the foundation gem to be installed in order to work. Please see the [docs](http://foundation.zurb.com/docs/sass.html) for details.)
 
 ## Stylesheet Folder Structure
