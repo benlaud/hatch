@@ -29,8 +29,8 @@ if( typeof({%= js_safe_name %}) == 'undefined' ) {
         init: function() {
             $doc.foundation(); // initialize foundation
         }
-    }
-}
+    };
+} ( jQuery );
 
 jQuery(function( $ ) {
     {%= js_safe_name %}.site.init();
