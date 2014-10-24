@@ -8,15 +8,15 @@ The project is a grunt-init scaffold now. In order for this to work properly you
  * Some snippets from [_s](https://github.com/automattic/_s) (underscore) from [Automattic](http://automattic.com)
  * And a bunch of our own cooking.
 
-The purpose of our version of this project is to act as a small and handy toolbox that contains the essentials needed to a responsive theme based on Foundation 5.x. This theme and Foundation Press are meant to be a starting point not a parent theme.
+The purpose of our version of this project is to act as a small and handy toolbox that contains the essentials needed to a responsive theme based on Foundation 5.x. This theme is meant to be a starting point not a parent theme.
 
 *The biggest difference between this Fork and FoundationPress*
   * Coding methodologies
   * Internal development process.
-  * Grunt Scaffold
+  * Grunt Scaffold (Please read up on this before starting)
   * Some theme options (Kind of a mishmash of our stuff and the _s theme)
-  * and some additional mixins that we utilize daily.
-  * We've updated the Grunt.js slightly to watch different files.
+  * Additional mixins that we utilize daily.
+  * We've updated the Gruntfile.js slightly to watch different files.
   * Additionally the original FoundationPress project is dequeueing libraries that are available with WordPress core. Based on this we decided to do our own fork.
 
 *Please fork, copy, modify, delete, share or do whatever you like with this.*
@@ -49,7 +49,7 @@ git clone git@github.com:linchpinagency/hatch.git %USERPROFILE%/.grunt-init/hatc
 
 ## Usage
 
-At the command-line, cd into an empty directory, run this command and follow the prompts.
+At the command-line, ```cd``` into an empty directory, run the following command and follow the prompts.
 
 ```
 grunt-init hatch
@@ -61,22 +61,18 @@ While you're working on your project, run:
 
 And you're set!
 
-Check for Foundation Updates? Run: `foundation update`
+You can also check for Foundation updates. Run: ```foundation update```
 (this requires the foundation gem to be installed in order to work. Please see the [docs](http://foundation.zurb.com/docs/sass.html) for details.)
 
 ## Stylesheet Folder Structure
 
   * `style.css`: (Used for theme description/details) All styling are handled in the Sass files described below
-
   * `scss/app.scss`: Sass imports for global config, foundation and site structure
-
   * `scss/config/_variables.scss`: Your custom variables
   * `scss/config/_colors.scss`: Your custom color scheme
   * `scss/config/_settings.scss`: Original Foundation 5 base settings
-
   * `scss/site/_structure`: Your custom site structure
-
-  * `css/app.css`: All Sass files are minified and compiled to this file
+  * `css/[theme-name].css`: All Sass files are minified and compiled to this file
 
 ## Script Folder Strucutre
 
