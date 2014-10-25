@@ -1,5 +1,7 @@
 <?php
 
+global $linchpin_classes_dir;
+
 $linchpin_classes_dir = get_template_directory() . '/includes/Linchpin/';
 
 include_once( $linchpin_classes_dir . 'LaunchpadOptions.php' );

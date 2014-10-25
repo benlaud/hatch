@@ -49,14 +49,12 @@ class LaunchpadOptions {
 
 	static function get_default_theme_options() {
 	  $default_theme_options = array(
-			'clean_menu'					=> TRUE, // This cleans up the menu on the left
-			'typekit_id'      				=> '',
-			'additional_footer_scripts'		=> '',
+        'additional_footer_scripts'		=> '',
+        'additional_header_scripts'		=> '',
 
-			// Version 2.0 Additional Defaults
+        // Version 2.0 Additional Defaults
 
-			'typekit_async'				 	=> FALSE,
-			'launchpad_tracking'			=> TRUE // Make sure launchpad tracking is on by default
+        'typekit_async'				 	=> FALSE,
 	  );
 
 	  return apply_filters('launchpad_default_theme_options', $default_theme_options);
@@ -99,7 +97,7 @@ class LaunchpadOptions {
 	 */
 
 	function theme_options_render_page() {
-	  global $launchpad_options;
+	  global $launchpad_options, $linchpin_classes_dir;
 
 	  ?>
 	  <div class="wrap">
@@ -126,15 +124,15 @@ class LaunchpadOptions {
 
 				if( $active_tab == 'display_options' ) {
 
-		        	require_once locate_template('/includes/launchpad-options/theme-options.php');
+		        	require_once locate_template( $linchpin_classes_dir . 'launchpad-options/theme-options.php');
 
 		        } elseif ( $active_tab == 'script_options' ) {
 
-		        	require_once locate_template('/includes/launchpad-options/integration-options.php');
+		        	require_once locate_template( $linchpin_classes_dir . 'launchpad-options/integration-options.php');
 
 		        } elseif ( $active_tab == 'script_options' ) {
 
-		        	require_once locate_template('/includes/launchpad-options/extra-options.php');
+		        	require_once locate_template( $linchpin_classes_dir . 'launchpad-options/extra-options.php');
 
 				} ?>
 		        <input type="hidden" value="1" name="launchpad_theme_options[first_run]" />
