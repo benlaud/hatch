@@ -10,9 +10,8 @@
         <ul class="title-area">
             <li class="name">
                 <a href="<?php echo home_url(); ?>">
-                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/linchpin-icon-white.svg'; ?>"
-                         alt="Linchpin"/><img class="small"
-                                                               src="<?php echo get_stylesheet_directory_uri() . '/assets/img/linchpin-logo-black.svg'; ?>"
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/linchpin-icon-white.svg'; ?>"
+                         alt="Linchpin"/><img class="small" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/linchpin-logo-black.svg'; ?>"
                                                                alt="<?php echo bloginfo('description'); ?>"/>
                 </a>
             </li>
