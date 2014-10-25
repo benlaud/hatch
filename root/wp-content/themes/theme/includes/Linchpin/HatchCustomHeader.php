@@ -1,6 +1,11 @@
 <?php
-
-class LaunchpadCustomHeader {
+/**
+ * HatchMenu class.
+ *
+ * @package Hatch
+ *
+ */
+class HatchCustomHeader {
 
 	function __construct() {
 		add_action( 'after_setup_theme',  array( $this, 'custom_header_setup' ) );
@@ -24,7 +29,7 @@ class LaunchpadCustomHeader {
 
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_bg_color_control',
 		array(
-			'label'      => __( 'Header BG Color', 'launchpad' ),
+			'label'      => __( 'Header BG Color', 'hatch' ),
 			'section'    => 'colors',
 			'settings'   => 'header_bg_color',
 		) ) );
@@ -66,8 +71,8 @@ class LaunchpadCustomHeader {
 
 		// The height and width of your custom header.
 		// Add a filter to launchpad_header_image_width and launchpad_header_image_height to change these values.
-		define( 'HEADER_IMAGE_WIDTH',  apply_filters( 'launchpad_header_image_width', 1000 ) );
-		define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'launchpad_header_image_height', 250 ) );
+		define( 'HEADER_IMAGE_WIDTH',  apply_filters( 'hatch_header_image_width', 1000 ) );
+		define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'hatch_header_image_height', 250 ) );
 
 		// Turn on random header image rotation by default.
 
@@ -86,13 +91,13 @@ class LaunchpadCustomHeader {
 	}
 }
 
-if ( ! function_exists( 'launchpad_header_style' ) ) :
+if ( ! function_exists( 'hatch_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog
 	 *
 	 * @since _s 1.0
 	 */
-	function launchpad_header_style() {
+	function hatch_header_style() {
 
 		// If no custom options for text are set, let's bail
 		// get_header_textcolor() options: HEADER_TEXTCOLOR is default, hide text (returns 'blank') or any hex value
@@ -125,7 +130,7 @@ if ( ! function_exists( 'launchpad_header_style' ) ) :
 	}
 endif; // launchpad_header_style
 
-if ( ! function_exists( 'launchpad_admin_header_style' ) ) :
+if ( ! function_exists( 'hatch_admin_header_style' ) ) :
 	/**
 	 * Styles the header image displayed on the Appearance > Header admin panel.
 	 *
@@ -133,7 +138,7 @@ if ( ! function_exists( 'launchpad_admin_header_style' ) ) :
 	 *
 	 * @since _s 1.0
 	 */
-	function launchpad_admin_header_style() { ?>
+	function hatch_admin_header_style() { ?>
 	<style type="text/css">
 		.appearance_page_custom-header #headimg {
 		  border: none;
@@ -146,15 +151,16 @@ if ( ! function_exists( 'launchpad_admin_header_style' ) ) :
 		#headimg img {}
 	</style>
 	<?php }
-endif; // launchpad_admin_header_style
+endif; // hatch_admin_header_style
 
-if ( ! function_exists( 'launchpad_admin_header_image' ) ) :
+if ( ! function_exists( 'hatch_admin_header_image' ) ) :
 	/**
 	 * Custom header image markup displayed on the Appearance > Header admin panel.
 	 *
 	 * Referenced via add_custom_image_header() in launchpad_setup().
 	 *
-	 * @since _s 1.0
+	 * @since hatch 1.0
+     * @derived from _s
 	 */
 	function launchpad_admin_header_image() { ?>
   <div id="headimg">
@@ -172,4 +178,4 @@ if ( ! function_exists( 'launchpad_admin_header_image' ) ) :
     <?php endif; ?>
   </div>
 <?php }
-endif; // launchpad_admin_header_image
+endif; // hatch_admin_header_image

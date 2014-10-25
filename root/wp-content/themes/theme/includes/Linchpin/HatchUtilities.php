@@ -1,9 +1,11 @@
 <?php
 
 /**
- * LaunchpadUtilities class.
+ * HatchUtilities class.
+ *
+ * @package Hatch
  */
-class LaunchpadUtilities {
+class HatchUtilities {
 
 	/**
 	 * __construct function.
@@ -12,19 +14,19 @@ class LaunchpadUtilities {
 	 * @return void
 	 */
 	function __construct() {
-		add_action( 'edit_category', array( $this, 'launchpad_category_transient_flusher' ) );
-		add_action( 'save_post',     array( $this, 'launchpad_category_transient_flusher' ) );
+		add_action( 'edit_category', array( $this, 'category_transient_flusher' ) );
+		add_action( 'save_post',     array( $this, 'category_transient_flusher' ) );
 	}
 
 	/**
-	 * launchpad_categorized_blog function.
+	 * categorized_blog function.
 	 * Returns true if a blog has more than 1 category.
 	 *
 	 * @access public
 	 * @return bool
 	 */
-	static function launchpad_categorized_blog() {
-		if ( false === ( $all_the_cool_cats = get_transient( 'launchpad_categories' ) ) ) {
+	static function categorized_blog() {
+		if ( false === ( $all_the_cool_cats = get_transient( 'hatch_categories' ) ) ) {
 			// Create an array of all the categories that are attached to posts.
 			$all_the_cool_cats = get_categories( array(
 				'fields'     => 'ids',
@@ -37,7 +39,7 @@ class LaunchpadUtilities {
 			// Count the number of categories that are attached to the posts.
 			$all_the_cool_cats = count( $all_the_cool_cats );
 
-			set_transient( 'launchpad_categories', $all_the_cool_cats );
+			set_transient( 'hatch_categories', $all_the_cool_cats );
 		}
 
 		if ( $all_the_cool_cats > 1 ) {
@@ -50,14 +52,14 @@ class LaunchpadUtilities {
 	}
 
 	/**
-	 * launchpad_category_transient_flusher function.
+	 * category_transient_flusher function.
 	 * Flush out the transients used in test_categorized_blog.
 	 *
 	 * @access public
 	 * @return void
 	 */
-	function launchpad_category_transient_flusher() {
-		delete_transient( 'launchpad_categories' ); // Like, beat it. Dig?
+	function category_transient_flusher() {
+		delete_transient( 'hatch_categories' ); // Like, beat it. Dig?
 	}
 
 	/**
@@ -88,7 +90,7 @@ class LaunchpadUtilities {
 
 	    <?php if ( !is_home() ) { ?>
 
-	        <li><a href="<?php echo get_option('home'); ?>"><?php _e('Home', 'launchpad'); ?></a></li>
+	        <li><a href="<?php echo get_option('home'); ?>"><?php _e('Home', 'hatch'); ?></a></li>
 
 			<?php if ( is_category() || is_single() ) : ?>
 
@@ -141,21 +143,21 @@ class LaunchpadUtilities {
 }
 
 /**
- * Launchpad_breadcrumbs function.
+ * hatch_breadcrumbs function.
  *
  * @access public
  * @return void
  */
-function Launchpad_breadcrumbs() {
-	LaunchpadUtilities::breadcrumbs();
+function hatch_breadcrumbs() {
+	HatchUtilities::breadcrumbs();
 }
 
 /**
- * launchpad_categorized_blog function.
+ * hatch_categorized_blog function.
  *
  * @access public
  * @return void
  */
-function launchpad_categorized_blog() {
-	LaunchpadUtilities::launchpad_categorized_blog();
+function hatch_categorized_blog() {
+	HatchUtilities::categorized_blog();
 }

@@ -18,12 +18,12 @@
 	<![endif]-->
   </head>
   <body <?php body_class(); ?>>
-  <?php do_action('foundationPress_after_body'); ?>
+  <?php do_action('hatch_after_body'); ?>
 
   <div class="off-canvas-wrap" data-offcanvas>
   <div class="inner-wrap">
 
-  <?php do_action('foundationPress_layout_start'); ?>
+  <?php do_action('hatch_layout_start'); ?>
 
   <nav class="tab-bar show-for-small-only">
     <section class="right-small">
@@ -37,10 +37,10 @@
   </nav>
 
   <aside class="right-off-canvas-menu">
-  	<?php foundationPress_mobile_off_canvas(); ?>
+  	<?php hatch_mobile_off_canvas(); ?>
   </aside>
 
   <?php get_template_part('includes/partials/navigation'); ?>
 
 <section class="container" role="document">
-  <?php do_action('foundationPress_after_header'); ?>
+  <?php do_action('hatch_after_header'); ?>

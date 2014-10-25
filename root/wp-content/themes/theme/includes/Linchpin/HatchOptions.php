@@ -1,12 +1,12 @@
 <?php
 
 /**
- * This is the main controller for the Launchpad theme options
+ * This is the main controller for the Hatch theme options
  * Some items are derived from other "blank" themes including
- * Blank, Stackers and Roots etc.
+ * Blank, _s, and Roots etc.
  */
 
-class LaunchpadOptions {
+class HatchOptions {
 
 	function __construct() {
 		add_action('admin_init', 			array( $this, 'init' ) );
@@ -25,16 +25,16 @@ class LaunchpadOptions {
 	 */
 
 	function init() {
-		if ( false === launchpad_get_theme_options() ) {
-			add_option('launchpad_theme_options', self::get_default_theme_options());
+		if ( false === hatch_get_theme_options() ) {
+			add_option('hatch_theme_options', self::get_default_theme_options());
 		}
 
-		register_setting('launchpad_options', 'launchpad_theme_options', array( &$this, 'theme_options_validate' ) );
+		register_setting('hatch_options', 'hatch_theme_options', array( &$this, 'theme_options_validate' ) );
 	}
 
 
 	function validate_required_settings() {
-		global $launchpad_options;
+		global $hatch_options;
 	}
 
 	/**
@@ -57,7 +57,7 @@ class LaunchpadOptions {
         'typekit_async'				 	=> FALSE,
 	  );
 
-	  return apply_filters('launchpad_default_theme_options', $default_theme_options);
+	  return apply_filters('hatch_default_theme_options', $default_theme_options);
 	}
 
 	/**
@@ -68,14 +68,14 @@ class LaunchpadOptions {
 
 	function theme_options_add_page() {
 
-		$launchpad_options = launchpad_get_theme_options();
-		$launchpad_activation_options = launchpad_get_theme_activation_options();
+		$hatch_options = hatch_get_theme_options();
+		$hatch_activation_options = hatch_get_theme_activation_options();
 
-		if ($launchpad_activation_options['first_run']) {
+		if ($hatch_activation_options['first_run']) {
 
 			$theme_page = add_theme_page(
-				__('Additional Options', 'launchpad'),
-				__('Additional Options', 'launchpad'),
+				__('Additional Options', 'hatch'),
+				__('Additional Options', 'hatch'),
 				'edit_theme_options',
 				'theme_options',
 				array( &$this, 'theme_options_render_page' )
@@ -88,7 +88,7 @@ class LaunchpadOptions {
 	}
 
 	/**
-	 * Render our our theme options page. Trying to match as many of the common structures
+	 * Render our theme options page. Trying to match as many of the common structures
 	 * and styles within the wordpress admin. The more we stay inline with the admin
 	 * the more likely we are to not confuse the client.
 	 *
@@ -97,7 +97,7 @@ class LaunchpadOptions {
 	 */
 
 	function theme_options_render_page() {
-	  global $launchpad_options, $linchpin_classes_dir;
+	  global $hatch_options, $linchpin_classes_dir;
 
 	  ?>
 	  <div class="wrap">
@@ -107,7 +107,7 @@ class LaunchpadOptions {
 			<?php $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'display_options'; ?>
 
 		    <h2 class="nav-tab-wrapper">
-		    	<a href="?page=theme_options&tab=script_options" class="nav-tab <?php echo $active_tab == 'script_options' ? 'nav-tab-active' : ''; ?>"><?php printf(__('Additional Scripts', 'launchpad'), get_current_theme()); ?></a>
+		    	<a href="?page=theme_options&tab=script_options" class="nav-tab <?php echo $active_tab == 'script_options' ? 'nav-tab-active' : ''; ?>"><?php printf(__('Additional Scripts', 'hatch'), get_current_theme()); ?></a>
 			</h2>
 
 
@@ -116,26 +116,26 @@ class LaunchpadOptions {
 		        <form method="post" action="options.php">
 
 		        <?php settings_fields('launchpad_options');
-		        $launchpad_options = launchpad_get_theme_options();
-		        $launchpad_default_options = self::get_default_theme_options();
+		        $hatch_options = launchpad_get_theme_options();
+		        $hatch_default_options = self::get_default_theme_options();
 		        ?>
 
 		        <?php
 
 				if( $active_tab == 'display_options' ) {
 
-		        	require_once locate_template( $linchpin_classes_dir . 'launchpad-options/theme-options.php');
+		        	require_once locate_template( $linchpin_classes_dir . 'hatch-options/theme-options.php');
 
 		        } elseif ( $active_tab == 'script_options' ) {
 
-		        	require_once locate_template( $linchpin_classes_dir . 'launchpad-options/integration-options.php');
+		        	require_once locate_template( $linchpin_classes_dir . 'hatch-options/integration-options.php');
 
 		        } elseif ( $active_tab == 'script_options' ) {
 
-		        	require_once locate_template( $linchpin_classes_dir . 'launchpad-options/extra-options.php');
+		        	require_once locate_template( $linchpin_classes_dir . 'hatch-options/extra-options.php');
 
 				} ?>
-		        <input type="hidden" value="1" name="launchpad_theme_options[first_run]" />
+		        <input type="hidden" value="1" name="hatch_theme_options[first_run]" />
 
 		        <?php submit_button(); ?>
 
@@ -174,10 +174,6 @@ class LaunchpadOptions {
     				'admin-controls'		=> array('/js/admin.js', array('jquery', 'jquery-ui-core', 'jquery-ui-tabs') ),
     		   );
 
-		    // Enqueue our Styles
-
-		    wp_enqueue_style('thickbox');
-
 		    $styles = array (
     			'codemirror_css' 		 => array('/includes/codemirror/lib/codemirror.css'),
     			'launchpad_wp_admin_css' => array('/css/admin.css'),
@@ -188,15 +184,19 @@ class LaunchpadOptions {
 
 		if( !empty($scripts) ) {
 		    foreach($scripts as $key => $script) {
-		    	wp_register_script($key, get_template_directory_uri() . $script[0], $script[1] );
-		    	wp_enqueue_script( $key );
+                if( !empty( $script[0] ) && !empty( $script[1] ) ) {
+                    wp_register_script($key, get_template_directory_uri() . $script[0], $script[1]);
+                    wp_enqueue_script($key);
+                }
 		    }
 		}
 
 		if( !empty($styles) ) {
 		    foreach($styles as $key => $style) {
-				wp_register_style( $key, get_template_directory_uri() . $style[0] );
-				wp_enqueue_style( $key );
+                if( !empty( $style[0] ) ) {
+                    wp_register_style($key, get_template_directory_uri() . $style[0]);
+                    wp_enqueue_style($key);
+                }
 		    }
 		}
 
@@ -207,7 +207,7 @@ class LaunchpadOptions {
 	    	$sidebars = array();
 
 	    	foreach($wp_sidebars as $key => $sidebar) {
-	    		$sidebars['sidebar_layout_' . $key] = get_option( 'launchpad_sidebar_layout_' . $key, '');
+	    		$sidebars['sidebar_layout_' . $key] = get_option( 'hatch_sidebar_layout_' . $key, '');
 	    	}
 
 	    	$sidebar_options = array(
@@ -232,9 +232,9 @@ class LaunchpadOptions {
 	?>
 	  <script type="text/javascript">
 	    //<![CDATA[
-	    var launchpad = {
+	    var hatch = {
 	        ajaxurl : "<?php echo admin_url( 'admin-ajax.php' ); ?>",
-	        nonce : "<?php echo wp_create_nonce( 'launchpad-nonce' ) ?>"
+	        nonce : "<?php echo wp_create_nonce( 'hatch-nonce' ) ?>"
 	    };
 	    //]]>
 	  </script>

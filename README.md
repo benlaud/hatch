@@ -93,6 +93,6 @@ You can also check for Foundation updates. Run: ```foundation update```
 
 ## Demo
 
-* [Clean FoundationPress install](http://launchpad.linchpinagency.com/)
-* [FoundationPress Kitchen Sink - see every single element in action](http://launchpad.linchpinagency.com/kitchen-sink/)
+* [Clean FoundationPress install](http://hatch.linchpin.agency)
+* [FoundationPress Kitchen Sink - see every single element in action](http://hatch.linchpin.agency/kitchen-sink/)
 * [FoundationPSD - Photoshop template for Foundation](http://foundationpress.olefredrik.com/downloads/foundation-psd-template/)

@@ -1,8 +1,11 @@
 <?php
 /**
- * LaunchpadMenu class.
+ * HatchMenu class.
+ *
+ * @package Hatch
+ *
  */
-class LaunchpadMenu {
+class HatchMenu {
 	/**
 	* __construct function.
 	*
@@ -24,7 +27,7 @@ class LaunchpadMenu {
 	 */
 	function menu_enqueue_scripts() {
 		if( current_user_can('edit_posts') ) {
-	    	wp_enqueue_style('launchpad-menu', get_template_directory_uri() . '/css/admin.css' );
+	    	wp_enqueue_style('hatch-menu', get_stylesheet_directory_uri() . '/css/admin.css' );
 	    }
 	}
 

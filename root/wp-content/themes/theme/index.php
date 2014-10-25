@@ -4,7 +4,7 @@
 
 	<?php if ( have_posts() ) : ?>
 
-		<?php do_action('foundationPress_before_content'); ?>
+		<?php do_action('hatch_before_content'); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 			<?php get_template_part( 'content', get_post_format() ); ?>
@@ -13,13 +13,13 @@
 		<?php else : ?>
 			<?php get_template_part( 'content', 'none' ); ?>
 
-		<?php do_action('foundationPress_before_pagination'); ?>
+		<?php do_action('hatch_before_pagination'); ?>
 
 	<?php endif;?>
 
 	<?php get_template_part( 'pagination' ); ?>
 
-	<?php do_action('foundationPress_after_content'); ?>
+	<?php do_action('hatch_after_content'); ?>
 
 	</div>
 	<?php get_sidebar(); ?>

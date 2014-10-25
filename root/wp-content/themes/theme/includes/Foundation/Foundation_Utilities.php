@@ -77,12 +77,12 @@ class FoundationUtilities {
 			// Translators 1: Link to Menus,
 			// 			   2: Link to Customize
 
-	  		$html .= sprintf( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.', 'FoundationPress' ),
+	  		$html .= sprintf( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.', 'hatch' ),
 
-	  		sprintf(  __( '<a href="%s">Menus</a>', 'FoundationPress' ),
+	  		sprintf(  __( '<a href="%s">Menus</a>', 'hatch' ),
 	  			get_admin_url( get_current_blog_id(), 'nav-menus.php' )
 	  		),
-	  		sprintf(  __( '<a href="%s">Customize</a>', 'FoundationPress' ),
+	  		sprintf(  __( '<a href="%s">Customize</a>', 'hatch' ),
 	  			get_admin_url( get_current_blog_id(), 'customize.php' )
 	  		)
 	  	);
@@ -93,7 +93,7 @@ class FoundationUtilities {
 }
 
 /**
- *	Some backwards compatability
+ *	Some backwards compatibility
  */
 
 /**
@@ -103,40 +103,40 @@ class FoundationUtilities {
  * @access public
  * @return void
  */
-function FoundationPress_menu_fallback() {
+function hatch_menu_fallback() {
 	global $foundation_utilities;
 
 	echo $foundation_utilities->menu_fallback();
 }
 
 /**
- * FoundationPress_pagination function.
+ * hatch_pagination function.
  *
  * @access public
  * @param mixed $prev_text
  * @param mixed $next_text
  * @return void
  */
-function FoundationPress_pagination($prev_text, $next_text) {
+function hatch_pagination($prev_text, $next_text) {
 	echo FoundationUtilities::paginate_links($prev_text, $next_text);
 }
 
 /**
- * FoundationPress_entry_meta function.
+ * hatch_entry_meta function.
  *
  * @access public
  * @return void
  */
-function FoundationPress_entry_meta() {
-    echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('Posted on %s at %s.', 'FoundationPress'), get_the_time('l, F jS, Y'), get_the_time()) .'</time>';
-    echo '<p class="byline author">'. __('Written by', 'FoundationPress') .' <a href="'. get_author_posts_url(get_the_author_meta('ID')) .'" rel="author" class="fn">'. get_the_author() .'</a></p>';
+function hatch_entry_meta() {
+    echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('Posted on %s at %s.', 'hatch'), get_the_time('l, F jS, Y'), get_the_time()) .'</time>';
+    echo '<p class="byline author">'. __('Written by', 'hatch') .' <a href="'. get_author_posts_url(get_the_author_meta('ID')) .'" rel="author" class="fn">'. get_the_author() .'</a></p>';
 }
 
 /**
  * Left top bar
  * http://codex.wordpress.org/Function_Reference/wp_nav_menu
  */
-function foundationPress_top_bar_l() {
+function hatch_top_bar_l() {
     wp_nav_menu(array(
         'container' => false,                           // remove nav container
         'container_class' => '',                        // class of container
@@ -157,7 +157,7 @@ function foundationPress_top_bar_l() {
  * Right top bar
  * http://codex.wordpress.org/Function_Reference/wp_nav_menu
  */
-function foundationPress_top_bar_r() {
+function hatch_top_bar_r() {
     wp_nav_menu(array(
         'container' => false,                           // remove nav container
         'container_class' => '',                        // class of container
@@ -177,7 +177,7 @@ function foundationPress_top_bar_r() {
 /**
  * Footer
  */
-function foundationPress_footer() {
+function hatch_footer() {
     wp_nav_menu(array(
         'container' => false,                           // remove nav container
         'container_class' => '',                        // class of container
@@ -196,7 +196,7 @@ function foundationPress_footer() {
 /**
  * Mobile off-canvas
  */
-function foundationPress_mobile_off_canvas() {
+function hatch_mobile_off_canvas() {
     wp_nav_menu(array(
         'container' => false,                           // remove nav container
         'container_class' => '',                        // class of container
