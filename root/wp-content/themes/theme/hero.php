@@ -11,7 +11,7 @@ Template Part: Hero
 		</div>
 
 		<div class="medium-6 columns end">
-			<a class="download large button hide-for-small" href="https://github.com/linchpinagency/foundationpress">Download FoundationPress (Linchpin Remix)</a>
+			<a class="download large button hide-for-small" href="https://github.com/linchpinagency/hatch">Download Hatch</a>
 		</div>
 
 		<div class="floatingyeti show-for-medium-up">

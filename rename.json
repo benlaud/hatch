@@ -1,5 +1,5 @@
 {
     "wp-content/themes/theme/includes/Theme.php": "wp-content/themes/theme/includes/{%= php_class_name %}.php",
-    "wp-content/themes/theme/js/theme.js": "wp-content/themes/theme/js/{%= js_safe_name %}.js",
+    "wp-content/themes/theme/js/theme.site.js": "wp-content/themes/theme/js/{%= js_safe_name %}.site.js",
     "wp-content/themes/theme/css/theme.css": "wp-content/themes/theme/css/{%= js_safe_name %}.css"
 }
