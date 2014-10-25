@@ -16,8 +16,8 @@ The purpose of our version of this project is to act as a small and handy toolbo
   * Grunt Scaffold (Please read up on this before starting)
   * Some theme options (Kind of a mishmash of our stuff and the _s theme)
   * Additional mixins that we utilize daily.
-  * We've updated the Gruntfile.js slightly to watch different files.
-  * Additionally the original FoundationPress project is dequeueing libraries that are available with WordPress core. Based on this we decided to do our own fork.
+  * We've updated the Gruntfile.js to watch different files.
+  * Lastly the original FoundationPress project is dequeueing libraries that are available with WordPress core. Based on this we decided to do our own fork.
 
 *Please fork, copy, modify, delete, share or do whatever you like with this.*
 
@@ -93,6 +93,5 @@ You can also check for Foundation updates. Run: ```foundation update```
 
 ## Demo
 
-* [Clean FoundationPress install](http://hatch.linchpin.agency)
-* [FoundationPress Kitchen Sink - see every single element in action](http://hatch.linchpin.agency/kitchen-sink/)
-* [FoundationPSD - Photoshop template for Foundation](http://foundationpress.olefredrik.com/downloads/foundation-psd-template/)
+* [Clean Hatch install](http://hatch.linchpin.agency)
+* [Hatch Kitchen Sink - see every single element in action](http://hatch.linchpin.agency/kitchen-sink/)
