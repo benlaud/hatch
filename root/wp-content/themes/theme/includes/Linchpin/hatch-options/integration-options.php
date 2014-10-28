@@ -1,3 +1,4 @@
+<?php global $hatch_options; ?>
 <div id="integration-options">
     <h3><?php _e('Integration Options', 'hatch'); ?></h3>
 
@@ -27,6 +28,8 @@
                 <td colspan="2">
                     <div id="additional-scripts">
 
+                        <h4>Below you can add scripts to your theme. Be sure to provide your opening <em>&lt;script&gt;</em> and closing <em>&lt;/script&gt;</em>  tags</en></h4>
+
                         <table class="form-table">
                             <tbody>
                                 <tr valign="top">
@@ -55,7 +58,7 @@
                                             <textarea name="hatch_theme_options[additional_footer_scripts]" class="html-textarea" id="additional_footer_scripts">
 <?php echo esc_attr($hatch_options['additional_footer_scripts']); ?>
 </textarea>
-                                            <p class="description"><?php printf(__('Within this area you can include any additional 3rd party scripts. Examples would include javascript needed for Twitter, HubSpot and other features not included by default with the Linchpin Launchpad or your theme', 'hatch')); ?></p>
+                                            <p class="description"><?php printf(__('Within this area you can include any additional 3rd party scripts. Examples would include javascript needed for Twitter, HubSpot and other features not included by default within your theme', 'hatch')); ?></p>
                                         </div>
                                     </td>
                                 </tr>

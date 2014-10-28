@@ -21,3 +21,8 @@
 	content: "\f155";
 	color:#fff;
 }
+
+.CodeMirror {
+    border:1px solid #ccc;
+    background:#fff;
+}

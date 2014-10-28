@@ -101,28 +101,25 @@ class HatchOptions {
                 <?php $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'display_options'; ?>
 
                 <h2 class="nav-tab-wrapper">
+                    <a href="?page=theme_options&tab=display_options" class="nav-tab <?php echo $active_tab == 'display_options' ? 'nav-tab-active' : ''; ?>"><?php printf(__('Additional Footer Content', 'hatch'), get_current_theme()); ?></a>
                     <a href="?page=theme_options&tab=script_options" class="nav-tab <?php echo $active_tab == 'script_options' ? 'nav-tab-active' : ''; ?>"><?php printf(__('Additional Scripts', 'hatch'), get_current_theme()); ?></a>
                 </h2>
 
-              <?php settings_errors(); ?>
+                <?php settings_errors(); ?>
 
-              <form method="post" action="options.php">
+                <form method="post" action="options.php">
 
-              <?php settings_fields('hatch_options');
-              $hatch_options = hatch_get_theme_options();
-              $hatch_default_options = self::get_default_theme_options();
+                    <?php settings_fields('hatch_options');
+                    $hatch_options = hatch_get_theme_options();
+                    $hatch_default_options = self::get_default_theme_options();
 
-              if( $active_tab == 'display_options' ) {
-                  require_once locate_template( $linchpin_classes_dir . 'hatch-options/theme-options.php');
-
-		      } elseif ( $active_tab == 'script_options' ) {
-                  require_once locate_template( $linchpin_classes_dir . 'hatch-options/integration-options.php');
-
-		      } elseif ( $active_tab == 'script_options' ) {
-                  require_once locate_template( $linchpin_classes_dir . 'hatch-options/extra-options.php');
-              } ?>
-                  <input type="hidden" value="1" name="hatch_theme_options[first_run]" />
-                  <?php submit_button(); ?>
+                    if( $active_tab == 'display_options' ) {
+                        require_once ( $linchpin_classes_dir . 'hatch-options/theme-options.php');
+                    } elseif ( $active_tab == 'script_options' ) {
+                        require_once ( $linchpin_classes_dir . 'hatch-options/integration-options.php');
+                    } ?>
+                    <input type="hidden" value="1" name="hatch_theme_options[first_run]" />
+                    <?php submit_button(); ?>
 
 			</form>
 	    </div>
@@ -136,75 +133,78 @@ class HatchOptions {
 	 * @param type $hook_suffix
 	 * @todo We should add in wp-pointer settings to guide users through the setup process
 	 */
-	function admin_enqueue_scripts($hook) {
+    function admin_enqueue_scripts( $hook ) {
 
-		$scripts = array();
-		$styles = array();
+        $scripts = array();
+        $styles = array();
 
-		if('widgets.php' == $hook) {
-		    $scripts = array(
-				'admin-controls' => array('/js/admin.js'),
-		   );
-		} else if ( 'appearance_page_theme_options' == $hook ) {
+        if('widgets.php' == $hook) {
+            $scripts = array(
+                'admin-controls' => array('/js/admin.js'),
+            );
+        } else if ( 'appearance_page_theme_options' == $hook ) {
 
-		    // Enque our Scripts
+            // Enque our Scripts
 
-		    $scripts = array(
-    				'jquery-cookie' 		=> array('/js/jquery.cookie/jquery.cookie.js', array('jquery') ),
-    				'codemirror'			=> array('/includes/codemirror/lib/codemirror.js'),
-    				'codemirror-xml'		=> array('/includes/codemirror/mode/xml/xml.js'),
-    				'codemirror-css'		=> array('/includes/codemirror/mode/css/css.js'),
-    				'codemirror-js'			=> array('/includes/codemirror/mode/javascript/javascript.js'),
-    				'codemirror-htmlmixed'	=> array('/includes/codemirror/mode/htmlmixed/htmlmixed.js'),
-    				'admin-controls'		=> array('/js/admin.js', array('jquery', 'jquery-ui-core', 'jquery-ui-tabs') ),
-    		   );
+            $scripts = array(
+                'jquery-cookie' 		=> array('/js/jquery.cookie/jquery.cookie.js', array('jquery') ),
+                'codemirror'			=> array('/includes/codemirror/lib/codemirror.js'),
+                'codemirror-xml'		=> array('/includes/codemirror/mode/xml/xml.js'),
+                'codemirror-css'		=> array('/includes/codemirror/mode/css/css.js'),
+                'codemirror-js'			=> array('/includes/codemirror/mode/javascript/javascript.js'),
+                'codemirror-htmlmixed'	=> array('/includes/codemirror/mode/htmlmixed/htmlmixed.js'),
+                'admin-controls'		=> array('/js/admin.js', array('jquery', 'jquery-ui-core', 'jquery-ui-tabs') ),
+            );
 
-		    $styles = array (
-    			'codemirror_css' 		 => array('/includes/codemirror/lib/codemirror.css'),
-    			'launchpad_wp_admin_css' => array('/css/admin.css'),
-    		  );
-		 }
+            $styles = array (
+                'codemirror_css' 		 => array('/includes/codemirror/lib/codemirror.css'),
+                'launchpad_wp_admin_css' => array('/css/admin.css'),
+            );
+        }
 
-		wp_enqueue_script( array('jquery', 'editor', 'jquery-ui-core', 'jquery-ui-tabs') );
+        wp_enqueue_script( array('jquery', 'editor', 'jquery-ui-core', 'jquery-ui-tabs') );
 
-		if( !empty($scripts) ) {
-		    foreach($scripts as $key => $script) {
-                if( !empty( $script[0] ) && !empty( $script[1] ) ) {
-                    wp_register_script($key, get_stylesheet_directory_uri() . $script[0], $script[1]);
+        if( !empty($scripts) ) {
+            foreach($scripts as $key => $script) {
+                if( !empty( $script[0] ) ) {
+
+                    $dependencies = array();
+
+                    if( !empty( $script[1] ) ) {
+                        $dependencies = $script[1];
+                    }
+
+                    wp_register_script($key, get_stylesheet_directory_uri() . $script[0], $dependencies);
                     wp_enqueue_script($key);
                 }
-		    }
-		}
+            }
+        }
 
-		if( !empty($styles) ) {
-		    foreach($styles as $key => $style) {
+        if( !empty($styles) ) {
+            foreach($styles as $key => $style) {
                 if( !empty( $style[0] ) ) {
                     wp_register_style($key, get_stylesheet_directory_uri() . $style[0]);
                     wp_enqueue_style($key);
                 }
-		    }
-		}
+            }
+        }
 
-	    if( is_admin() ) {
+        $wp_sidebars = wp_get_sidebars_widgets(); // Get an array of ALL registered widgets
 
-	    	$wp_sidebars = wp_get_sidebars_widgets(); // Get an array of ALL registered widgets
+        $sidebars = array();
 
-	    	$sidebars = array();
+        foreach($wp_sidebars as $key => $sidebar) {
+            $sidebars['sidebar_layout_' . $key] = get_option( 'hatch_sidebar_layout_' . $key, '');
+        }
 
-	    	foreach($wp_sidebars as $key => $sidebar) {
-	    		$sidebars['sidebar_layout_' . $key] = get_option( 'hatch_sidebar_layout_' . $key, '');
-	    	}
+        $sidebar_options = array(
+            'sidebars' => $sidebars,
+            'save_layout_nonce'	=> wp_create_nonce('save_layout'),
+        );
 
-	    	$sidebar_options = array(
-	    		'sidebars' => $sidebars,
-	    		'save_layout_nonce'	=> wp_create_nonce('save_layout'),
-	    	);
+        wp_localize_script( 'admin-controls', 'sidebars', $sidebar_options );
 
-
-		    wp_localize_script( 'admin-controls', 'sidebars', $sidebar_options );
-	    }
-
-	} // END Admin Scripts
+    } // END Admin Scripts
 
 	/**
 	 * Embed our javascript and styles needed for our theme
