@@ -9,7 +9,17 @@
 
                 <td>
                     <div>
-                        <label class="screen-reader-text" for="typekit_id"><span><?php _e('Typekit ID', 'hatch'); ?></span></label> <input type="text" name="hatch_theme_options[typekit_id]" class="regular-text" id="typekit_id" value="<?php echo esc_attr($hatch_options['typekit_id']); ?>"> <label class="screen-reader-text" for="typekit_async"><span><?php _e('Load TypeKit Asyncronously', 'hatch'); ?></span></label> <select name="hatch_theme_options[typekit_async]" id="hatch_theme_options[typekit_async]">
+
+						<?php
+						$typekit_id = '';
+
+						if( isset($hatch_options['typekit_id']) ) {
+							$typekit_id = esc_attr( $typekit_id );
+						}
+
+						?>
+
+						<label class="screen-reader-text" for="typekit_id"><span><?php _e('Typekit ID', 'hatch'); ?></span></label> <input type="text" name="hatch_theme_options[typekit_id]" class="regular-text" id="typekit_id" value="<?php echo esc_attr( $typekid_id ); ?>"> <label class="screen-reader-text" for="typekit_async"><span><?php _e('Load TypeKit Asyncronously', 'hatch'); ?></span></label> <select name="hatch_theme_options[typekit_async]" id="hatch_theme_options[typekit_async]">
                             <option value="true" <?php selected($hatch_options['typekit_async'], true); ?>>
                                 <?php echo _e('Yes', 'hatch'); ?>
                             </option>
