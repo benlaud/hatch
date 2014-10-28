@@ -69,18 +69,14 @@ class HatchOptions {
 	function theme_options_add_page() {
 
 		$hatch_options = hatch_get_theme_options();
-		$hatch_activation_options = hatch_get_theme_activation_options();
 
-		if ($hatch_activation_options['first_run']) {
-
-			$theme_page = add_theme_page(
-				__('Additional Options', 'hatch'),
-				__('Additional Options', 'hatch'),
-				'edit_theme_options',
-				'theme_options',
-				array( &$this, 'theme_options_render_page' )
-			);
-		}
+        $theme_page = add_theme_page(
+            __('Additional Options', 'hatch'),
+            __('Additional Options', 'hatch'),
+            'edit_theme_options',
+            'theme_options',
+            array( &$this, 'theme_options_render_page' )
+        );
 
 		add_action( 'admin_footer-' . $theme_page, array( &$this, 'admin_footer' ) );
 		add_action( 'admin_head-' . $theme_page, array( &$this, 'admin_head' ) );
