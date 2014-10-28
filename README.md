@@ -40,14 +40,14 @@ Once grunt-init is installed, place this template (either manually or cloned fro
 ### Linux/Mac Users
 
 ```
-git clone git@github.com:linchpinagency/hatch.git ~/.grunt-init/hatch
+git clone https://github.com/linchpinagency/hatch.git ~/.grunt-init/hatch
 ```
 This will create a folder named 'hatch' within your .grunt-init the name of the folder is utilized later on when using the project scaffold.
 
 ### Windows Users
 
 ```
-git clone git@github.com:linchpinagency/hatch.git %USERPROFILE%/.grunt-init/hatch
+git clone https://github.com/linchpinagency/hatch.git %USERPROFILE%/.grunt-init/hatch
 ```
 
 ## Usage
