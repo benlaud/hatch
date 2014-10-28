@@ -1,6 +1,8 @@
 # Hatch a remix of FoundationPress
 
-The project is a grunt-init scaffold now. In order for this to work properly you will need to clone this repo into your local ```.grunt-init``` folder (typically within your user folder if on mac)
+The project is a grunt-init scaffold *YOU MUST HAVE GRUNT-INIT installed*
+
+In order for this to work properly you will need to clone this repo into your local ```.grunt-init``` folder (typically within your user ```~``` folder if you're on a mac)
 
 *This is a WordPress starter theme based on*
  * FoundationPress
@@ -33,13 +35,14 @@ All contributions are welcome!
   
 ## Quickstart / Installation
 
-Once grunt-init is installed, place this template in your `~/.grunt-init/` directory. It's recommended that you use git to clone this template into that directory, as follows:
+Once grunt-init is installed, place this template (either manually or cloned from github) into your `~/.grunt-init/` directory. It's recommended that you use git to clone this template into that directory, as follows:
 
 ### Linux/Mac Users
 
 ```
 git clone git@github.com:linchpinagency/hatch.git ~/.grunt-init/hatch
 ```
+This will create a folder named 'hatch' within your .grunt-init the name of the folder is utilized later on when using the project scaffold.
 
 ### Windows Users
 
@@ -55,11 +58,19 @@ At the command-line, ```cd``` into an empty directory, run the following command
 grunt-init hatch
 ```
 
+## Helpful Tip ##
+
+You might need to 
+
 While you're working on your project, run:
 
-`grunt`
+`npm install && bower install`
 
-And you're set!
+You might need to install other dependencies as well. Install them as needed
+
+Lastly just run the grunt command
+
+`grunt`
 
 You can also check for Foundation updates. Run: ```foundation update```
 (this requires the foundation gem to be installed in order to work. Please see the [docs](http://foundation.zurb.com/docs/sass.html) for details.)
