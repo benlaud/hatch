@@ -58,22 +58,17 @@ At the command-line, ```cd``` into an empty directory, run the following command
 grunt-init hatch
 ```
 
-## Helpful Tip ##
+## Once grunt init completes ##
 
-You might need to 
-
-While you're working on your project, run:
+While you're working on your project you might need to run:
 
 `npm install && bower install`
 
-You might need to install other dependencies as well. Install them as needed
-
 Lastly just run the grunt command
 
-`grunt`
+`grunt` You might need to install other dependencies as well. Install them as needed by using `npm install yadda yadda`
 
-You can also check for Foundation updates. Run: ```foundation update```
-(this requires the foundation gem to be installed in order to work. Please see the [docs](http://foundation.zurb.com/docs/sass.html) for details.)
+You can also check for Foundation updates. Run: ```foundation update``` (this requires the foundation gem to be installed in order to work. Please see the [docs](http://foundation.zurb.com/docs/sass.html) for details.)
 
 ## Stylesheet Folder Structure
 
