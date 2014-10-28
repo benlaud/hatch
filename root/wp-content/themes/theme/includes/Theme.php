@@ -17,7 +17,7 @@ class {%= php_class_name %} {
 	function __construct() {
 
 		$foundation = new Foundation();
-		$launchpad  = new Launchpad();
+		$hatch  = new Hatch();
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts') );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_styles') );

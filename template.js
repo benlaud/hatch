@@ -1,5 +1,5 @@
 /**
- * launchpad grunt scaffold
+ * hatch grunt scaffold
  * heavily based on the following project
  * Copyright (c) 2014 Aaron Ware, Linchpin
  * Updated by aware on 10/7/14.

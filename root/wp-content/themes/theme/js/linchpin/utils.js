@@ -183,7 +183,7 @@ linchpin.utils = function( $ ) {
 		},
 
 		/**
-		 * Control the launchpad theme's javascript initialization
+		 * Control the hatch theme's javascript initialization
 		 * @author aware
 		 * @param jQuery[Object] the entire jQuery library
 		 * @since 1.2
@@ -191,9 +191,9 @@ linchpin.utils = function( $ ) {
 		init: function( ) {
 			// Make sure we want infield labels before we go through our setup
 
-			if (typeof launchpad !== 'undefined') {
-				if ( launchpad.infield_labels ) {
-					linchpin.utils.setup_form_fields();
+			if (typeof hatch !== 'undefined') {
+				if ( hatch.infield_labels ) {
+					hatch.utils.setup_form_fields();
 				}
 			}
 			/*

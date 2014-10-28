@@ -115,8 +115,8 @@ class HatchOptions {
 
 		        <form method="post" action="options.php">
 
-		        <?php settings_fields('launchpad_options');
-		        $hatch_options = launchpad_get_theme_options();
+		        <?php settings_fields('hatch_options');
+		        $hatch_options = hatch_get_theme_options();
 		        $hatch_default_options = self::get_default_theme_options();
 		        ?>
 
@@ -321,14 +321,6 @@ class HatchOptions {
 	}
 
 	/**
-	 * launchpad_theme_options_validate function.
-	 *
-	 * @access public
-	 * @param mixed $input
-	 * @return void
-	 */
-
-	/**
 	 * theme_options_validate function.
 	 *
 	 * @access public
@@ -372,12 +364,12 @@ class HatchOptions {
 }
 
 /**
- * launchpad_get_theme_options function.
+ * hatch_get_theme_options function.
  *
  * @author aware
  * @access public
  * @return array of theme options
  */
-function launchpad_get_theme_options() {
-  return get_option('launchpad_theme_options', LaunchpadOptions::get_default_theme_options() );
+function hatch_get_theme_options() {
+  return get_option('launchpad_theme_options', HatchOptions::get_default_theme_options() );
 }

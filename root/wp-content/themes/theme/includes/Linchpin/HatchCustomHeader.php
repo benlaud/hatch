@@ -14,11 +14,10 @@ class HatchCustomHeader {
 	}
 
 	/**
-	 * launchpad_customize function.
+	 * customize_register function.
 	 *
 	 * @access public
 	 * @param mixed $wp_customize
-	 * @return void
 	 */
 	function customize_register( $wp_customize ) {
 
@@ -39,7 +38,6 @@ class HatchCustomHeader {
 	 * wp_enqueue_scripts function.
 	 *
 	 * @access public
-	 * @return void
 	 */
 	function wp_enqueue_scripts() {
 
@@ -70,7 +68,7 @@ class HatchCustomHeader {
 		define( 'HEADER_IMAGE', '' ); 			// By leaving empty, we allow for random image rotation.
 
 		// The height and width of your custom header.
-		// Add a filter to launchpad_header_image_width and launchpad_header_image_height to change these values.
+		// Add a filter to hatch_header_image_width and hatch_header_image_height to change these values.
 		define( 'HEADER_IMAGE_WIDTH',  apply_filters( 'hatch_header_image_width', 1000 ) );
 		define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'hatch_header_image_height', 250 ) );
 
@@ -134,7 +132,7 @@ if ( ! function_exists( 'hatch_admin_header_style' ) ) :
 	/**
 	 * Styles the header image displayed on the Appearance > Header admin panel.
 	 *
-	 * Referenced via add_custom_image_header() in launchpad_setup().
+	 * Referenced via add_custom_image_header() in hatch_setup().
 	 *
 	 * @since _s 1.0
 	 */
@@ -162,7 +160,7 @@ if ( ! function_exists( 'hatch_admin_header_image' ) ) :
 	 * @since hatch 1.0
      * @derived from _s
 	 */
-	function launchpad_admin_header_image() { ?>
+	function hatch_admin_header_image() { ?>
   <div id="headimg">
     <?php
 		if ( 'blank' == get_theme_mod( 'header_textcolor', HEADER_TEXTCOLOR ) || '' == get_theme_mod( 'header_textcolor', HEADER_TEXTCOLOR ) )
