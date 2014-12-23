@@ -37,6 +37,7 @@
 			</section>
 
 		</article>
+	</li>
 <?php } ?>
 
 <?php
