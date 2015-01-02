@@ -43,29 +43,6 @@ if( typeof({%= js_safe_name %}_admin) == 'undefined' ) {
     				});
 				});
     		});
-        },
-
-        /**
-         *	Loads in our default issue collector
-         *
-         */
-
-        loadIssueCollector : function() {
-			$.ajax({
-			    url: "https://linchpin.atlassian.net/s/en_US-mlpefy-418945332/812/36/1.2.7/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs.js?collectorId=7fe5735a",
-			    type: "get",
-			    cache: true,
-			    dataType: "script"
-			});
-        },
-
-        /**
-        * Initialize everything and store references as needed
-        * @author aware
-        */
-
-        init: function () {
-            {%= js_safe_name %}_admin.utils.loadIssueCollector();
         }
     };
 } ( jQuery );
