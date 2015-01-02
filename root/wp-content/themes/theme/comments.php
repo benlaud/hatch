@@ -8,7 +8,7 @@
 				</div>
 				<div class="small-10 columns">
 					<div class="author-meta">
-						<?php printf(__('<cite class="fn">%s</cite>', 'FoundationPress'), get_comment_author_link()) ?> on
+						<?php printf(__('<cite class="fn">%s</cite>', 'hatch'), get_comment_author_link()) ?> on
 						<time datetime="<?php echo comment_date('c') ?>"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('%1$s', 'hatch'), get_comment_date(),  get_comment_time()) ?></a></time>
 						<?php edit_comment_link(__('(Edit)', 'hatch'), '', '') ?>
 					</div>

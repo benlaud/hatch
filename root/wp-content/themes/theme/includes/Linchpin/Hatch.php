@@ -13,10 +13,10 @@ include_once( $linchpin_classes_dir . 'HatchMenu.php' );
 class Hatch {
 	function __construct()
 	{
-		$launchpad_activate = new HatchActivate();
-		$launchpad_custom_header = new HatchCustomHeader();
-		$launchpad_option_controls = new HatchOptions();
-		$launchpad_utilities = new HatchUtilities();
-		$launchpad_menu = new HatchMenu();
+		$hatch_activate = new HatchActivate();
+		$hatch_custom_header = new HatchCustomHeader();
+		$hatch_option_controls = new HatchOptions();
+		$hatch_utilities = new HatchUtilities();
+		$hatch_menu = new HatchMenu();
 	}
 }

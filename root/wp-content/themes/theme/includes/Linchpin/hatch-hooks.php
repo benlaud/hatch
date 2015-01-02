@@ -1,10 +1,8 @@
 <?php
 
 // header.php
-function hatch_head() { do_action('launchpad_head'); }
-
-function hatch_html_tag() { do_action('launchpad_html_tag'); }
-
+function hatch_head() { do_action('hatch_head'); }
+function hatch_html_tag() { do_action('hatch_html_tag'); }
 function hatch_head_scripts() { do_action('hatch_additional_header_scripts'); }
 
 function hatch_stylesheets() { do_action('hatch_stylesheets'); }

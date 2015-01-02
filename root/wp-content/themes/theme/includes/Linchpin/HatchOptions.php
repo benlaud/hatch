@@ -160,7 +160,7 @@ class HatchOptions {
                 'codemirror_css' 		 => array('/includes/codemirror/lib/codemirror.css'),
                 'launchpad_wp_admin_css' => array('/css/admin.css'),
             );
-        }
+
 
         wp_enqueue_script( array('jquery', 'editor', 'jquery-ui-core', 'jquery-ui-tabs') );
 
@@ -213,7 +213,7 @@ class HatchOptions {
 	 * @author aware
 	 */
 	function admin_head() {
-		global $launchpad_options;
+		global $hatch_options;
 	?>
 	  <script type="text/javascript">
 	    //<![CDATA[
