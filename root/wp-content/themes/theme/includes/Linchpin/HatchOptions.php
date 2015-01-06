@@ -160,7 +160,7 @@ class HatchOptions {
                 'codemirror_css' 		 => array('/includes/codemirror/lib/codemirror.css'),
                 'launchpad_wp_admin_css' => array('/css/admin.css'),
             );
-
+        }
 
         wp_enqueue_script( array('jquery', 'editor', 'jquery-ui-core', 'jquery-ui-tabs') );
 
