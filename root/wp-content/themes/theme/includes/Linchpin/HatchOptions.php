@@ -144,25 +144,22 @@ class HatchOptions {
             );
         } else if ( 'appearance_page_theme_options' == $hook ) {
 
-	        // Enque our Scripts
+            // Enque our Scripts
 
-	        $scripts = array(
-		        'jquery-cookie'        => array( '/js/jquery.cookie/jquery.cookie.js', array( 'jquery' ) ),
-		        'codemirror'           => array( '/includes/codemirror/lib/codemirror.js' ),
-		        'codemirror-xml'       => array( '/includes/codemirror/mode/xml/xml.js' ),
-		        'codemirror-css'       => array( '/includes/codemirror/mode/css/css.js' ),
-		        'codemirror-js'        => array( '/includes/codemirror/mode/javascript/javascript.js' ),
-		        'codemirror-htmlmixed' => array( '/includes/codemirror/mode/htmlmixed/htmlmixed.js' ),
-		        'admin-controls'       => array(
-			        '/js/admin.js',
-			        array( 'jquery', 'jquery-ui-core', 'jquery-ui-tabs' )
-		        ),
-	        );
+            $scripts = array(
+                'jquery-cookie' 		=> array('/js/jquery.cookie/jquery.cookie.js', array('jquery') ),
+                'codemirror'			=> array('/includes/codemirror/lib/codemirror.js'),
+                'codemirror-xml'		=> array('/includes/codemirror/mode/xml/xml.js'),
+                'codemirror-css'		=> array('/includes/codemirror/mode/css/css.js'),
+                'codemirror-js'			=> array('/includes/codemirror/mode/javascript/javascript.js'),
+                'codemirror-htmlmixed'	=> array('/includes/codemirror/mode/htmlmixed/htmlmixed.js'),
+                'admin-controls'		=> array('/js/admin.js', array('jquery', 'jquery-ui-core', 'jquery-ui-tabs') ),
+            );
 
-	        $styles = array(
-		        'codemirror_css'         => array( '/includes/codemirror/lib/codemirror.css' ),
-		        'launchpad_wp_admin_css' => array( '/css/admin.css' ),
-	        );
+            $styles = array (
+                'codemirror_css' 		 => array('/includes/codemirror/lib/codemirror.css'),
+                'launchpad_wp_admin_css' => array('/css/admin.css'),
+            );
         }
 
         wp_enqueue_script( array('jquery', 'editor', 'jquery-ui-core', 'jquery-ui-tabs') );
