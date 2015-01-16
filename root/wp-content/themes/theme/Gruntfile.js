@@ -12,7 +12,8 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          outputStyle: 'compressed'
+          outputStyle: 'compressed',
+          sourceMap: true
         },
         files: {
           'css/{%= js_safe_name %}.css': 'scss/app.scss',
@@ -103,10 +104,23 @@ module.exports = function(grunt) {
         ],
         tasks: ['concat', 'uglify']
       }
-    }
+    },
+
+	imagemin: {                            // Task
+	
+		dynamic: {                         // Another target
+			files: [{
+			expand: true,                  // Enable dynamic expansion
+			cwd: 'assets/images/src/',     // Src matches are relative to this path
+			src: ['**/*.{png,jpg,jpeg,gif}'],   // Actual patterns to match
+			dest: 'assets/images/dist/'                  // Destination path prefix
+			}]
+		}
+	}
   });
 
-  grunt.registerTask('build', ['sass']);
-  grunt.registerTask('default', ['copy', 'uglify', 'concat', 'watch']);
+  grunt.registerTask('build', ['sass', 'minify']);
+  grunt.registerTask('minify', ['newer:imagemin:dynamic']);
+  grunt.registerTask('default', ['minify','copy', 'uglify', 'concat', 'watch']);
 
 }
