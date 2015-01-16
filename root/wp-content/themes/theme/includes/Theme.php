@@ -18,6 +18,8 @@ class {%= php_class_name %} {
 
 		$foundation = new Foundation();
 		$hatch  = new Hatch();
+		
+		add_filter( 'admin_footer_text', array( $this, 'admin_footer_text' ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts') );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_styles') );
@@ -38,6 +40,13 @@ class {%= php_class_name %} {
 		    'footer' 			=> 'Footer',
 		    'mobile-off-canvas' => 'Mobile (Off Canvas)'
 		));
+	}
+	
+	/**
+	 * admin_footer_text function.
+	 */
+	function admin_footer_text() {
+		echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Augmented by the <a href="http://github.com/linchpinagency/hatch/?utm_source=hatch&utm_medium=hatch_footer&utm_campaign=hatch_notice" target="_blank">Hatch</a> created by <a href="http://linchpin.agency/?utm_source=hatch&utm_medium=hatch_footer&utm_campaign=hatch_notice" target="_blank">Linchpin</a>';
 	}
 
 	/**
