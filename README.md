@@ -70,7 +70,7 @@ Lastly just run the grunt command
 
 You can also check for Foundation updates. Run: ```foundation update``` (this requires the foundation gem to be installed in order to work. Please see the [docs](http://foundation.zurb.com/docs/sass.html) for details.)
 
-### <span style="color: red;">If you're having issues with Grunt after an update, run the following commands in terminal</span>
+**If you're having issues with Grunt after an update, run the following commands in terminal**
 ```
 sudo npm cache clean -f
 sudo npm install -g n
