@@ -46,7 +46,7 @@ class {%= php_class_name %} {
 	 * admin_footer_text function.
 	 */
 	function admin_footer_text() {
-		echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Created by <a href="http://linchpin.agency/?utm_source=hatch&utm_medium=hatch_footer&utm_campaign=hatch_notice" target="_blank">Linchpin</a> and augmented by the <a href="http://github.com/linchpinagency/hatch/?utm_source=hatch&utm_medium=hatch_footer&utm_campaign=hatch_notice" target="_blank">Hatch</a>';
+		echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Created by <a href="{%= author_url %}/?utm_source=hatch&utm_medium=hatch_footer&utm_campaign=hatch_notice" target="_blank">{%= author_name %}</a> and augmented by the <a href="http://github.com/linchpinagency/hatch/?utm_source=hatch&utm_medium=hatch_footer&utm_campaign=hatch_notice" target="_blank">Hatch</a>';
 	}
 
 	/**
