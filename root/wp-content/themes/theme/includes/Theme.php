@@ -189,7 +189,7 @@ class {%= php_class_name %} {
 	}
 	
 	function {%= js_safe_name %}_add_editor_styles() {
-		$admin_style = get_stylesheet_directory_uri() . '/css/admin.css';
+		$admin_style = get_stylesheet_directory_uri() . '/css/editor.css';
 		
 	    add_editor_style( $admin_style );
 	}

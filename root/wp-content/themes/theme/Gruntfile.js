@@ -18,7 +18,7 @@ module.exports = function(grunt) {
         files: {
           'css/{%= js_safe_name %}.css': 'scss/app.scss',
           'css/ie8.css': 'scss/ie8.scss',
-          'css/admin.css': 'scss/admin.scss'
+          'css/editor.css': 'scss/editor.scss'
         }
       }
     },
