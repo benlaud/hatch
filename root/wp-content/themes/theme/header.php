@@ -29,10 +29,9 @@
     <section class="right-small">
       <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
     </section>
+    
     <section class="middle tab-bar-section">
-
-      <h1 class="title"><?php bloginfo( 'name' ); ?></h1>
-
+      <?php bloginfo( 'name' ); ?>
     </section>
   </nav>
 
