@@ -4,15 +4,22 @@
  * Date: 10/7/14
  * Time: 4:29 PM
  */
+ 
+	$options = get_option('{%= js_safe_name %}_theme_options');
+					
+	if ( isset( $options['logo_upload'] ) )
+		$logo = true;
 ?>
 <div id="main-menu" class="top-bar-container" data-parent="<?php echo $post->post_type ?>">
     <nav class="top-bar" data-topbar="">
         <ul class="title-area">
             <li class="name">
                 <a href="<?php echo home_url(); ?>">
-                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/linchpin-icon-white.svg'; ?>"
-                         alt="Linchpin"/><img class="small" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/linchpin-logo-black.svg'; ?>"
-                                                               alt="<?php echo bloginfo('description'); ?>"/>
+                	<?php if ( $logo ): ?>
+                		<img src="<?php echo $options['logo_upload']; ?>" alt="<?php bloginfo( 'name' ); ?>" />
+                	<?php else: ?>
+                		<?php bloginfo( 'name' ); ?>
+                	<?php endif; ?>
                 </a>
             </li>
         </ul>

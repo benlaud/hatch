@@ -19,6 +19,7 @@ class {%= php_class_name %} {
 		$foundation = new Foundation();
 		$hatch  = new Hatch();
 		
+		add_filter( 'upload_mimes',		array( $this, 'upload_mimes' ) );
 		add_filter( 'admin_footer_text', array( $this, 'admin_footer_text' ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts') );
@@ -26,6 +27,7 @@ class {%= php_class_name %} {
 		add_action( 'init', 			  array( $this, 'init' ) );
 		add_action( 'widgets_init', 	  array( $this, 'widgets_init' ) );
 		add_action( 'after_setup_theme',  array( $this, 'after_setup_theme' ) );
+		add_action( 'customize_register',	array( $this, '{%= js_safe_name %}_customize_regsiter' ) );
 	}
 
 	/**
@@ -137,5 +139,51 @@ class {%= php_class_name %} {
 	 */
 	function wp_enqueue_styles() {
 		wp_enqueue_style( 'app-css', get_stylesheet_directory_uri() . '/css/{%= js_safe_name %}.css' );
+	}
+	
+	/*
+	 * idgkh_customize_regsiter function.
+	 * 
+	 * Allows header logo to be set-up from
+	 * the customize panel under Appearance in admin
+	 */
+	
+	function {%= js_safe_name %}_customize_regsiter ( $wp_customize ) {
+
+		$wp_customize->add_section (
+			'{%= js_safe_name %}_logo', array(
+				'title' 	=> __('Site Logo', '{%= js_safe_name %}'),
+				'priority' 	=> 80,
+			)
+		);
+
+		$wp_customize->add_setting (
+			'{%= js_safe_name %}_theme_options[logo_upload]', array(
+				'default'		=> '',
+				'capability' 	=> 'edit_theme_options',
+				'type'			=> 'option',
+			)
+		);
+
+		$wp_customize->add_control (
+			new WP_Customize_Image_Control( $wp_customize, 'logo_upload', array (
+				'label'		=> __('Site Logo', '{%= js_safe_name %}'),
+				'section' 	=> '{%= js_safe_name %}_logo',
+				'settings' 	=> '{%= js_safe_name %}_theme_options[logo_upload]',
+				'extensions'	=> array( 'jpg', 'jpeg', 'png', 'gif', 'svg' ),
+			) )
+		);
+	}
+	
+	/**
+	 * linchpin_upload_mimes function.
+	 *
+	 * @access public
+	 * @param array $mimes (default: array())
+	 * @return void
+	 */
+	function upload_mimes($mimes = array()) {
+	    $mimes['svg'] = 'image/svg+xml';
+	    return $mimes;
 	}
 }
