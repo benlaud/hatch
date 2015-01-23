@@ -346,7 +346,7 @@ $directions: top, right, bottom, left;
   @if $prop == 'animation' { $vendors: $b_wi; }
   @if $prop == 'box-shadow' { $vendors: $b_w; }
   @if $prop == 'transition' { $vendors: $b_wo; }
-  @if $prop == 'transform' { $vendors: $b_mwo; }
+  @if $prop == 'transform' { $vendors: $b_mi; }
 
   
   @each $vendor in $vendors {
