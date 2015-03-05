@@ -5,7 +5,6 @@ include( 'HatchCustomHeader.php' );
 include( 'HatchActivate.php' );
 include( 'HatchUtilities.php' );
 include( 'HatchMenu.php' );
-include( 'HatchMenu.php' );
 include( 'Hatch_TinyMCE.php' );
 
 class Hatch {
