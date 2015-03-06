@@ -101,7 +101,7 @@ We've added some modifications to Foundation to help combine functions together,
 
 ### Accordion + Equalize
 
-If you want to use Foundation's equalize function inside of an accordion, you will need to use out work-around. Why? When running Foundation's initialization, most scenarios will render `height: inherit;` on the element you are trying to watch. It does this because, technically, that element has no height - it is inside of an accordion section that you cannot see.
+If you want to use Foundation's equalize function inside of an accordion, you will need to use our work-around. Why? When running Foundation's initialization, most scenarios will render `height: inherit;` on the element you are trying to watch. It does this because, technically, that element has no height - it is inside of an accordion section that you cannot see.
 
 We fix this by adding a callback on the accordion function when the parent accordion element has `data-accordion="has-equalize"`. If the accordion has this value on `data-accordion`, the equalize function is re-run after the accordion has been toggled.
 
