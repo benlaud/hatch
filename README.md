@@ -95,6 +95,16 @@ bower update
   * `js/`: jQuery, Modernizr and Foundation scripts are copied from `bower_components/` to this directory, where they are minified and concatinated and enqueued in WordPress
   * Please note that you must run `grunt` in your terminal for the scripts to be copied. See [Gruntfile.js](https://github.com/linchpinagency/FoundationPress/blob/master/Gruntfile.js) for details
 
+## Hatch Foundation Mods
+
+We've added some modifications to Foundation to help combine functions together, please find them below.
+
+### Accordion + Equalize
+
+If you want to use Foundation's equalize function inside of an accordion, you will need to use out work-around. Why? When running Foundation's initialization, most scenarios will render `height: inherit;` on the element you are trying to watch. It does this because, technically, that element has no height - it is inside of an accordion section that you cannot see.
+
+We fix this by adding a callback on the accordion function when the parent accordion element has `data-accordion="has-equalize"`. If the accordion has this value on `data-accordion`, the equalize function is re-run after the accordion has been toggled.
+
 ## You may also find the following plugin(s) useful
 * [Linchpin Useful Plugins](http://github.com/linchpinagency/shortcodes/)
 

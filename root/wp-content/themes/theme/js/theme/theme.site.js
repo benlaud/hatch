@@ -27,7 +27,17 @@ if( typeof({%= js_safe_name %}) == 'undefined' ) {
          */
 
         init: function() {
-            $doc.foundation(); // initialize foundation
+            $doc.foundation({
+	            accordion: {
+		            callback: function ( accordion ) {
+			            
+			            if ( accordion.parents('[data-accordion]').data('accordion') === 'has-equalize' ) {
+				            $(document).foundation('equalizer', 'reflow');
+			            }
+			            
+		            }
+	            }
+            }); // initialize foundation
         }
     };
 } ( jQuery );
