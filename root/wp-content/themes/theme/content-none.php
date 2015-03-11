@@ -2,8 +2,7 @@
 /**
  * The template for displaying a "No posts found" message
  *
- * @package Hatch
- * @derived from FoundationPress 1.0
+ * @package hatch
  */
 ?>
 

@@ -1,5 +1,7 @@
 <?php
 /**
+ * Template for display all default archive pages
+ *
  * @package hatch
  */
 ?>

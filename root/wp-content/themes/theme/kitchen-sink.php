@@ -1,7 +1,9 @@
 <?php
 /*
-Template Name: Kitchen Sink
-*/
+ * Template Name: Kitchen Sink
+ *
+ * @package hatch
+ */
 get_header(); ?>
 <div class="row">
 	<div class="small-12 large-12 columns" role="main">

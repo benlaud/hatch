@@ -3,7 +3,7 @@
  * {%= title %}
  *
  * @author {%= author_name %}
- * @package     Linchpin
+ * @package Hatch
  *
  */
 class {%= php_class_name %} {
@@ -27,8 +27,8 @@ class {%= php_class_name %} {
 		add_action( 'init', 			  	array( $this, 'init' ) );
 		add_action( 'widgets_init', 	  	array( $this, 'widgets_init' ) );
 		add_action( 'after_setup_theme', 	array( $this, 'after_setup_theme' ) );
-		add_action( 'customize_register',	array( $this, '{%= js_safe_name %}_customize_regsiter' ) );
-		add_action( 'after_setup_theme',	array( $this, '{%= js_safe_name %}_add_editor_styles' ) );
+		add_action( 'customize_register',	array( $this, 'customize_register' ) );
+		add_action( 'after_setup_theme',	array( $this, 'add_editor_styles' ) );
 	}
 
 	/**
@@ -46,14 +46,24 @@ class {%= php_class_name %} {
 	}
 	
 	/**
+	 * Add in the theme author info, hatch info and be sure to keep love for WordPress
 	 * admin_footer_text function.
+	 *
+	 * @access public
+	 * @return void
 	 */
 	function admin_footer_text() {
 		echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Created by <a href="{%= author_url %}/?utm_source=hatch&utm_medium=hatch_footer&utm_campaign=hatch_notice" target="_blank">{%= author_name %}</a> and augmented by the <a href="http://github.com/linchpinagency/hatch/?utm_source=hatch&utm_medium=hatch_footer&utm_campaign=hatch_notice" target="_blank">Hatch</a>';
 	}
 
 	/**
-	 * widgets_init function.
+	 * We have found that these are pretty much 3 areas that clients request
+	 * for easier customizations.
+	 *
+	 * Registers our 3 base sidebars
+	 * Home Widgets
+	 * Page Widgets
+	 * Footer Widgets
 	 *
 	 * @access public
 	 * @return void
@@ -98,7 +108,7 @@ class {%= php_class_name %} {
 	 * Removes the jquery library from the header and prints it in the footer
 	 *
 	 * @access public
-	 * @param mixed &$scripts
+	 * @param array &$scripts
 	 * @return void
 	 */
 	function print_jquery_in_footer( &$scripts) {
@@ -127,8 +137,8 @@ class {%= php_class_name %} {
 	function wp_enqueue_scripts() {
         $postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
-        wp_enqueue_script( 'modernizr',  get_template_directory_uri()   . '/js/modernizr/modernizr' . $postfix . '.js', array(), {%= prefix_caps %}VERSION, false );
-		wp_enqueue_script( 'foundation', get_template_directory_uri()   . '/js/app' . $postfix . '.js', array('jquery'), {%= prefix_caps %}VERSION, true );
+        wp_enqueue_script( 'modernizr',  get_template_directory_uri() . '/js/modernizr/modernizr' . $postfix . '.js', array(), {%= prefix_caps %}VERSION, false );
+		wp_enqueue_script( 'foundation', get_template_directory_uri() . '/js/app' . $postfix . '.js', array('jquery'), {%= prefix_caps %}VERSION, true );
 		wp_enqueue_script( '{%= js_safe_name %}', 	 get_stylesheet_directory_uri() . '/js/{%= js_safe_name %}' . $postfix . '.js', array( 'jquery' ), {%= prefix_caps %}VERSION, true );
 	}
 
@@ -143,13 +153,22 @@ class {%= php_class_name %} {
 	}
 	
 	/*
-	 * idgkh_customize_regsiter function.
+	 * customize_register function.
 	 * 
 	 * Allows header logo to be set-up from
-	 * the customize panel under Appearance in admin
+	 * the customize panel under Appearance within the WordPress Admin
+	 *
+	 * Also allow for the .svg extension within logo uploading
+	 *
+	 * @param $wp_customize
+	 * @return void
+	 */
+
+	/**
+	 *
 	 */
 	
-	function {%= js_safe_name %}_customize_regsiter ( $wp_customize ) {
+	function customize_register ( $wp_customize ) {
 
 		$wp_customize->add_section (
 			'{%= js_safe_name %}_logo', array(

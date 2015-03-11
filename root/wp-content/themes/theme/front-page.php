@@ -1,3 +1,11 @@
+<?php
+/**
+ * Default template utilized when your theme has a
+ * defined front page within Setting->Reading within the WordPress admin
+ *
+ * @package hatch
+ */
+?>
 <?php get_header(); ?>
 
 	<?php get_template_part('hero'); ?>

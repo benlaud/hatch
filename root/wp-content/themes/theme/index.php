@@ -1,3 +1,10 @@
+<?php
+/**
+ * Catch all template file within the Template Hierarchy
+ *
+ * @package hatch
+ */
+?>
 <?php get_header(); ?>
 <div class="row">
 	<div class="small-12 large-8 columns" role="main">

@@ -1,3 +1,11 @@
+<?php
+/**
+ * Base template for all comments
+ * TODO: This file could definitely use some cleanup -aware
+ *
+ * @package hatch
+ */
+?>
 <?php function hatch_comments($comment, $args, $depth) {
 	$GLOBALS['comment'] = $comment; ?>
 	<li <?php comment_class(); ?>>
