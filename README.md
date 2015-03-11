@@ -105,6 +105,28 @@ If you want to use Foundation's equalize function inside of an accordion, you wi
 
 We fix this by adding a callback on the accordion function when the parent accordion element has `data-accordion="has-equalize"`. If the accordion has this value on `data-accordion`, the equalize function is re-run after the accordion has been toggled.
 
+### LP Equalize
+
+LP Equalize is a built in JS function in the Hatch that will let you set data attributes to equalize heights of elements in an item set. The function is triggered when an element with a data attribute set to `data-lp-equal`. Below, you'll find the parameters to pass as well as some example markup to get you started.
+
+**Note: All data attributes must be added to the parent element.**
+
+  * `data-lp-equal`: Triggers LP Equalize function; value has no effect.
+  * `data-lp-equal-items`: Value sets item containers; if unset the default will be direct children.
+  * `data-lp-equal-children`: Value sets children in item to be equalized; if unset the height of items will be equalized instead.
+  
+`<div class="row" data-lp-equal data-lp-equal-items="article" data-lp-equal-children="h2, .post-content">
+  <article class="small-6 columns">
+    <h2>Article title</h2>
+    <p class="post-content">Lorem Ipsum</p>
+  </article>
+  
+  <article class="small-6 columns">
+    <h2>Article title for the second article is a lot longer.</h2>
+    <p class="post-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </article>
+</div>'
+
 ## You may also find the following plugin(s) useful
 * [Linchpin Useful Plugins](http://github.com/linchpinagency/shortcodes/)
 

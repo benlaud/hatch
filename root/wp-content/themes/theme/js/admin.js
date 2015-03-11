@@ -7,6 +7,12 @@ if( typeof({%= js_safe_name %}_admin) == 'undefined' ) {
     var $doc = $(document);
 
     return {
+	    
+	    init : function () {
+		    
+		    {%= js_safe_name %}_admin.utils.setupSidebarControls();
+		    
+	    },
 
         /**
          * Setup our sidebar controls

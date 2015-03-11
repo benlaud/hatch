@@ -181,6 +181,66 @@ linchpin.utils = function( $ ) {
 					$(this).append('<small>' + msg + '</small>');
 			});
 		},
+		
+		/**
+		 * Equalize heights for multiple children
+		 * @author mmorgan
+		 */
+		lp_equalizer : function () {
+	        var $this = $(this), // Parent item with data-lp-equal tag
+	        	$items = $this.data('lp-equal-items'), // Items that hold the children to be equalized
+	        	$children = $this.data('lp-equal-children'), // String of elements to equal, comma seperated
+		        _tall; // Set this for future use
+		        		    
+		    // If children are set, make an array of them
+		    if ( $children != ('' || null || undefined) ) var _children = $children.split(',');
+		    	        
+	        // If data-lp-equal-items is not set, have $items be the direct children of the parent element
+	        if ( $items == ('' || null || undefined) ) $items = $this.children();
+	        	        
+	        // If the children are set, equalize each child in the items
+	        if ( $children != ('' || null || undefined) ) {
+		        		        
+		        // Loop through each child element to equalize
+		        for ( var i = 0; i < _children.length; i++ ) {
+			        _tall = 0; // Reset to 0 for each element being equalized
+			        			        
+			        // Check the heights and find the tallest of a given element
+			        // in an items parent container.
+			        $($items, $this).find(_children[i]).each(function () {
+				        var $item = $(this);
+				        				        
+				        if  ( $item.height() > _tall ) _tall = $item.height();
+				    } ).height(_tall);
+			        // Then set the height of that element.
+			    }
+			    
+		    // If no child are set, do a standard equalize to each item
+		    } else {
+		        		        
+		        _tall = 0;
+		        
+		        $($items, $this).each(function () {
+			        if ( $(this).height() > _tall ) _tall = $(this).height();
+			    } ).height(_tall);
+			    
+			}
+	        
+	        
+	        /* Quick example of markup
+		     * <div data-lp-equal data-lp-equal-items="article" data-lp-equal-children="h2, .post-text">
+		     *  <article>
+		     *    <h2>Article title</h2>
+		     *    <p class="post-text">Lorem ipsum</p>
+		     *  </article>
+		     *
+		     *  <article>
+		     *    <h2>Article title for the second article is a lot longer.</h2>
+		     *    <p class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		     *  </article>
+		     * </div>
+		     */
+        },
 
 		/**
 		 * Control the hatch theme's javascript initialization
@@ -231,6 +291,8 @@ linchpin.utils = function( $ ) {
 			})
 
 			.bind('gform_post_render', linchpin.utils.setup_form_fields);
+			
+			if ( $('[data-lp-equal]').length ) $('[data-lp-equal]').each( linchpin.utils.lp_equalizer );
 		}
 	};
 }(jQuery);
