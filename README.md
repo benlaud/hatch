@@ -115,7 +115,8 @@ LP Equalize is a built in JS function in the Hatch that will let you set data at
   * `data-lp-equal-items`: Value sets item containers; if unset the default will be direct children.
   * `data-lp-equal-children`: Value sets children in item to be equalized; if unset the height of items will be equalized instead.
   
-`<div class="row" data-lp-equal data-lp-equal-items="article" data-lp-equal-children="h2, .post-content">
+```
+<div class="row" data-lp-equal data-lp-equal-items="article" data-lp-equal-children="h2, .post-content">
   <article class="small-6 columns">
     <h2>Article title</h2>
     <p class="post-content">Lorem Ipsum</p>
@@ -125,7 +126,8 @@ LP Equalize is a built in JS function in the Hatch that will let you set data at
     <h2>Article title for the second article is a lot longer.</h2>
     <p class="post-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </article>
-</div>`
+</div>
+```
 
 ## You may also find the following plugin(s) useful
 * [Linchpin Useful Plugins](http://github.com/linchpinagency/shortcodes/)
