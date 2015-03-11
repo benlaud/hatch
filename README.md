@@ -125,7 +125,7 @@ LP Equalize is a built in JS function in the Hatch that will let you set data at
     <h2>Article title for the second article is a lot longer.</h2>
     <p class="post-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </article>
-</div>'
+</div>`
 
 ## You may also find the following plugin(s) useful
 * [Linchpin Useful Plugins](http://github.com/linchpinagency/shortcodes/)
