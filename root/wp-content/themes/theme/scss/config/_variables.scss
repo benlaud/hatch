@@ -41,16 +41,6 @@ $icon-font: '{%= js_safe_name %}';
   @include set-font( $icon-font );
 }
 
-/* @function calculateRem
- *
- * Returns calculated rem given the $size passed from font-size mixin.
- * * */
-
-@function calculateRem($size) {
-  $remSize: $size / 16px;
-  @return $remSize * 1rem;
-}
-
 
 /* @mixin font-size
  *
@@ -234,34 +224,19 @@ $directions: top, right, bottom, left;
 	}
 }
 
-/* @function calculateRem
- *
- * Returns calculated rem given the $size passed from font-size mixin.
- * * */
-
 @function strip-unit($num) {
   @return $num / ($num * 0 + 1);
 }
 
-@function calculateRem($size) {
-  $remSize: $size / $base-font-size;
+@function calculateRem($size) {	
+  $remSize: strip-unit($size) / strip-unit($rem-base);
   @return $remSize * 1rem;
 }
 
-@function calculateSpaceRem ($size) {
-	$remSize: $size / strip-unit($base-font-size);
-	@return $remSize * 1rem;
-}
-
-
-/* @function
- *
- * Returns unitless digit to a pixel value.
- * * */
 @function calculatePixel($size) {
-  @return $size * 1px;
+  $pxSize: strip-unit($size) * 1px;
+  @return $pxSize;
 }
-
 
 /* @mixin font-size
  *
@@ -290,13 +265,13 @@ $directions: top, right, bottom, left;
 
     @if ( $i == 1 ) {
       $pix: calculatePixel($the_space);
-      $rem: calculateSpaceRem($the_space);
+      $rem: calculateRem($the_space);
     } @else if ( type-of($the_space) == string ) {
       $pix: #{$pix} #{$the_space};
       $rem: #{$rem} #{$the_space};
     } @else {
       $pix: $pix calculatePixel($the_space);
-      $rem: $rem calculateSpaceRem($the_space);
+      $rem: $rem calculateRem($the_space);
     }
 
     $i: $i + 1;
