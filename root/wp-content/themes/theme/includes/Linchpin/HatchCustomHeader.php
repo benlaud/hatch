@@ -137,7 +137,7 @@ if ( !function_exists( 'hatch_admin_header_style' ) ) :
 	 *
 	 * Referenced via add_custom_image_header() in hatch_setup().
 	 *
-	 * @since _s 1.0
+	 * @derived _s 1.0
 	 */
 	function hatch_admin_header_style() {
 		?>

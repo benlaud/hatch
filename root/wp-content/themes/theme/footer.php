@@ -5,7 +5,6 @@
 	<?php do_action('hatch_after_footer'); ?>
 </footer>
 <a class="exit-off-canvas"></a>
-
 	<?php do_action('hatch_layout_end'); ?>
 	</div>
 </div>

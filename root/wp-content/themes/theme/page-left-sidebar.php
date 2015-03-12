@@ -1,7 +1,9 @@
 <?php
 /*
-Template Name: Left Sidebar
-*/
+ * Template Name: Left Sidebar
+ *
+ * @package hatch
+ */
 get_header(); ?>
 
 <div class="row">
