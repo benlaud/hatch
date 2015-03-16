@@ -29,6 +29,8 @@ class Foundation {
 		add_filter( 'nav_menu_css_class', array( $this, 'add_active_nav_class' ), 10, 2 );
 
 		add_action( 'wp_default_scripts', array( $this, 'wp_enqueue_jquery_in_footer' ) );
+
+		add_filter( 'post_class', array( $this, 'post_class' ), 10, 3 );
 	}
 
 	/**
@@ -50,6 +52,25 @@ class Foundation {
 	    $output = preg_replace( $pattern, $replace, $input );
 
 	    return $output;
+	}
+
+	/**
+	 * Add end class to the last post in a query.
+	 *
+	 * @access public
+	 * @param mixed $classes
+	 * @param mixed $class
+	 * @param mixed $post_id
+	 * @return void
+	 */
+	function post_class( $classes, $class, $post_id ) {
+		global $wp_query;
+
+		if ( $wp_query->current_post + 1 == $wp_query->found_posts ) {
+			$classes[] = 'end';
+		}
+
+		return $classes;
 	}
 
 	/**
