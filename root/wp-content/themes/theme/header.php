@@ -25,20 +25,6 @@
 
   <?php do_action('hatch_layout_start'); ?>
 
-  <nav class="tab-bar show-for-small-only">
-    <section class="right-small">
-      <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
-    </section>
-    
-    <section class="middle tab-bar-section">
-      <?php bloginfo( 'name' ); ?>
-    </section>
-  </nav>
-
-  <aside class="right-off-canvas-menu">
-  	<?php hatch_mobile_off_canvas(); ?>
-  </aside>
-
   <?php get_template_part('includes/partials/navigation'); ?>
 
 <section class="container" role="document">
