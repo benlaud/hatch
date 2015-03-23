@@ -11,6 +11,27 @@ linchpin.utils = function( $ ) {
 
 	return {
 
+        /**
+         * XSS protection for front end data
+         */
+
+        escapeHTML : function(str) {
+            var div = document.createElement('div');
+            div.appendChild( document.createTextNode(str) );
+            return div.innerHTML;
+        },
+
+        /**
+         * UNSAFE with unsafe strings; only use on previously-escaped ones!
+         */
+
+        unescapeHTML : function(escapedStr) {
+            var div = document.createElement('div');
+            div.innerHTML = escapedStr;
+            var child = div.childNodes[0];
+            return child ? child.nodeValue : '';
+        },
+
 		/**
 		 * Find a label
 		 * @param $fld[jQuery Object] : the field we are targeting.
@@ -78,7 +99,7 @@ linchpin.utils = function( $ ) {
 
 					$lbl = linchpin.utils.find_field_label( $fld );
 
-					fld_lbl = $lbl.text();
+					fld_lbl = linchpin.utils.escapeHTML( $lbl.text() );
 
 					$fld.data('lbl', fld_lbl).data('label', $lbl);
 
@@ -96,7 +117,7 @@ linchpin.utils = function( $ ) {
 						$fld.on('focus', function(event) {
 							var $tgt = $(this),
 								$lbl = $tgt.data('label'),
-								 val = event.target.value;
+								 val = linchpin.utils.escapeHTML( event.target.value );
 
 							if (undefined === val || $tgt.data('lbl') === val || '' === val || 'undefined' === val ) {
 								$tgt.val('').attr('placeholder', $tgt.data('lbl') );
@@ -138,7 +159,7 @@ linchpin.utils = function( $ ) {
 						$('input[name="addtocart"]').on('click', function() {
 							$(this).closest('form').find('input[type="text"], textarea').each(function() {
 								var $tgt = $(this);
-								if ($tgt.val() === $tgt.data('lbl')) {
+								if ( $tgt.val() === $tgt.data('lbl') ) {
 									$tgt.val('');
 								}
 							});
@@ -282,7 +303,7 @@ linchpin.utils = function( $ ) {
 					uri  = $a.attr('href');
 
 				if ($tgt.hasClass('external-link') || $a.hasClass('external-link')) {
-					window.open(uri);
+					window.open( uri );
 				} else {
 					window.location = uri;
 				}
