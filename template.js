@@ -62,7 +62,7 @@ exports.template = function( grunt, init, done ) {
 		    "grunt-contrib-uglify": "~0.2.7",
 		    "grunt-contrib-watch": "^0.6.1",
 		    "grunt-newer": "^1.0.0",
-		    "grunt-sass": "^0.17.0",
+		    "grunt-sass": "^1.0.0",
 		    "matchdep": "^0.3.0",
 		    "node-sass": "^2.0.0-beta"
         };

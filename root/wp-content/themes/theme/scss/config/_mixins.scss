@@ -1,8 +1,7 @@
-$default: #999;
 $icon-font: '{%= js_safe_name %}';
 
-@mixin set-font ( $icon ) {
-  font-family: '#{$icon}';
+@mixin set-font ( $icon-font ) {
+  font-family: '#{$icon-font}';
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -15,22 +14,22 @@ $icon-font: '{%= js_safe_name %}';
   -moz-osx-font-smoothing: grayscale;
 }
 
-@mixin set-font-family ( $name ) {
+@mixin set-font-family ( $icon-font ) {
 	@font-face {
-		font-family: '#{$name}';
-		src:url('fonts/#{$name}.eot');
-		src:url('fonts/#{$name}.eot?#iefix') format('embedded-opentype'),
-		url('fonts/#{$name}.svg#aec') format('svg'),
-		url('fonts/#{$name}.woff') format('woff'),
-		url('fonts/#{$name}.ttf') format('truetype');
+		font-family: '#{$icon-font}';
+		src:url('fonts/#{$icon-font}.eot');
+		src:url('fonts/#{$icon-font}.eot?#iefix') format('embedded-opentype'),
+		url('fonts/#{$icon-font}.svg#aec') format('svg'),
+		url('fonts/#{$icon-font}.woff') format('woff'),
+		url('fonts/#{$icon-font}.ttf') format('truetype');
 		font-weight: normal;
 		font-style: normal;
 	}
 
 	@media screen and ( -webkit-min-device-pixel-ratio: 0 ) {
 		@font-face {
-			font-family: '#{$name}';
-			src: url('fonts/#{$name}.svg##{$name}') format('svg');
+			font-family: '#{$icon-font}';
+			src: url('fonts/#{$icon-font}.svg##{$icon-font}') format('svg');
 		}
 	}
 }
@@ -67,7 +66,7 @@ $icon-font: '{%= js_safe_name %}';
  * Usage:	@include angle-gradient($from: red, $to: black, $angle: 90);
  * * */
 
-@mixin angle-gradient ( $from: $default, $to: darken($default, 15%), $angle: 45 ) {
+@mixin angle-gradient ( $from: $color__default, $to: darken($color__default, 15%), $angle: 45 ) {
 	background-color: $from;
     background: -webkit-linear-gradient(#{$angle}deg, $from, $to);
     background: -o-linear-gradient(#{$angle}deg, $from, $to);
@@ -86,7 +85,7 @@ $icon-font: '{%= js_safe_name %}';
  * Usage:	@include linear-gradient($from: red, $to: black);
  * * */
 
-@mixin linear-gradient($from: $default, $to: darken($default, 15%)) {
+@mixin linear-gradient($from: $color__default, $to: darken($color__default, 15%)) {
 	@include angle-gradient ( $from, $to, 180 );
 }
 
@@ -100,7 +99,7 @@ $icon-font: '{%= js_safe_name %}';
  *			@include placeholder-color($color: red);
  * * */
 
-@mixin placeholder-color ( $color: $default ) {
+@mixin placeholder-color ( $color: $color__default ) {
 	&::-webkit-input-placeholder {
 	   color: $color;
 	}
@@ -148,22 +147,6 @@ $icon-font: '{%= js_safe_name %}';
 }
 
 
-/* @mixin transition
- *
- * Accepts one parameter for transition arguments
- *
- * Usage: 	@include transition( 250ms color linear )
- *			@include transition( 250ms all linear )
- * * */
-@mixin transition($args) {
-  -webkit-transition: $args;
-  -moz-transition: $args;
-  -ms-transition: $args;
-  -o-transition: $args;
-  transition: $args;
-}
-
-
 /* CSS Arrows */
 $directions: top, right, bottom, left;
 
@@ -174,7 +157,7 @@ $directions: top, right, bottom, left;
  *	$size: Arrow size in pixels
  *	$color: Color of the arrow
  * * */
-@mixin arrow ( $dir: bottom, $size: 20px, $color: $default ) {
+@mixin arrow ( $dir: bottom, $size: 20px, $color: $color__default ) {
 
   display: block;
   width: 0;
@@ -201,34 +184,11 @@ $directions: top, right, bottom, left;
   }
 }
 
-
-/* @mixin box-shadow
- *
- * Accepts 6 parameters
- *  $horizontal: 	offset of the shadow, positive means the shadow will be on the right of the box, a negative offset will put the 					shadow on the left of the box
- *  $vertical: 		offset of the shadow, a negative one means the box-shadow will be above the box, a positive one means the shadow 					will be below the box
- *  $blur: 			radius, if set to 0 the shadow will be sharp, the higher the number, the more blurred it will be
- *	$spread: 		radius (optional), positive values increase the size of the shadow, negative values decrease the size. Default is 					0 (the shadow is same size as blur)
- *	$color: 		hex or rgba with alpha
- *	$inset: 		true for inner shadow (full/all sides)
- * * */
-@mixin box-shadow($horizontal, $vertical, $blur, $spread, $color, $inset: false) {
-	@if $inset {
-		-webkit-box-shadow:inset $horizontal $vertical $blur $spread $color;
-		-moz-box-shadow:inset $horizontal $vertical $blur $spread $color;
-		box-shadow:inset $horizontal $vertical $blur $spread $color;
-	} @else {
-		-webkit-box-shadow: $horizontal $vertical $blur $spread $color;
-		-moz-box-shadow: $horizontal $vertical $blur $spread $color;
-		box-shadow: $horizontal $vertical $blur $spread $color;
-	}
-}
-
 @function strip-unit($num) {
   @return $num / ($num * 0 + 1);
 }
 
-@function calculateRem($size) {	
+@function calculateRem($size) {
   $remSize: strip-unit($size) / strip-unit($rem-base);
   @return $remSize * 1rem;
 }
@@ -282,29 +242,6 @@ $directions: top, right, bottom, left;
 }
 
 
-/* @mixin box-shadow
- *
- * Accepts 6 parameters
- *  $horizontal: 	offset of the shadow, positive means the shadow will be on the right of the box, a negative offset will put the 					shadow on the left of the box
- *  $vertical: 		offset of the shadow, a negative one means the box-shadow will be above the box, a positive one means the shadow 					will be below the box
- *  $blur: 			radius, if set to 0 the shadow will be sharp, the higher the number, the more blurred it will be
- *	$spread: 		radius (optional), positive values increase the size of the shadow, negative values decrease the size. Default is 					0 (the shadow is same size as blur)
- *	$color: 		hex or rgba with alpha
- *	$inset: 		true for inner shadow (full/all sides)
- * * */
-@mixin box-shadow($horizontal, $vertical, $blur, $spread, $color, $inset: false) {
-	@if $inset {
-		-webkit-box-shadow:inset $horizontal $vertical $blur $spread $color;
-		-moz-box-shadow:inset $horizontal $vertical $blur $spread $color;
-		box-shadow:inset $horizontal $vertical $blur $spread $color;
-	} @else {
-		-webkit-box-shadow: $horizontal $vertical $blur $spread $color;
-		-moz-box-shadow: $horizontal $vertical $blur $spread $color;
-		box-shadow: $horizontal $vertical $blur $spread $color;
-	}
-}
-
-
 /* @mixin full-support
  *
  * Returns CSS property with needed vendor-prefixes
@@ -323,7 +260,7 @@ $directions: top, right, bottom, left;
   @if $prop == 'transition' { $vendors: $b_wo; }
   @if $prop == 'transform' { $vendors: $b_mi; }
 
-  
+
   @each $vendor in $vendors {
     #{$vendor}#{$prop}: $value;
   }
