@@ -36,7 +36,7 @@ exports.template = function( grunt, init, done ) {
         {
             name   : 'php_class_name',
             message: 'PHP Class name used to encapsulate our code',
-            default: 'Launchpad'
+            default: 'HatchTheme'
         },
         {
             name   : 'prefix',
@@ -44,11 +44,12 @@ exports.template = function( grunt, init, done ) {
             default: 'lp_'
         },
         init.prompt( 'base_version', '0.1' ),
-        init.prompt( 'description', 'A brief description about the theme' ),
+        init.prompt( 'description', 'A brief description about the theme/client.' ),
         init.prompt( 'homepage', 'http://linchpin.agency' ),
         init.prompt( 'author_name' ),
         init.prompt( 'author_email' ),
-        init.prompt( 'author_url', 'http://linchpin.agency' )
+        init.prompt( 'author_url', 'http://linchpin.agency' ),
+        init.prompt( 'text_domain', 'hatch' )
     ], function( err, props ) {
         props.keywords = [];
         props.version = '0.1.0';
@@ -71,6 +72,9 @@ exports.template = function( grunt, init, done ) {
         props.name = props.title.replace( /\s+/g, '-' ).toLowerCase();
         // Development prefix (i.e. to prefix PHP function names, variables)
         props.prefix = props.prefix.replace('/[^a-z_]/i', '').toLowerCase();
+
+        props.text_domain = props.text_domain.replace('/[^a-z_]/i', '').toLowerCase();
+
         // Development prefix in all caps (e.g. for constants)
         props.prefix_caps = props.prefix.toUpperCase();
         // An additional value, safe to use as a JavaScript identifier.

@@ -1,10 +1,10 @@
 <?php
-
 /**
- * HatchMenu class.
+ * HatchCustomHeader
+ *
  *
  * @package Hatch
- *
+ * @since 1.0
  */
 class HatchCustomHeader {
 
@@ -184,13 +184,13 @@ if ( !function_exists( 'hatch_admin_header_image' ) ) :
 			else
 				$style = ' style="color:#' . get_theme_mod( 'header_textcolor', HEADER_TEXTCOLOR ) . ';"';
 			?>
-			<h1><a id="name"<?php echo $style; ?> onclick="return false;"
-				   href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+			<h1><a id="name" <?php echo $style; ?> onclick="return false;"
+				   href="<?php esc_attr_e( esc_url( home_url( '/' ) ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 
 			<div id="desc"<?php echo $style; ?>><?php bloginfo( 'description' ); ?></div>
 			<?php $header_image = get_header_image();
 			if ( !empty( $header_image ) ) : ?>
-				<img src="<?php echo esc_url( $header_image ); ?>" alt=""/>
+				<img src="<?php esc_attr_e( esc_url( $header_image ) ); ?>" alt=""/>
 			<?php endif; ?>
 		</div>
 	<?php

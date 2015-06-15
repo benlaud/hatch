@@ -1,5 +1,7 @@
 <?php
 
+
+
 class FoundationShortcodes {
 
 	function __construct() {
@@ -14,9 +16,9 @@ class FoundationShortcodes {
 	 * @access public
 	 * @param mixed $attr
 	 * @param mixed $content (default: null)
-	 * @return void
+	 * @return mixed
 	 */
-	function fixed_img_caption_shortcode($attr, $content = null) {
+	function fixed_img_caption_shortcode( $attr, $content = null ) {
 	    if ( ! isset( $attr['caption'] ) ) {
 	        if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
 	            $content = $matches[1];
@@ -24,18 +26,26 @@ class FoundationShortcodes {
 	        }
 	    }
 	    $output = apply_filters('img_caption_shortcode', '', $attr, $content);
-	    if ( $output != '' )
-	        return $output;
+
+		if ( $output != '' ) {
+		    return $output;
+	    }
+
 	    extract(shortcode_atts(array(
 	        'id'    => '',
 	        'align' => 'alignnone',
 	        'width' => '',
 	        'caption' => ''
-	    ), $attr));
-	    if ( 1 > (int) $width || empty($caption) )
-	        return $content;
-	    if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
-	    return '<figure>'
-	    . do_shortcode( $content ) . '<figcaption>' . $caption . '</figcaption></figure>';
+	    ), $attr ) );
+
+	    if ( 1 > (int) $width || empty( $caption ) ) {
+		    return $content;
+	    }
+
+	    if ( isset( $id ) ) {
+		    $id = 'id="' . esc_attr( $id ) . '" ';
+	    }
+
+	    return '<figure>' . do_shortcode( $content ) . '<figcaption>' . $caption . '</figcaption></figure>';
 	}
 }

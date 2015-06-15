@@ -1,4 +1,12 @@
 <?php
+/**
+ * Hatch Base Class
+ *
+ * Where is all starts. Includes all of our Classes
+ *
+ * @package Hatch
+ * @since 1.0
+ */
 
 include( 'HatchOptions.php' );
 include( 'HatchCustomHeader.php' );
@@ -7,6 +15,9 @@ include( 'HatchUtilities.php' );
 include( 'HatchMenu.php' );
 include( 'Hatch_TinyMCE.php' );
 
+/**
+ * Class Hatch
+ */
 class Hatch {
 	function __construct() {
 		$hatch_activate = new HatchActivate();

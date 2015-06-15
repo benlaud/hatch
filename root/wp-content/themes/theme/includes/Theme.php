@@ -3,7 +3,7 @@
  * {%= title %}
  *
  * @author {%= author_name %}
- * @package Hatch
+ * @package {%= php_class_name %}
  *
  */
 class {%= php_class_name %} {
@@ -137,8 +137,8 @@ class {%= php_class_name %} {
 	function wp_enqueue_scripts() {
         $postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
-        wp_enqueue_script( 'modernizr',  get_template_directory_uri() . '/js/modernizr/modernizr' . $postfix . '.js', array(), {%= prefix_caps %}VERSION, false );
-		wp_enqueue_script( 'foundation', get_template_directory_uri() . '/js/app' . $postfix . '.js', array('jquery'), {%= prefix_caps %}VERSION, true );
+        wp_enqueue_script( 'modernizr',  get_stylesheet_directory_uri() . '/js/modernizr/modernizr' . $postfix . '.js', array(), {%= prefix_caps %}VERSION, false );
+		wp_enqueue_script( 'foundation', get_stylesheet_directory_uri() . '/js/app' . $postfix . '.js', array('jquery'), {%= prefix_caps %}VERSION, true );
 		wp_enqueue_script( '{%= js_safe_name %}', 	 get_stylesheet_directory_uri() . '/js/{%= js_safe_name %}' . $postfix . '.js', array( 'jquery' ), {%= prefix_caps %}VERSION, true );
 	}
 

@@ -1,6 +1,7 @@
 <?php
-
 /**
+ * Foundation Nav Walker Class
+ *
  * This is a custom nav walker that will add in custom styles based on
  * the foundation structure.
  *

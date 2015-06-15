@@ -1,9 +1,13 @@
 <?php
-
-/**
+ /**
+ * Hatch Options page
+ *
  * This is the main controller for the Hatch theme options
  * Some items are derived from other "blank" themes including
  * Blank, _s, and Roots etc.
+ *
+ * @package Hatch
+ * @since 1.0
  */
 
 class HatchOptions {
@@ -44,9 +48,8 @@ class HatchOptions {
 	 * @author aware
 	 * @access public
 	 * @static
-	 * @return void
+	 * @return mixed|void
 	 */
-
 	static function get_default_theme_options() {
         $default_theme_options = array(
             'additional_footer_scripts'		=> '',
@@ -54,21 +57,19 @@ class HatchOptions {
 
             // Version 2.0 Additional Defaults
 
-            'typekit_async'				 	=> FALSE,
+            'typekit_async'				 	=> false,
         );
 
         return apply_filters('hatch_default_theme_options', $default_theme_options);
 	}
 
 	/**
-	* Add in our options pages. This includes a specific display for activation as well
-	* as our regular theme options.
-	* @author aware
-	*/
+	 * Add in our options pages. This includes a specific display for activation as well
+	 * as our regular theme options.
+     *
+	 */
 
 	function theme_options_add_page() {
-
-		$hatch_options = hatch_get_theme_options();
 
         $theme_page = add_theme_page(
             __('Additional Options', 'hatch'),
@@ -95,7 +96,6 @@ class HatchOptions {
 	    global $hatch_options, $linchpin_classes_dir; ?>
 
 	    <div class="wrap">
-	        <?php screen_icon(); ?>
 	        <div id="hatch-wrap">
 
                 <?php $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'display_options'; ?>
@@ -120,7 +120,6 @@ class HatchOptions {
                     } ?>
                     <input type="hidden" value="1" name="hatch_theme_options[first_run]" />
                     <?php submit_button(); ?>
-
 			</form>
 	    </div>
 	    <?php
@@ -129,9 +128,10 @@ class HatchOptions {
 	/**
 	 * Enqueue all of our scripts and styles needed for our theme admin. These scripts will
 	 * be used in conjunction with the custom code utilized within core.js
-	 * @author aware
-	 * @param type $hook_suffix
-	 * @todo We should add in wp-pointer settings to guide users through the setup process
+     *
+	 * @param $hook
+	 *
+     * @todo We should add in wp-pointer settings to guide users through the setup process
 	 */
     function admin_enqueue_scripts( $hook ) {
 
@@ -259,10 +259,12 @@ class HatchOptions {
 	 * validate_theme_option function.
 	 *
 	 * @access public
-	 * @param array $input (default: array())
+	 *
+*@param array $input (default: array())
 	 * @param string $key (default: '')
 	 * @param string $required (default: '')
-	 * @return void
+	 *
+*@return void
 	 */
 	function validate_theme_option($input = array(), $key = '', $required = '') {
 
@@ -271,7 +273,7 @@ class HatchOptions {
 				if (preg_match('/^ua-\d{4,9}-\d{1,4}$/i', $input[$key] ) ) {
 				  $output[$key] = $input[$key];
 				} else {
-					return NULL;
+					return null;
 				}
 			} else {
 				if ( isset($input[$key]) ) {
@@ -279,12 +281,12 @@ class HatchOptions {
 					// do some extra checks for backwards compatibilty with yes/no answers
 
 					if ( 'yes' === $input[$key] || 'true' === $input[$key] ) {
-						$input[$key] = TRUE;
+						$input[$key] = true;
 					} elseif( 'no' === $input[$key] || 'false' === $input[$key] ) {
-						$input[$key] = FALSE;
+						$input[$key] = false;
 					}
 				} else {
-					return NULL;
+					return null;
 				}
 			}
 		} else {
@@ -293,9 +295,9 @@ class HatchOptions {
 				// do some extra checks for backwards compatibilty with yes/no answers
 
 				if ( 'yes' === $input[$key] || 'true' === $input[$key] ) {
-					$input[$key] = TRUE;
+					$input[$key] = true;
 				} elseif( 'no' === $input[$key] || 'false' === $input[$key] ) {
-					$input[$key] = FALSE;
+					$input[$key] = false;
 				}
 			} else {
 				return;
@@ -309,8 +311,10 @@ class HatchOptions {
 	 * theme_options_validate function.
 	 *
 	 * @access public
-	 * @param mixed $input
-	 * @return void
+	 *
+*@param mixed $input
+	 *
+*@return void
 	 */
 	function theme_options_validate($input) {
 
@@ -336,7 +340,7 @@ class HatchOptions {
 
 			$theme_option = self::validate_theme_option($input, $key, $option);
 
-			if( NULL !== $theme_option ) {
+			if( null !== $theme_option ) {
 				$output[$key] = $theme_option;
 			} else {
 				$invalid[$key] = $option;

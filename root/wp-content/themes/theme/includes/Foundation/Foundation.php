@@ -1,4 +1,13 @@
 <?php
+/**
+ * Foundation Base Class
+ *
+ * Where is all starts. Includes all of our Classes
+ *
+ * @package Hatch
+ * @subpackage Foundation
+ * @since 1.0
+ */
 
 global $foundation_utilities;
 
@@ -9,13 +18,15 @@ include_once( $foundation_classes_dir . 'Foundation_Cleanup.php' );
 include_once( $foundation_classes_dir . 'Foundation_Shortcodes.php' );
 include_once( $foundation_classes_dir . 'Foundation_Clearing.php' );
 
+/**
+ * Class Foundation
+ */
 class Foundation {
 
 	/**
 	 * __construct function.
 	 *
 	 * @access public
-	 * @return void
 	 */
 	function __construct() {
 
@@ -42,7 +53,7 @@ class Foundation {
 	 *
 	 * @access public
 	 * @param mixed $input
-	 * @return void
+	 * @return mixed
 	 */
 	function wp_list_pages( $input ) {
 
@@ -61,7 +72,7 @@ class Foundation {
 	 * @param mixed $classes
 	 * @param mixed $class
 	 * @param mixed $post_id
-	 * @return void
+	 * @return array
 	 */
 	function post_class( $classes, $class, $post_id ) {
 		global $wp_query;
@@ -78,23 +89,22 @@ class Foundation {
 	 *
 	 * @access public
 	 * @param mixed &$scripts
-	 * @return void
 	 */
 	function wp_enqueue_jquery_in_footer( &$scripts) {
-		if ( ! is_admin() )
+		if ( ! is_admin() ) {
 			$scripts->add_data( 'jquery', 'group', 1 );
+		}
 	}
 
 	/**
 	 * wp_enqueue_scripts function.
 	 *
 	 * @access public
-	 * @return void
 	 */
 	function wp_enqueue_scripts() {
-
-		if ( is_page_template('kitchen-sink.php') )
-	    	wp_enqueue_script( 'kitchen-sink', get_template_directory_uri() . '/js/kitchen-sink.js', array('jquery'), '1.0.0', true );
+		if ( is_page_template('kitchen-sink.php') ) {
+			wp_enqueue_script( 'kitchen-sink', get_template_directory_uri() . '/js/kitchen-sink.js', array( 'jquery' ), '1.0.0', true );
+		}
 	}
 
 	/**
@@ -104,7 +114,7 @@ class Foundation {
 	 * @access public
 	 * @param mixed $classes
 	 * @param mixed $item
-	 * @return void
+	 * @return string
 	 */
 	function add_active_nav_class( $classes, $item ) {
 

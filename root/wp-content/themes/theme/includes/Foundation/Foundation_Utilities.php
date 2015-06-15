@@ -8,26 +8,25 @@ class FoundationUtilities {
 	/**
 	 * __construct function.
 	 *
+     * @since 1.0
+     *
 	 * @access public
-	 * @return void
 	 */
 	function __construct() {
-		include_once('Foundation_Walker_Nav_Menu.php');
+		include_once( 'Foundation_Walker_Nav_Menu.php' );
 	}
 
 	/**
 	 * paginate_links function.
 	 *
-	 * TODO: Should probably convert the options to an array to add more flexiblity to the formatting @aware
-	 *
+	 * @todo Should probably convert the options to an array to add more flexiblity to the formatting @aware
 	 *
 	 * @access public
 	 * @param string $prev_text (default: '&laquo')
-	 * @param string $next (default: '&raquo')
-	 * @return void
+	 * @param string $next_text (default: '&raquo')
+	 * @return string
 	 */
-
-	static function paginate_links($prev_text = '&laquo;' , $next_text = '&raquo;' ) {
+	static function paginate_links( $prev_text = '&laquo;' , $next_text = '&raquo;' ) {
 
     	global $wp_query;
 
@@ -48,15 +47,15 @@ class FoundationUtilities {
         ) );
 
         if( is_array( $pages ) ) {
-            $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+            $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var( 'paged' );
 
             $pagination 	.= '<ul class="pagination">';
 
-            $start_page = ( 1 === $current )? 1 : 0; // need to offset if using prev_text / next_text
+            $start_page = ( 1 === $current )? 1 : 0; // Need to offset if using prev_text / next_text.
             $page_count  = $start_page;
 
             foreach ( $pages as $page ) {
-            	$pagination .=  "<li" . ( ($page_count == $paged)? ' class="current"' : '' ) . ">$page</li>";
+            	$pagination .=  "<li" . ( ( $page_count == $paged ) ? ' class="current"' : '' ) . ">$page</li>";
             	$page_count++;
             }
 
@@ -100,8 +99,9 @@ class FoundationUtilities {
  * FoundationPress_menu_fallback function.
  * A fallback when no navigation is selected by default.
  *
+ * @since 1.0
+ *
  * @access public
- * @return void
  */
 function hatch_menu_fallback() {
 	global $foundation_utilities;
@@ -112,10 +112,11 @@ function hatch_menu_fallback() {
 /**
  * hatch_pagination function.
  *
+ * @since 1.0
+ *
  * @access public
  * @param mixed $prev_text
  * @param mixed $next_text
- * @return void
  */
 function hatch_pagination($prev_text, $next_text) {
 	echo FoundationUtilities::paginate_links($prev_text, $next_text);
@@ -123,13 +124,14 @@ function hatch_pagination($prev_text, $next_text) {
 
 /**
  * hatch_entry_meta function.
+ * @todo: This needs a filter.
  *
  * @access public
  * @return void
  */
 function hatch_entry_meta() {
-    echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('Posted on %s at %s.', 'hatch'), get_the_time('l, F jS, Y'), get_the_time()) .'</time>';
-    echo '<p class="byline author">'. __('Written by', 'hatch') .' <a href="'. get_author_posts_url(get_the_author_meta('ID')) .'" rel="author" class="fn">'. get_the_author() .'</a></p>';
+    echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf( __( 'Posted on %s at %s.', 'hatch' ), get_the_time('l, F jS, Y'), get_the_time() ) .'</time>';
+    echo '<p class="byline author">'. __( 'Written by', 'hatch' ) .' <a href="'. get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author() . '</a></p>';
 }
 
 /**

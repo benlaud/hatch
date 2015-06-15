@@ -7,8 +7,6 @@
 get_header(); ?>
 <div class="row">
 	<div class="small-12 large-12 columns" role="main">
-
-	<?php /* Start loop */ ?>
 	<?php while (have_posts()) : the_post(); ?>
 		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 			<header>
@@ -738,12 +736,15 @@ get_header(); ?>
 			</p>
 
 			<footer>
-				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'hatch'), 'after' => '</p></nav>' )); ?>
+				<?php wp_link_pages( array( 'before' => '<nav id="page-nav"><p>' . __( 'Pages:', '{%= text_domain %}' ), 'after' => '</p></nav>' ) ); ?>
 				<p><?php the_tags(); ?></p>
 			</footer>
+
+			<?php do_action( 'hatch_post_before_comments' ); ?>
 			<?php comments_template(); ?>
+			<?php do_action( 'hatch_post_after_comments' ); ?>
 		</article>
-	<?php endwhile; // End the loop ?>
+	<?php endwhile; ?>
 	</div>
 </div>
 <?php get_footer(); ?>

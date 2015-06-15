@@ -3,11 +3,19 @@
 class FoundationClearing {
 
 	function __construct() {
-		add_action( 'after_setup_theme', array($this, 'setup_gallery_shortcode') );
-
-//		apply_filters( 'wp_get_attachment_link',  array($this, 'add_link_class') );
+		add_action( 'after_setup_theme', array( $this, 'setup_gallery_shortcode' ) );
 	}
 
+	/**
+	 * Add class to links for Foundation Clearing of "th"
+	 *
+	 * @param $markup
+	 * @param $id
+	 * @param $size
+	 * @param $permalink
+	 *
+	 * @return mixed
+	 */
 	function add_link_class( $markup, $id, $size, $permalink ) {
 	    global $post;
 	    if ( ! $permalink )
@@ -16,6 +24,11 @@ class FoundationClearing {
 	    return $markup;
 	}
 
+	/**
+	 * Create a gallery shortcode.
+	 *
+	 * @since 1.0
+	 */
 	public function setup_gallery_shortcode() {
 		remove_shortcode('gallery', array( $this, 'gallery_shortcode' ) ); 		          //First remove the standard wordpress gallery shortcode action
 		add_shortcode(   'gallery', array( $this, 'foundation_gallery_shortcode' ) );     //Add our foundation clearing gallery shortcode action here
@@ -91,25 +104,30 @@ class FoundationClearing {
 
 		extract(shortcode_atts($gallery_defaults, $attr, 'gallery'));
 
-		$id = intval($id);
-		if ( 'RAND' == $order )
-			$orderby = 'none';
+		$id = intval( $id );
 
-		if ( !empty($include) ) {
-			$_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+		if ( 'RAND' == $order ) {
+			$orderby = 'none';
+		}
+
+		if ( !empty( $include ) ) {
+			$_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby ) );
 
 			$attachments = array();
+
 			foreach ( $_attachments as $key => $val ) {
 				$attachments[$val->ID] = $_attachments[$key];
 			}
-		} elseif ( !empty($exclude) ) {
+
+		} elseif ( !empty( $exclude ) ) {
 			$attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
 		} else {
-			$attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+			$attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby ) );
 		}
 
-		if ( empty($attachments) )
+		if ( empty( $attachments ) ) {
 			return '';
+		}
 
 		if ( is_feed() ) {
 			$output = "\n";
@@ -122,14 +140,20 @@ class FoundationClearing {
 		$captiontag = tag_escape($captiontag);
 		$icontag = tag_escape($icontag);
 		$valid_tags = wp_kses_allowed_html( 'post' );
-		if ( ! isset( $valid_tags[ $itemtag ] ) )
-			$itemtag = 'dl';
-		if ( ! isset( $valid_tags[ $captiontag ] ) )
-			$captiontag = 'dd';
-		if ( ! isset( $valid_tags[ $icontag ] ) )
-			$icontag = 'dt';
 
-		$columns = intval($columns);
+		if ( ! isset( $valid_tags[ $itemtag ] ) ) {
+			$itemtag = 'dl';
+		}
+
+		if ( ! isset( $valid_tags[ $captiontag ] ) ) {
+			$captiontag = 'dd';
+		}
+
+		if ( ! isset( $valid_tags[ $icontag ] ) ) {
+			$icontag = 'dt';
+		}
+
+		$columns = intval( $columns );
 
 		//Set bloch grid class based on columns
 		switch( $columns ) {
@@ -161,13 +185,15 @@ class FoundationClearing {
 		$output = apply_filters( 'gallery_style', $gallery_container );
 
 		$i = 0;
+
 		foreach ( $attachments as $id => $attachment ) {
-			if ( ! empty( $attr['link'] ) && 'file' === $attr['link'] )
+			if ( ! empty( $attr['link'] ) && 'file' === $attr['link'] ) {
 				$image_output = wp_get_attachment_link( $id, $size, false, false );
-			elseif ( ! empty( $attr['link'] ) && 'none' === $attr['link'] )
+			} elseif ( ! empty( $attr['link'] ) && 'none' === $attr['link'] ) {
 				$image_output = wp_get_attachment_image( $id, $size, false );
-			else
+			} else {
 				$image_output = wp_get_attachment_link( $id, $size, true, false );
+			}
 
 			$image_output = wp_get_attachment_link( $id, $size, false, false );
 
@@ -175,18 +201,19 @@ class FoundationClearing {
 
 			//Cache image caption
 			$caption_text = NULL;
-			if ( trim($attachment->post_excerpt) ) {
-				$caption_text = wptexturize($attachment->post_excerpt);
-				$caption_text = apply_filters( 'foundation_gallery_image_caption', $caption_text, $attachment );
+
+			if ( trim( $attachment->post_excerpt ) ) {
+				$caption_text = wptexturize( $attachment->post_excerpt );
+				$caption_text = esc_attr( apply_filters( 'foundation_gallery_image_caption', $caption_text, $attachment ) );
 			}
 
 			//Add caption to img tag
-			$image_output = str_replace('<img', "<img data-caption='{$caption_text}'", $image_output);
+			$image_output = str_replace('<img', "<img data-caption='{$caption_text}'", $image_output );
 
 			ob_start();
 			?>
-			<li class="<?php echo apply_filters( 'foundation_gallery_li_class', $columns, $attachment ); ?>">
-				<?php echo $image_output; ?>
+			<li class="<?php esc_attr_e( apply_filters( 'foundation_gallery_li_class', $columns, $attachment ) ); ?>">
+				<?php esc_html_e( $image_output ); ?>
 			</li>
 			<?php
 			$output.= ob_get_contents();
@@ -194,7 +221,7 @@ class FoundationClearing {
 
 		}
 
-		$output .= "</ul></div></div>";
+		$output .= '</ul></div></div>';
 
 		return apply_filters( 'foundation_gallery_output',$output, $columns, $attachment );
 	}

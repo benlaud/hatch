@@ -25,7 +25,7 @@
 			<th scope="row"><?php _e( 'Terms & Conditions', 'hatch' ); ?></th>
 			<td>
 				<div>
-					<label class="screen-reader-text" for="footer_info"><span><?php _e( 'Terms & Conditions', 'hatch' ); ?></span></label>
+					<label class="screen-reader-text" for="footer_info"><span><?php _e( 'Terms & Conditions', '{%= text_domain %}' ); ?></span></label>
 
 					<?php $terms = '';
 

@@ -1,21 +1,23 @@
 <?php
-
 /**
  * HatchUtilities class.
  *
+ * Houses various utility methods.
+ *
  * @package Hatch
+ * @since 1.0
  */
+
 class HatchUtilities {
 
 	/**
 	 * __construct function.
 	 *
 	 * @access public
-	 * @return void
 	 */
 	function __construct() {
 		add_action( 'edit_category', array( $this, 'category_transient_flusher' ) );
-		add_action( 'save_post', array( $this, 'category_transient_flusher' ) );
+		add_action( 'save_post',     array( $this, 'category_transient_flusher' ) );
 	}
 
 	/**
@@ -86,7 +88,7 @@ class HatchUtilities {
 
 		<?php if ( !is_home() ) { ?>
 
-			<li><a href="<?php echo get_option( 'home' ); ?>"><?php _e( 'Home', 'hatch' ); ?></a></li>
+			<li><a href="<?php echo get_option( 'home' ); ?>"><?php _e( 'Home', '{%= text_domain %}' ); ?></a></li>
 
 			<?php if ( is_category() || is_single() ) : ?>
 

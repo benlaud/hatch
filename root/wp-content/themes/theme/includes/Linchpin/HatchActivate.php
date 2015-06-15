@@ -1,4 +1,12 @@
 <?php
+/**
+ * Class HatchActivate
+ *
+ * Handles all of our activation hooks. Handle compatibility
+ *
+ * @package Hatch
+ * @since 1.0
+ */
 
 class HatchActivate {
 	function __construct() {
