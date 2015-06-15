@@ -2,7 +2,7 @@ if( typeof({%= js_safe_name %}_admin) == 'undefined' ) {
     {%= js_safe_name %}_admin = {};
 }
 
-{%= js_safe_name %}_admin.utils = function ( $ ) { //
+{%= js_safe_name %}_admin.utils = function ( $ ) {
     // Private Variables
     var $doc = $(document);
 
@@ -25,7 +25,7 @@ if( typeof({%= js_safe_name %}_admin) == 'undefined' ) {
     		$sidebars.each(function() {
     			var id	   = $(this).attr('id'),
     				selected = sidebars.sidebars['sidebar_layout_' + id ],
-                    $options = $('<option value="">Select Your Widget Layout</option><option value="0" ' + ((selected === '0')? ' selected="select"' : '' ) + '>Horizontal</option><option value="1" ' + ((selected === '1')? ' selected="select"' : '' ) + '>Vertical</option><option value="2" '  + ((selected === '2')? ' selected="select"' : '' ) + '>No Foundation</option></select>'),
+                    $options = $('<option value="">Select Your Widget Layout</option><option value="0" ' + ( ( selected === '0' ) ? ' selected="select"' : '' ) + '>Horizontal</option><option value="1" ' + ( ( selected === '1' ) ? ' selected="select"' : '' ) + '>Vertical</option><option value="2" '  + ((selected === '2')? ' selected="select"' : '' ) + '>No Foundation</option></select>'),
                     $select = $('<select/>').attr({
                         'id' : id + '-layout',
                         'name' : id + '-layout',
@@ -54,7 +54,7 @@ if( typeof({%= js_safe_name %}_admin) == 'undefined' ) {
 
                 $this.after( $span );
 
-    			$.post(ajaxurl, data, function(response) {
+    			$.post(ajaxurl, data, function( response ) {
 
     				$('#spinner-' + data.sidebar).fadeOut('fast', function() {
     					$(this).remove();
