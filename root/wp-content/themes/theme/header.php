@@ -15,25 +15,30 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php wp_title( '|', true, 'right' ); ?></title>
-    <link rel="shortcut icon" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/favicon.ico" type="image/x-icon">
-	<!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
-	<link rel="apple-touch-icon-precomposed" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-precomposed.png"><!-- 57×57px -->
-	<!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-72x72-precomposed.png">
-	<!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
-	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-76x76-precomposed.png">
-	<!-- For iPhone with @2× display running iOS ≤ 6: -->
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-114x114-precomposed.png">
-	<!-- For iPhone with @2× display running iOS ≥ 7: -->
-	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-120x120-precomposed.png">
-	<!-- For iPad with @2× display running iOS ≤ 6: -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-144x144-precomposed.png">
-	<!-- For iPad with @2× display running iOS ≥ 7: -->
-	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-152x152-precomposed.png">
-	<!-- For iPhone 6 Plus with @3× display: -->
-	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-180x180-precomposed.png">
-	<!-- For Chrome for Android: -->
-	<link rel="icon" sizes="192x192" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/touch-icon-192x192.png">
+
+
+    <?php /* Favicon mark-up (http://realfavicongenerator.net/) */ ?>
+	<link rel="apple-touch-icon" sizes="57x57" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/android-chrome-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/manifest.json">
+	<link rel="shortcut icon" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/favicon.ico">
+	<meta name="apple-mobile-web-app-title" content="<?php bloginfo( 'name' ); ?>">
+	<meta name="application-name" content="<?php bloginfo( 'name' ); ?>">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/mstile-144x144.png">
+	<meta name="msapplication-config" content="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
 
     <?php wp_head(); ?>
 
