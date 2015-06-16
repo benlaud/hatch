@@ -1,4 +1,4 @@
-# Hatch a remix of FoundationPress
+# Hatch by Linchpin is WordPress theme scaffold based on Foundation
 
 The project is a grunt-init scaffold *YOU MUST HAVE GRUNT-INIT installed*
 
@@ -12,7 +12,7 @@ In order for this to work properly you will need to clone this repo into your lo
 
 The purpose of our version of this project is to act as a small and handy toolbox that contains the essentials needed to a responsive theme based on Foundation 5.x. This theme is meant to be a starting point not a parent theme.
 
-*The biggest difference between this Fork and FoundationPress*
+*The biggest difference between this project and FoundationPress*
   * Coding methodologies
   * Internal development process.
   * Grunt Scaffold (Please read up on this before starting)

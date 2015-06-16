@@ -1,6 +1,6 @@
 <?php
 /**
- * HatchUtilities class.
+ * HatchUtilities
  *
  * Houses various utility methods.
  *
@@ -8,6 +8,9 @@
  * @since 1.0
  */
 
+/**
+ * Class HatchUtilities
+ */
 class HatchUtilities {
 
 	/**
@@ -21,7 +24,6 @@ class HatchUtilities {
 	}
 
 	/**
-	 * categorized_blog function.
 	 * Returns true if a blog has more than 1 category.
 	 *
 	 * @access public
@@ -54,7 +56,6 @@ class HatchUtilities {
 	}
 
 	/**
-	 * category_transient_flusher function.
 	 * Flush out the transients used in test_categorized_blog.
 	 *
 	 * @access public
@@ -65,14 +66,12 @@ class HatchUtilities {
 	}
 
 	/**
-	 * breadcrumbs function.
+	 * Define our breadcrumbs
 	 * Loosely based on http://cazue.com/articles/wordpress-creating-breadcrumbs-without-a-plugin-2013
 	 *
 	 * If the site uses Breadcrumbs NavXT use that instead
 	 *
-	 *
 	 * @access public
-	 * @static
 	 * @return void
 	 */
 	static function breadcrumbs() {
@@ -80,15 +79,16 @@ class HatchUtilities {
 
 		<ul class="breadcrumbs">
 
-		<?php if ( function_exists( 'bcn_display' ) ) : // use BreadCrumbNavXT is available
+		<?php if ( function_exists( 'bcn_display' ) ) : // Use BreadCrumbNavXT is available.
 				bcn_display();
-				// Be sure to close our opening UL ?>
+				// Be sure to close our opening UL. ?>
 				</ul>
-		<?php return; endif; // end bcn check ?>
+		<?php return;
+		endif; // End bcn check. ?>
 
-		<?php if ( !is_home() ) { ?>
+		<?php if ( ! is_home() ) { ?>
 
-			<li><a href="<?php echo get_option( 'home' ); ?>"><?php _e( 'Home', '{%= text_domain %}' ); ?></a></li>
+			<li><a href="<?php esc_attr_e( get_option( 'home' ) ); ?>"><?php esc_html_e( 'Home', '{%= text_domain %}' ); ?></a></li>
 
 			<?php if ( is_category() || is_single() ) : ?>
 
@@ -106,28 +106,28 @@ class HatchUtilities {
 
 				<?php if ( $post->post_parent ) :
 					$anc = get_post_ancestors( $post->ID );
-					$title = get_the_title();
+
 					foreach ( $anc as $ancestor ) : ?>
 
-						<li><a href="<?php echo get_permalink( $ancestor ); ?>"
-							   title="<?php echo get_the_title( $ancestor ); ?>"><?php echo get_the_title( $ancestor ); ?></a>
+						<li><a href="<?php esc_attr_e( get_permalink( $ancestor ) ); ?>"
+							   title="<?php esc_attr_e( get_the_title( $ancestor ) ); ?>"><?php echo get_the_title( $ancestor ); ?></a>
 						</li>
 
 					<?php endforeach; ?>
 
-					<li class="current"><?php echo $title; ?></li>
+					<li class="current"><?php esc_html_e( get_the_title() ); ?></li>
 
 				<?php else : ?>
 
-					<li class="current"><?php echo get_the_title(); ?></li>
+					<li class="current"><?php esc_html_e( get_the_title() ); ?></li>
 
 				<?php endif; ?>
 			<?php endif; ?>
-		<?php
-		} elseif ( is_tag() ) {
-			single_tag_title();
-		} elseif ( is_day() ) {
-			?>
+<?php
+} elseif ( is_tag() ) {
+	single_tag_title();
+} elseif ( is_day() ) {
+?>
 			<li>Archive for <?php the_time( 'F jS, Y' ); ?></li>
 		<?php } elseif ( is_month() ) { ?>
 			<li>Archive for <?php the_time( 'F, Y' ); ?></li>
@@ -135,7 +135,7 @@ class HatchUtilities {
 			<li>Archive for <?php the_time( 'Y' ); ?></li>
 		<?php } elseif ( is_author() ) { ?>
 			<li>Author Archive</li>
-		<?php } elseif ( isset( $_GET[ 'paged' ] ) && !empty( $_GET[ 'paged' ] ) ) { ?>
+		<?php } elseif ( isset( $_GET['paged'] ) && ! empty( $_GET['paged'] ) ) { ?>
 			<li>Blog Archives</li>
 		<?php } elseif ( is_search() ) { ?>
 			<li>Search Results</li>
@@ -146,20 +146,18 @@ class HatchUtilities {
 }
 
 /**
- * hatch_breadcrumbs function.
+ * Utility method for hatch_breadcrumbs function.
  *
  * @access public
- * @return void
  */
 function hatch_breadcrumbs() {
 	HatchUtilities::breadcrumbs();
 }
 
 /**
- * hatch_categorized_blog function.
+ * Utility method for hatch_categorized_blog function.
  *
  * @access public
- * @return void
  */
 function hatch_categorized_blog() {
 	HatchUtilities::categorized_blog();

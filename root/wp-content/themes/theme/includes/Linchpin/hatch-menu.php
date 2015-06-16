@@ -5,6 +5,10 @@
  * @package Hatch
  * @since 1.0
  */
+
+/**
+ * Class HatchMenu
+ */
 class HatchMenu {
 	/**
 	 * __construct function.
@@ -12,11 +16,14 @@ class HatchMenu {
 	 * @access public
 	 */
 	function __construct() {
-	  add_action( 'wp_before_admin_bar_render', array( $this, 'add_links' ) );
+		add_action( 'wp_before_admin_bar_render', array( $this, 'add_links' ) );
 	}
 
 	/**
-	 * add_links function.
+	 * Add a link to display if you are on staging or prod.
+	 *
+	 * @todo this should be a plugin
+	 * @since 1.0
 	 *
 	 * @access public
 	 * @return void
@@ -24,13 +31,13 @@ class HatchMenu {
 	function add_links() {
 		global $wp_admin_bar;
 
-		if( strpos(site_url(), 'staging') !== false ) {
-			$title  =  __( 'Staging', 'launchpad' );
+		if ( strpos( site_url(), 'staging' ) !== false ) {
+			$title  = __( 'Staging', 'launchpad' );
 			$meta   = array(
 				'class'    => 'staging',
 			);
 		} else {
-			$title  =  __( 'Production', 'launchpad' );
+			$title  = __( 'Production', 'launchpad' );
 			$meta   = array(
 				'class'    => 'production',
 			);
@@ -41,7 +48,7 @@ class HatchMenu {
 			'id'     => 'staging_flag',
 			'title'  => '',
 			'href'   => '#',
-			'meta'	 => $meta
+			'meta'	 => $meta,
 		);
 
 		$wp_admin_bar->add_menu( $args );

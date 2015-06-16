@@ -11,12 +11,12 @@
 
 global $foundation_utilities;
 
-$foundation_classes_dir = get_template_directory() . '/includes/Foundation/';
+$foundation_classes_dir = get_stylsheet_directory() . '/includes/Foundation/';
 
-include_once( $foundation_classes_dir . 'Foundation_Utilities.php' );
-include_once( $foundation_classes_dir . 'Foundation_Cleanup.php' );
-include_once( $foundation_classes_dir . 'Foundation_Shortcodes.php' );
-include_once( $foundation_classes_dir . 'Foundation_Clearing.php' );
+include_once( $foundation_classes_dir . 'foundation-utilities.php' );
+include_once( $foundation_classes_dir . 'foundation-cleanup.php' );
+include_once( $foundation_classes_dir . 'foundation-shortcodes.php' );
+include_once( $foundation_classes_dir . 'foundation-clearing.php' );
 
 /**
  * Class Foundation
@@ -45,14 +45,13 @@ class Foundation {
 	}
 
 	/**
-	 * wp_list_pages function.
 	 *
 	 * Use the active class of ZURB Foundation on wp_list_pages output.
 	 *
 	 * From required+ Foundation http://themes.required.ch
 	 *
 	 * @access public
-	 * @param mixed $input
+	 * @param mixed $input input makup for our list element.
 	 * @return mixed
 	 */
 	function wp_list_pages( $input ) {
@@ -68,16 +67,15 @@ class Foundation {
 	/**
 	 * Add end class to the last post in a query.
 	 *
-	 * @access public
-	 * @param mixed $classes
-	 * @param mixed $class
-	 * @param mixed $post_id
+	 * @param array $classes Array of classes passed to the filter.
+	 * @param mixed $class Default class passed to filter.
+	 * @param mixed $post_id If specifically needed.
 	 * @return array
 	 */
 	function post_class( $classes, $class, $post_id ) {
 		global $wp_query;
 
-		if ( $wp_query->current_post + 1 == $wp_query->found_posts ) {
+		if ( $wp_query->current_post + 1 === $wp_query->found_posts ) {
 			$classes[] = 'end';
 		}
 
@@ -85,41 +83,41 @@ class Foundation {
 	}
 
 	/**
-	 * print_jquery_in_footer function.
+	 * Print jQuery library in the footer.
 	 *
-	 * @access public
-	 * @param mixed &$scripts
+	 * @since 1.0
+	 *
+	 * @param mixed $scripts Our scripts we are listing.
 	 */
-	function wp_enqueue_jquery_in_footer( &$scripts) {
+	function wp_enqueue_jquery_in_footer( $scripts ) {
 		if ( ! is_admin() ) {
 			$scripts->add_data( 'jquery', 'group', 1 );
 		}
 	}
 
 	/**
-	 * wp_enqueue_scripts function.
+	 * If we are displaying the kitchen sink print out extra js
 	 *
-	 * @access public
+	 * @since 1.0
 	 */
 	function wp_enqueue_scripts() {
-		if ( is_page_template('kitchen-sink.php') ) {
-			wp_enqueue_script( 'kitchen-sink', get_template_directory_uri() . '/js/kitchen-sink.js', array( 'jquery' ), '1.0.0', true );
+		if ( is_page_template( 'kitchen-sink.php' ) ) {
+			wp_enqueue_script( 'kitchen-sink', get_stylesheet_directory_uri() . '/js/kitchen-sink.js', array( 'jquery' ), '1.0.0', true );
 		}
 	}
 
 	/**
-	 * add_active_nav_class function.
 	 * Add Foundation 'active' class for the current menu item
 	 *
-	 * @access public
-	 * @param mixed $classes
-	 * @param mixed $item
+	 * @param mixed $classes Our classes array.
+	 * @param mixed $item The item we're setting to active.
 	 * @return string
 	 */
 	function add_active_nav_class( $classes, $item ) {
 
-	    if ( $item->current == 1 || $item->current_item_ancestor == true )
-	        $classes[] = 'active';
+	    if ( $item->current === 1 || $item->current_item_ancestor === true ) {
+		    $classes[] = 'active';
+	    }
 
 	    return $classes;
 	}

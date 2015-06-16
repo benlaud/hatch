@@ -18,7 +18,6 @@ if( typeof({%= js_safe_name %}_admin) == 'undefined' ) {
          * Setup our sidebar controls
          * @author aware
          */
-
         setupSidebarControls: function() {
     		var $sidebars = $('.widgets-sortables');
 
@@ -33,7 +32,7 @@ if( typeof({%= js_safe_name %}_admin) == 'undefined' ) {
                         'class' : 'sidebar-layout-select'
                     }).append( $options ),
                     $label = $('<label/>').attr('for', id + '-layout').append( 'Select Layout:' + $select) ,
-                    $p = $('<p class="sidebar-description" />').append( $label );
+                    $p = $('<p/>').attr({class:'sidebar-description'}).append( $label );
     			$(this).prepend( $p );
     		});
 

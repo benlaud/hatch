@@ -1,6 +1,7 @@
 <?php
 /**
  * Base template for all comments
+ *
  * @todo This file could definitely use some cleanup -aware
  *
  * @since 1.0
@@ -10,7 +11,16 @@
  */
 
 ?>
-<?php function hatch_comments( $comment, $args, $depth ) {
+<?php
+
+/**
+ * Build out our comments
+ *
+ * @param mixed $comment Global comments argument.
+ * @param array $args Comments args.
+ * @param int   $depth How deep the thread should go.
+ */
+function hatch_comments( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment; ?>
 	<li <?php comment_class(); ?>>
 		<article id="comment-<?php comment_ID(); ?>">
@@ -61,7 +71,7 @@ if ( ! empty( $_SERVER['SCRIPT_FILENAME'] ) && 'comments.php' === basename( $_SE
 if ( post_password_required() ) { ?>
 <section id="comments">
 	<div class="notice">
-		<p class="bottom"><?php _e( 'This post is password protected. Enter the password to view comments.', '{%= text_domain %}' ); ?></p>
+		<p class="bottom"><?php esc_html_e( 'This post is password protected. Enter the password to view comments.', '{%= text_domain %}' ); ?></p>
 	</div>
 </section>
 <?php
@@ -85,24 +95,24 @@ if ( post_password_required() ) { ?>
 <?php endif; ?>
 <?php if ( comments_open() ) : ?>
 <section id="respond">
-	<h3><?php comment_form_title( __('Leave a Reply', '{%= text_domain %}' ), __('Leave a Reply to %s', '{%= text_domain %}' ) ); ?></h3>
+	<h3><?php comment_form_title( __( 'Leave a Reply', '{%= text_domain %}' ), __( 'Leave a Reply to %s', '{%= text_domain %}' ) ); ?></h3>
 	<p class="cancel-comment-reply"><?php cancel_comment_reply_link(); ?></p>
-	<?php if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) : ?>
-	<p><?php printf( __('You must be <a href="%s">logged in</a> to post a comment.', '{%= text_domain %}' ), wp_login_url( get_permalink() ) ); ?></p>
+	<?php if ( get_option( 'comment_registration' ) && ! is_user_logged_in() ) : ?>
+	<p><?php printf( __( 'You must be <a href="%s">logged in</a> to post a comment.', '{%= text_domain %}' ), wp_login_url( get_permalink() ) ); ?></p>
 	<?php else : ?>
-	<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
+	<form action="<?php echo get_option( 'siteurl' ); ?>/wp-comments-post.php" method="post" id="commentform">
 		<?php if ( is_user_logged_in() ) :
 			global $user_identity; ?>
 
-		<p><?php printf( __( 'Logged in as <a href="%s/wp-admin/profile.php">%s</a>.', '{%= text_domain %}' ), get_option('siteurl'), $user_identity ); ?> <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php __('Log out of this account', '{%= text_domain %}'); ?>"><?php _e('Log out &raquo;', '{%= text_domain %}'); ?></a></p>
+			<p><?php printf( __( 'Logged in as <a href="%s/wp-admin/profile.php">%s</a>.', '{%= text_domain %}' ), get_option( 'siteurl' ), $user_identity ); ?> <a href="<?php echo wp_logout_url( get_permalink() ); ?>" title="<?php esc_attr_e( 'Log out of this account', '{%= text_domain %}' ); ?>"><?php _e( 'Log out &raquo;', '{%= text_domain %}' ); ?></a></p>
 		<?php else : ?>
 		<p>
 			<label for="author"><?php esc_html_e( 'Name', '{%= text_domain %}' ); if ( $req ) : esc_html_e(' (required)', '{%= text_domain %}' ); endif; ?></label>
-			<input type="text" class="five" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" tabindex="1" <?php if ($req) : ?>aria-required="true"<?php endif; ?>>
+			<input type="text" class="five" name="author" id="author" value="<?php esc_attr_e( $comment_author ); ?>" size="22" tabindex="1" <?php if ( $req ) : ?>aria-required="true"<?php endif; ?>>
 		</p>
 		<p>
 			<label for="email"><?php esc_html_e( 'Email (will not be published)', '{%= text_domain %}' ); if ( $req ) : esc_html_e( ' (required)', '{%= text_domain %}' ); endif; ?></label>
-			<input type="text" class="five" name="email" id="email" value="<?php esc_attr_e( $comment_author_email ); ?>" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?>>
+			<input type="text" class="five" name="email" id="email" value="<?php esc_attr_e( $comment_author_email ); ?>" size="22" tabindex="2" <?php if ( $req ) : ?>aria-required="true"<?php endif; ?>>
 		</p>
 		<p>
 			<label for="url"><?php esc_html_e( 'Website', '{%= text_domain %}' ); ?></label>
@@ -120,4 +130,4 @@ if ( post_password_required() ) { ?>
 	</form>
 	<?php endif; ?>
 </section>
-<?php endif; ?>
+<?php endif;

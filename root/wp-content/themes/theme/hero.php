@@ -1,8 +1,10 @@
 <?php
-
 /**
+ * Hero/Slideshow area
  *
  * @package Hatch
+ * @since 1.0
+ *
  * Template Part: Hero
  */
 

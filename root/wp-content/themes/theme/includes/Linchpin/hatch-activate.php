@@ -1,23 +1,30 @@
 <?php
 /**
- * Class HatchActivate
+ * HatchActivate
  *
- * Handles all of our activation hooks. Handle compatibility
+ * Handles all of our activation hooks. Handle compatibility.
  *
  * @package Hatch
  * @since 1.0
  */
 
+/**
+ * Class HatchActivate
+ */
 class HatchActivate {
+
+	/**
+	 *  Construct
+	 */
 	function __construct() {
 		add_filter( 'option_page_capability_hatch_activation_options', array( $this, 'activation_options_page_capability' ) );
 	}
 
 	/**
-	 * activation_options_page_capability function.
+	 * Activation_options_page_capability function.
 	 *
 	 * @access private
-	 * @param mixed $capability
+	 * @param mixed $capability The capability needed to see this page.
 	 * @return string
 	 */
 	function activation_options_page_capability( $capability ) {
@@ -26,7 +33,10 @@ class HatchActivate {
 }
 
 /**
- * hatch_add_help_tabs_to_theme_page function.
+ * Add some help to our theme.
+ * Use 'callback' instead of 'content' for a function callback that renders the tab content.
+ *
+ * @todo add more help as time goes on.
  *
  * @access public
  * @return void
@@ -37,6 +47,5 @@ function hatch_add_help_tabs_to_theme_page() {
 		'id' => 'hatch-activation-help', // This should be unique for the screen.
 		'title' => 'Prepare for Launch',
 		'content' => '<p>Within this page contains the basic setup options for your theme.</p>',
-		// Use 'callback' instead of 'content' for a function callback that renders the tab content.
 	) );
 }

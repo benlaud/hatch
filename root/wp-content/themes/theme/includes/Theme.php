@@ -27,7 +27,7 @@ class {%= php_class_name %} {
 		add_action( 'init', 			  	array( $this, 'init' ) );
 		add_action( 'widgets_init', 	  	array( $this, 'widgets_init' ) );
 		add_action( 'customize_register',	array( $this, 'customize_register' ) );
-		
+
 		add_action( 'after_setup_theme', 	array( $this, 'after_setup_theme' ) );
 		add_action( 'after_setup_theme',	array( $this, 'add_editor_styles' ) );
 	}
@@ -198,9 +198,9 @@ class {%= php_class_name %} {
 	 *
 	 * @access public
 	 * @param array $mimes (default: array())
-	 * @return void
+	 * @return array
 	 */
-	function upload_mimes($mimes = array()) {
+	function upload_mimes( $mimes = array() ) {
 	    $mimes['svg'] = 'image/svg+xml';
 	    return $mimes;
 	}

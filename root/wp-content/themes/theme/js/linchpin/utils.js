@@ -312,8 +312,12 @@ linchpin.utils = function( $ ) {
 			})
 
 			.bind('gform_post_render', linchpin.utils.setup_form_fields);
+
+			var $equalizers = $('[data-lp-equal]');
 			
-			if ( $('[data-lp-equal]').length ) $('[data-lp-equal]').each( linchpin.utils.lp_equalizer );
+			if ( $equalizers.length ) {
+				$equalizers.each( linchpin.utils.lp_equalizer );
+			}
 		}
 	};
 }(jQuery);

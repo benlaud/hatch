@@ -8,17 +8,21 @@
  * @since 1.0
  */
 
-include( 'HatchOptions.php' );
-include( 'HatchCustomHeader.php' );
-include( 'HatchActivate.php' );
-include( 'HatchUtilities.php' );
-include( 'HatchMenu.php' );
-include( 'Hatch_TinyMCE.php' );
+include( 'hatch-options.php' );
+include( 'hatch-customheader.php' );
+include( 'hatch-activate.php' );
+include( 'hatch-utilities.php' );
+include( 'hatch-menu.php' );
+include( 'hatch-tinymce.php' );
 
 /**
  * Class Hatch
  */
 class Hatch {
+
+	/**
+	 * Construct
+	 */
 	function __construct() {
 		$hatch_activate = new HatchActivate();
 		$hatch_custom_header = new HatchCustomHeader();
