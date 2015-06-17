@@ -4,7 +4,7 @@
  *
  * The default template for displaying content. Used within single and index/archive/search templates.
  *
- * @since 1.0
+ * @since {%= base_version %}
  *
  * @package {%= class_name %}
  * @subpackage Templates

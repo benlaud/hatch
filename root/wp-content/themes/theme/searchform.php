@@ -4,7 +4,8 @@
  *
  * Typically used in headers or Top Bars
  *
- * @since 1.0
+ * @since {%= base_version %}
+ *
  * @package {%= class_name %}
  * @subpackage Search
  */

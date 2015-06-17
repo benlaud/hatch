@@ -2,7 +2,7 @@
 /**
  * Search Results Template
  *
- * @since 1.0
+ * @since {%= base_version %}
  *
  * @package {%= class_name %}
  * @subpackage Search

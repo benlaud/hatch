@@ -4,7 +4,7 @@
  *
  * Basic template when a 404 happens.
  *
- * @since 1.0
+ * @since {%= base_version %}
  *
  * @package {%= class_name %}
  * @subpackage Templates
@@ -55,7 +55,7 @@
 						<ul>
 							<li><?php esc_html_e( 'Check your spelling', '{%= text_domain %}' ); ?></li>
 							<li><?php printf( wp_kses( __( 'Return to the <a href="%s">home page</a>', '{%= text_domain %}' ), array( 'a' => array( 'href' ) ) ), home_url() ); ?></li>
-							<li><?php echo wp_kses( 'Click the <a href="javascript:history.back()">Back</a> button', '{%= text_domain %}' ); ?></li>
+							<li><?php printf( wp_kses( __( 'Click the <a href="%s">Back</a> button', '{%= text_domain %}' ), array( 'a' => array( 'href' ) ) ), 'javascript:history.back();' ); ?></li>
 						</ul>
 					</div>
 				</div>

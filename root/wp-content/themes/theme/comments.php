@@ -4,7 +4,7 @@
  *
  * @todo This file could definitely use some cleanup -aware
  *
- * @since 1.0
+ * @since {%= base_version %}
  *
  * @package {%= class_name %}
  * @subpackage Comments

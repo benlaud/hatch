@@ -4,7 +4,7 @@
  *
  * Template for display all default archive pages.
  *
- * @since 1.0
+ * @since {%= base_version %}
  *
  * @package {%= class_name %}
  * @subpackage Templates

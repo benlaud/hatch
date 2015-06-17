@@ -22,15 +22,18 @@
 		<?php do_action( 'hatch_before_content' ); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
+
 			<?php get_template_part( 'content', get_post_format() ); ?>
+
 		<?php endwhile; ?>
 
 	<?php else : ?>
 
 		<?php get_template_part( 'content', 'none' ); ?>
-		<?php do_action( 'hatch_before_pagination' ); ?>
 
 	<?php endif;?>
+
+	<?php do_action( 'hatch_before_pagination' ); ?>
 
 	<?php get_template_part( 'includes/partials/pagination' ); ?>
 

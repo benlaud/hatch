@@ -2,8 +2,10 @@
 /**
  * Hero/Slideshow area
  *
- * @package Hatch
  * @since 1.0
+ *
+ * @package Hatch
+ * @subpackge Templates
  *
  * Template Part: Hero
  */
@@ -17,7 +19,7 @@
 		</div>
 
 		<div class="medium-6 columns end">
-			<a class="download large button hide-for-small" href="https://github.com/linchpinagency/hatch">Download Hatch</a>
+			<a class="download large button hide-for-small" href="https://github.com/linchpinagency/hatch"><?php esc_html_e( 'Download Hatch', '{%= text_domain %}' ); ?></a>
 		</div>
 
 		<div class="floatingyeti show-for-medium-up">

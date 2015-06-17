@@ -1,11 +1,9 @@
 <?php
-
 /**
  *
  * Include all of our needed Classes and scripts
- * Originally based on the work done by Ole Fredrik Lie (http://olefredrik.com)
  *
- * Forked by Linchpin
+ * Originally based on the work done by Ole Fredrik Lie (http://olefredrik.com) Forked by Linchpin
  *
  * Also uses some sweet grunt init scaffolding from 10up.
  *
@@ -17,15 +15,15 @@
  */
 
 // Useful global constants
-define( '{%= prefix_caps %}VERSION', '0.1.0' );
+define( '{%= prefix_caps %}VERSION', '{%= project_version %}' );
 define( 'SCRIPT_DEBUG', true ); // enable script debug by default
 
-include_once('includes/Linchpin/Hatch.php');        // Hatch Classes
-include_once('includes/Foundation/Foundation.php'); // Foundation Classes
-include_once('includes/{%= php_class_name %}.php'); // Theme Class
+include_once( 'includes/Linchpin/hatch.php' );        // Hatch Classes
+include_once( 'includes/Foundation/foundation.php' ); // Foundation Classes
+include_once( 'includes/{%= php_class_name %}.php' ); // Theme Class
 
 /**
  *	Instantiate our classes.
  */
 
-$theme	= new {%= php_class_name %}();
+$theme = new {%= php_class_name %}();

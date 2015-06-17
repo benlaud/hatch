@@ -2,7 +2,7 @@
 /**
  * Header Template
  *
- * @since 1.0
+ * @since {%= base_version %}
  *
  * @package {%= class_name %}
  * @subpackage Templates
@@ -15,8 +15,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php wp_title( '|', true, 'right' ); ?></title>
-
-
     <?php /* Favicon mark-up (http://realfavicongenerator.net/) */ ?>
 	<link rel="apple-touch-icon" sizes="57x57" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/apple-touch-icon-60x60.png">

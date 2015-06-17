@@ -2,10 +2,15 @@
 /**
  * Template Name: Kitchen Sink
  *
- * @package hatch
+ * @since 1.0
+ *
+ * @package {%= class_name %}
+ * @subpackage Templates
  */
 
-get_header(); ?>
+?>
+
+<?php get_header(); ?>
 <div class="row">
 	<div class="small-12 large-12 columns" role="main">
 	<?php while ( have_posts() ) : the_post(); ?>

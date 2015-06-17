@@ -4,7 +4,7 @@
  *
  * Default template utilized for pages
  *
- * @since 1.0
+ * @since {%= base_version %}
  *
  * @package {%= class_name %}
  * @subpackage Templates
