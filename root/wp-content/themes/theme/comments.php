@@ -30,14 +30,14 @@ function hatch_comments( $comment, $args, $depth ) {
 				</div>
 				<div class="small-10 columns">
 					<div class="author-meta">
-						<?php printf( __( '<cite class="fn">%s</cite>', '{%= text_domain %}' ), get_comment_author_link() ) ?> on
-						<time datetime="<?php comment_date( 'c' ); ?>"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf( __( '%1$s', '{%= text_domain %}' ), get_comment_date(),  get_comment_time() ) ?></a></time>
+						<?php printf( esc_html( __( '<cite class="fn">%s</cite>', '{%= text_domain %}' ) ), get_comment_author_link() ) ?> on
+						<time datetime="<?php comment_date( 'c' ); ?>"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf( esc_html( __( '%1$s', '{%= text_domain %}' ) ), get_comment_date(),  get_comment_time() ) ?></a></time>
 						<?php edit_comment_link( __( '(Edit)', '{%= text_domain %}' ), '', '' ) ?>
 					</div>
 
 					<?php if ( $comment->comment_approved === 0 ) : ?>
 		       			<div class="notice">
-							<p class="bottom"><?php _e( 'Your comment is awaiting moderation.', '{%= text_domain %}' ) ?></p>
+							<p class="bottom"><?php esc_html_e( 'Your comment is awaiting moderation.', '{%= text_domain %}' ) ?></p>
 		          		</div>
 					<?php endif; ?>
 
@@ -83,7 +83,7 @@ if ( post_password_required() ) { ?>
 	<section id="comments">
 		<h3><?php comments_number( __( 'No Responses to', '{%= text_domain %}' ), __( 'One Response to', '{%= text_domain %}' ), __( '% Responses to', '{%= text_domain %}' ) ); ?> &#8220;<?php the_title(); ?>&#8221;</h3>
 		<ol class="commentlist">
-		<?php wp_list_comments( 'type=comment&callback=Hatch_comments' ); ?>
+			<?php wp_list_comments( 'type=comment&callback=Hatch_comments' ); ?>
 		</ol>
 		<footer>
 			<nav id="comments-nav">
@@ -103,11 +103,10 @@ if ( post_password_required() ) { ?>
 	<form action="<?php echo get_option( 'siteurl' ); ?>/wp-comments-post.php" method="post" id="commentform">
 		<?php if ( is_user_logged_in() ) :
 			global $user_identity; ?>
-
-			<p><?php printf( __( 'Logged in as <a href="%s/wp-admin/profile.php">%s</a>.', '{%= text_domain %}' ), get_option( 'siteurl' ), $user_identity ); ?> <a href="<?php echo wp_logout_url( get_permalink() ); ?>" title="<?php esc_attr_e( 'Log out of this account', '{%= text_domain %}' ); ?>"><?php _e( 'Log out &raquo;', '{%= text_domain %}' ); ?></a></p>
+			<p><?php printf( esc_html( __( 'Logged in as <a href="%s/wp-admin/profile.php">%s</a>.', '{%= text_domain %}' ) ), get_option( 'siteurl' ), $user_identity ); ?> <a href="<?php esc_attr_e( wp_logout_url( get_permalink() ) ); ?>" title="<?php esc_attr_e( 'Log out of this account', '{%= text_domain %}' ); ?>"><?php esc_html_e( 'Log out &raquo;', '{%= text_domain %}' ); ?></a></p>
 		<?php else : ?>
 		<p>
-			<label for="author"><?php esc_html_e( 'Name', '{%= text_domain %}' ); if ( $req ) : esc_html_e(' (required)', '{%= text_domain %}' ); endif; ?></label>
+			<label for="author"><?php esc_html_e( 'Name', '{%= text_domain %}' ); if ( $req ) : esc_html_e( ' (required)', '{%= text_domain %}' ); endif; ?></label>
 			<input type="text" class="five" name="author" id="author" value="<?php esc_attr_e( $comment_author ); ?>" size="22" tabindex="1" <?php if ( $req ) : ?>aria-required="true"<?php endif; ?>>
 		</p>
 		<p>

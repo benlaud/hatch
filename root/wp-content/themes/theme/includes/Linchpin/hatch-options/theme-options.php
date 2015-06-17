@@ -11,7 +11,7 @@
 ?>
 <?php global $hatch_options; ?>
 <div id="theme-options">
-	<h3><?php _e( 'Theme Options', 'hatch' ); ?></h3>
+	<h3><?php esc_html_e( 'Theme Options', 'hatch' ); ?></h3>
 	<table class="form-table">
 		<tbody>
 		<tr valign="top">
@@ -28,7 +28,7 @@
 
 					wp_editor( html_entity_decode( $footer_info ), 'footerinfo', array( 'textarea_name' => 'hatch_theme_options[footer_info]', 'textarea_rows' => 8 ) ); ?>
 
-					<p class="description"><?php printf( __( 'Free area to place additional information in your footer such as address information or extra phone numbers', 'hatch' ) ); ?></p>
+					<p class="description"><?php printf( esc_html( __( 'Free area to place additional information in your footer such as address information or extra phone numbers' ), 'hatch' ) ); ?></p>
 				</div>
 			</td>
 		</tr>
@@ -46,7 +46,7 @@
 
 					wp_editor( html_entity_decode( $terms ), 'termsconditions', array( 'textarea_name' => 'hatch_theme_options[terms_conditions]', 'textarea_rows' => 4, 'teeny' => true ) ); ?>
 
-					<p class="description"><?php printf( __( 'This is an area for simple copyright or other terms. Your &copy; Year and Company name will automatically be added to your site unless you input your own terms above', 'hatch' ) ); ?></p>
+					<p class="description"><?php printf( esc_html( __( 'This is an area for simple copyright or other terms. Your &copy; Year and Company name will automatically be added to your site unless you input your own terms above' ), 'hatch' ) ); ?></p>
 				</div>
 			</td>
 		</tr>

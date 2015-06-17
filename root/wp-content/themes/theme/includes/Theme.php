@@ -30,10 +30,12 @@ class {%= php_class_name %} {
 
 		add_action( 'after_setup_theme', 	array( $this, 'after_setup_theme' ) );
 		add_action( 'after_setup_theme',	array( $this, 'add_editor_styles' ) );
+
+		add_action( 'wp_head',              array( $this, 'wp_head' ), 20 );
 	}
 
 	/**
-	 * init function.
+	 * Init hook function.
 	 *
 	 * @access public
 	 * @return void
@@ -144,13 +146,24 @@ class {%= php_class_name %} {
 	}
 
 	/**
-	 * wp_enqueue_styles function.
+	 * Enqueue our theme styles.
 	 *
 	 * @access public
 	 * @return void
 	 */
 	function wp_enqueue_styles() {
 		wp_enqueue_style( 'app-css', get_stylesheet_directory_uri() . '/css/{%= js_safe_name %}.css' );
+	}
+
+	/**
+	 * Add in some custom scripts to our head.
+	 */
+	function wp_head() {
+		?>
+		<!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" href="css/ie8.css" />
+		<![endif]-->
+		<?php
 	}
 	
 	/*
@@ -165,7 +178,6 @@ class {%= php_class_name %} {
 	 *
 	 * @param $wp_customize
 	 */
-	
 	function customize_register ( $wp_customize ) {
 
 		$wp_customize->add_section (
@@ -188,7 +200,7 @@ class {%= php_class_name %} {
 				'label'		=> __('Site Logo', '{%= js_safe_name %}'),
 				'section' 	=> '{%= js_safe_name %}_logo',
 				'settings' 	=> '{%= js_safe_name %}_theme_options[logo_upload]',
-				'extensions'	=> array( 'jpg', 'jpeg', 'png', 'gif', 'svg' ),
+				'extensions'	=> array( 'jpg', 'jpeg', 'png', 'gif', 'svg', ),
 			) )
 		);
 	}

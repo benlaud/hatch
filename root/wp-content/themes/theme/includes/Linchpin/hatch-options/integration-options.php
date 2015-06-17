@@ -31,7 +31,7 @@
                                 <?php esc_html_e( 'No', 'hatch' ); ?>
                             </option>
                         </select>
-                        <p class="description"><?php printf( __( 'Enter your Typekit ID. You can get the Kit ID from the "Embed Options" of your kit within typekit.com. If you would like to load typekit asyncronously you can select that as well. There are some additional styles that need to be applied manually if you select asyncronously load the font', 'hatch' ) ); ?></p>
+                        <p class="description"><?php printf( esc_html( __( 'Enter your Typekit ID. You can get the Kit ID from the "Embed Options" of your kit within typekit.com. If you would like to load typekit asyncronously you can select that as well. There are some additional styles that need to be applied manually if you select asyncronously load the font' ), 'hatch' ) ); ?></p>
                     </div>
                 </td>
             </tr>
@@ -52,7 +52,7 @@
                                             <textarea name="hatch_theme_options[additional_header_scripts]" class="html-textarea" id="additional_header_scripts">
 <?php esc_attr_e( $hatch_options['additional_header_scripts'] ); ?>
 </textarea>
-                                            <p class="description"><?php printf( __( 'This area will include scripts within the <strong>&lt;HEAD&gt;</strong> tag of your website. In most cases you can use the footer scripts below. Through some scripts require being loaded within the <strong>&lt;HEAD&gt;</strong> tag.', 'hatch' ) ); ?></p>
+                                            <p class="description"><?php printf( esc_html( __( 'This area will include scripts within the <strong>&lt;HEAD&gt;</strong> tag of your website. In most cases you can use the footer scripts below. Through some scripts require being loaded within the <strong>&lt;HEAD&gt;</strong> tag.' ), 'hatch' ) ); ?></p>
                                         </div>
                                     </td>
                                 </tr>
@@ -70,7 +70,7 @@
                                             <textarea name="hatch_theme_options[additional_footer_scripts]" class="html-textarea" id="additional_footer_scripts">
                                                 <?php esc_attr_e( $hatch_options['additional_footer_scripts'] ); ?>
                                             </textarea>
-                                            <p class="description"><?php printf( __( 'Within this area you can include any additional 3rd party scripts. Examples would include javascript needed for Twitter, HubSpot and other features not included by default within your theme', 'hatch' ) ); ?></p>
+                                            <p class="description"><?php printf( esc_html( __( 'Within this area you can include any additional 3rd party scripts. Examples would include javascript needed for Twitter, HubSpot and other features not included by default within your theme' ), 'hatch' ) ); ?></p>
                                         </div>
                                     </td>
                                 </tr>

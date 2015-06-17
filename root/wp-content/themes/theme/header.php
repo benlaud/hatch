@@ -36,10 +36,6 @@
 	<link rel="icon" sizes="192x192" href="<?php esc_attr_e( get_stylesheet_directory_uri() ); ?>/assets/icons/touch-icon-192x192.png">
 
     <?php wp_head(); ?>
-
-    <!--[if lt IE 9]>
-		<link rel="stylesheet" type="text/css" href="css/ie8.css" />
-	<![endif]-->
 </head>
 <body <?php body_class(); ?>>
 

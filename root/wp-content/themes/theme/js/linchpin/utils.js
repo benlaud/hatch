@@ -265,8 +265,6 @@ linchpin.utils = function( $ ) {
 
 		/**
 		 * Control the hatch theme's javascript initialization
-		 * @author aware
-		 * @param jQuery[Object] the entire jQuery library
 		 * @since 1.2
 		 */
 		init: function( ) {

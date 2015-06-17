@@ -324,7 +324,7 @@ function admin_footer() {
 	 *
 	 * @param mixed $input
 	 *
-	 * @return boolean validation
+	 * @return bool validation
 	 */
 	function theme_options_validate( $input ) {
 

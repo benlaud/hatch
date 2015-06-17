@@ -34,7 +34,7 @@ class FoundationUtilities {
 	 *
 	 * @return string
 	 */
-	static function paginate_links( $prev_text = '&laquo;', $next_text = '&raquo;' ) {
+	public static function paginate_links( $prev_text = '&laquo;', $next_text = '&raquo;' ) {
 
 		global $wp_query;
 
@@ -78,13 +78,13 @@ class FoundationUtilities {
 	 *
 	 * @return string
 	 */
-	function menu_fallback() {
+	public static function menu_fallback() {
 
 		$html = '<div class="alert-box secondary">';
 
-		$html .= sprintf( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.', 'hatch' ),
-			sprintf( __( '<a href="%s">Menus</a>', 'hatch' ), get_admin_url( get_current_blog_id(), 'nav-menus.php' ) ),
-			sprintf( __( '<a href="%s">Customize</a>', 'hatch' ), get_admin_url( get_current_blog_id(), 'customize.php' ) )
+		$html .= sprintf( esc_html( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.' ), 'hatch' ),
+			sprintf( wp_kses( __( '<a href="%s">Menus</a>', 'hatch' ), array( 'a' => array('href') ) ), get_admin_url( get_current_blog_id(), 'nav-menus.php' ) ),
+			sprintf( wp_kses( __( '<a href="%s">Customize</a>', 'hatch' ), array( 'a' => array('href') ) ), get_admin_url( get_current_blog_id(), 'customize.php' ) )
 		);
 		$html .= '</div>';
 
@@ -105,9 +105,7 @@ class FoundationUtilities {
  * @access public
  */
 function hatch_menu_fallback() {
-	global $foundation_utilities;
-
-	echo $foundation_utilities->menu_fallback();
+	echo FoundationUtilities::menu_fallback();
 }
 
 /**
@@ -133,8 +131,10 @@ function hatch_pagination( $prev_text, $next_text ) {
  * @return void
  */
 function hatch_entry_meta() {
-	echo '<time class="updated" datetime="' . get_the_time( 'c' ) . '" pubdate>' . sprintf( __( 'Posted on %s at %s.', 'hatch' ), get_the_time( 'l, F jS, Y' ), get_the_time() ) . '</time>';
-	echo '<p class="byline author">' . __( 'Written by', 'hatch' ) . ' <a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author() . '</a></p>';
+	?>
+	<time class="updated" datetime="<?php echo get_the_time( 'c' ); ?>" pubdate><?php printf( esc_html( __( 'Posted on %s at %s.', 'hatch' ) ), get_the_time( 'l, F jS, Y' ), get_the_time() ); ?></time>
+	<p class="byline author"><?php esc_html_e( 'Written by', 'hatch' ); ?><a href="<?php esc_attr_e( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author" class="fn"><?php echo get_the_author(); ?></a></p>';
+	<?php
 }
 
 /**

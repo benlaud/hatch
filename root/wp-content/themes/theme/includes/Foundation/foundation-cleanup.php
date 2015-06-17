@@ -85,7 +85,7 @@ class FoundationCleanup {
 	 * @return mixed
 	 */
 	function image_editor( $html, $id, $alt, $title ) {
-	    return preg_replace(array( '/\s+width="\d+"/i', '/\s+height="\d+"/i', '/alt=""/i', ), array( '', '', '', 'alt="' . $title . '"', ), $html );
+	    return preg_replace( array( '/\s+width="\d+"/i', '/\s+height="\d+"/i', '/alt=""/i' ), array( '', '', '', 'alt="' . $title . '"' ), $html );
 	}
 
 	/**
@@ -98,7 +98,7 @@ class FoundationCleanup {
 		global $wp_widget_factory;
 
 		if ( isset ( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'] ) ) {
-			remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style', ) );
+			remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
 		}
 	}
 

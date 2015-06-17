@@ -1,4 +1,4 @@
-if( typeof({%= js_safe_name %}_admin) == 'undefined' ) {
+if( typeof( {%= js_safe_name %}_admin ) == 'undefined' ) {
     {%= js_safe_name %}_admin = {};
 }
 
@@ -18,7 +18,7 @@ if( typeof({%= js_safe_name %}_admin) == 'undefined' ) {
          * Setup our sidebar controls
          * @author aware
          */
-        setupSidebarControls: function() {
+        setupSidebarControls : function() {
     		var $sidebars = $('.widgets-sortables');
 
     		$sidebars.each(function() {
@@ -54,7 +54,6 @@ if( typeof({%= js_safe_name %}_admin) == 'undefined' ) {
                 $this.after( $span );
 
     			$.post(ajaxurl, data, function( response ) {
-
     				$('#spinner-' + data.sidebar).fadeOut('fast', function() {
     					$(this).remove();
     				});

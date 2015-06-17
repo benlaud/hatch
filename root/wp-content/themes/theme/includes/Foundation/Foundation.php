@@ -11,7 +11,7 @@
 
 global $foundation_utilities;
 
-$foundation_classes_dir = get_stylsheet_directory() . '/includes/Foundation/';
+$foundation_classes_dir = get_stylesheet_directory() . '/includes/Foundation/';
 
 include_once( $foundation_classes_dir . 'foundation-utilities.php' );
 include_once( $foundation_classes_dir . 'foundation-cleanup.php' );
@@ -24,9 +24,7 @@ include_once( $foundation_classes_dir . 'foundation-clearing.php' );
 class Foundation {
 
 	/**
-	 * __construct function.
-	 *
-	 * @access public
+	 * Construct.
 	 */
 	function __construct() {
 

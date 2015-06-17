@@ -54,8 +54,8 @@
 						<p><?php esc_html_e( 'Please try the following:', '{%= text_domain %}' ); ?></p>
 						<ul>
 							<li><?php esc_html_e( 'Check your spelling', '{%= text_domain %}' ); ?></li>
-							<li><?php printf( __( 'Return to the <a href="%s">home page</a>', '{%= text_domain %}' ), home_url() ); ?></li>
-							<li><?php esc_html_e( 'Click the <a href="javascript:history.back()">Back</a> button', '{%= text_domain %}' ); ?></li>
+							<li><?php printf( wp_kses( __( 'Return to the <a href="%s">home page</a>', '{%= text_domain %}' ), array( 'a' => array( 'href' ) ) ), home_url() ); ?></li>
+							<li><?php echo wp_kses( 'Click the <a href="javascript:history.back()">Back</a> button', '{%= text_domain %}' ); ?></li>
 						</ul>
 					</div>
 				</div>
