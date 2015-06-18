@@ -40,7 +40,9 @@
 
     <?php wp_head(); ?>
 
-	<?php do_action( 'hatch_head' ); ?>
+	<?php
+	/** This action is documented in includes/Linchpin/hatch-hooks.php */
+	do_action( 'hatch_head_scripts' ); ?>
 
 </head>
 <body <?php body_class(); ?>>
@@ -50,13 +52,18 @@
 <div class="off-canvas-wrap" data-offcanvas>
 	<div class="inner-wrap">
 
-		<?php do_action( 'hatch_layout_before' ); ?>
+		<?php
+		/** This action is documented in includes/Linchpin/hatch-hooks.php */
+		do_action( 'hatch_layout_start' ); ?>
 
-		<?php do_action( 'hatch_header_before' ); ?>
+		<?php
+		/** This action is documented in includes/Linchpin/hatch-hooks.php */
+		do_action( 'hatch_header_before' ); ?>
 
 		<?php get_template_part( 'includes/partials/navigation' ); ?>
 
-		<?php do_action( 'hatch_header_after' ); ?>
+		<?php
+		/** This action is documented in includes/Linchpin/hatch-hooks.php */
+		do_action( 'hatch_header_after' ); ?>
 
 		<section class="container" role="document">
-

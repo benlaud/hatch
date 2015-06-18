@@ -12,7 +12,9 @@
 
 ?>
 
-<?php do_action( 'hatch_post_before' ); ?>
+<?php
+/** This action is documented in includes/Linchpin/hatch-hooks.php */
+do_action( 'hatch_post_before' ); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header>
@@ -20,13 +22,17 @@
 		<?php hatch_entry_meta(); ?>
 	</header>
 
-	<?php do_action( 'hatch_post_entry_content_before' ); ?>
+	<?php
+	/** This action is documented in includes/Linchpin/hatch-hooks.php */
+	do_action( 'hatch_post_entry_content_before' ); ?>
 
 	<div class="entry-content">
 		<?php the_content( __( 'Continue reading...', '{%= text_domain %}' ) ); ?>
 	</div>
 
-	<?php do_action( 'hatch_post_entry_content_after' ); ?>
+	<?php
+	/** This action is documented in includes/Linchpin/hatch-hooks.php */
+	do_action( 'hatch_post_entry_content_after' ); ?>
 
 	<footer>
 		<?php $tag = get_the_tags(); if ( $tag ) : ?><p><?php the_tags(); ?></p><?php endif; ?>
@@ -37,4 +43,6 @@
 	<hr />
 </article>
 
-<?php do_action( 'h'); ?>
+<?php
+/** This action is documented in includes/Linchpin/hatch-hooks.php */
+do_action( 'hatch_post_after');

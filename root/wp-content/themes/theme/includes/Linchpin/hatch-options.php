@@ -19,10 +19,10 @@ class HatchOptions {
 	 * Construct
 	 */
 	function __construct() {
-		add_action( 'admin_init', array( $this, 'init' ) );
-		add_action( 'admin_menu', array( $this, 'theme_options_add_page' ) );
+		add_action( 'admin_init',            array( $this, 'init' ) );
+		add_action( 'admin_menu',            array( $this, 'theme_options_add_page' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		add_action( 'admin_notices', array( $this, 'validate_required_settings' ) );
+		add_action( 'admin_notices',         array( $this, 'validate_required_settings' ) );
 	}
 
 	/**
@@ -52,7 +52,6 @@ class HatchOptions {
 	/**
 	 * Define our default theme options.
 	 *
-	 * @author aware
 	 * @access public
 	 * @static
 	 * @return mixed|void
@@ -108,9 +107,9 @@ function theme_options_render_page() {
 
 		<h2 class="nav-tab-wrapper">
 			<a href="?page=theme_options&tab=display_options"
-			   class="nav-tab <?php echo ( 'display_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( __( '%s$1 Additional Footer Content', 'hatch' ), $current_theme->get( 'Name' ) ); ?></a>
+			   class="nav-tab <?php echo ( 'display_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s$1 Additional Footer Content', 'hatch' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
 			<a href="?page=theme_options&tab=script_options"
-			   class="nav-tab <?php echo ( 'script_options' = $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( __( '%s$1 Additional Scripts', 'hatch' ), $current_theme->get( 'Name' ) ); ?></a>
+			   class="nav-tab <?php echo ( 'script_options' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php printf( esc_html( __( '%s$1 Additional Scripts', 'hatch' ) ), esc_html( $current_theme->get( 'Name' ) ) ); ?></a>
 		</h2>
 
 		<?php settings_errors(); ?>

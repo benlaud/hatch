@@ -21,16 +21,21 @@ class HatchUtilities {
 	function __construct() {
 		add_action( 'edit_category', array( $this, 'category_transient_flusher' ) );
 		add_action( 'save_post',     array( $this, 'category_transient_flusher' ) );
+
+		add_action( 'hatch_before_content', array( 'HatchUtilities', 'breadcrumbs' ) );
 	}
 
 	/**
 	 * Returns true if a blog has more than 1 category.
+	 *
+	 * @since 1.2.0
 	 *
 	 * @access public
 	 * @return bool
 	 */
 	static function categorized_blog() {
 		if ( false === ( $all_the_cool_cats = get_transient( 'hatch_categories' ) ) ) {
+
 			// Create an array of all the categories that are attached to posts.
 			$all_the_cool_cats = get_categories( array(
 				'fields' => 'ids',
@@ -69,22 +74,34 @@ class HatchUtilities {
 	 * Define our breadcrumbs
 	 * Loosely based on http://cazue.com/articles/wordpress-creating-breadcrumbs-without-a-plugin-2013
 	 *
-	 * If the site uses Breadcrumbs NavXT use that instead
+	 * @since 1.2.0
+	 *
+	 * If WordPress SEO Breadcrumbs are enabled use that instead.
+	 * If the site uses Breadcrumbs NavXT use that instead.
 	 *
 	 * @access public
 	 * @return void
 	 */
 	static function breadcrumbs() {
-		global $post; ?>
+
+		// If Yoast Breadcrumbs are installed and enabled.
+		if ( function_exists( 'yoast_breadcrumb' ) ) {
+			yoast_breadcrumb();
+		} return; ?>
+
+		<?php
+		// Use BreadCrumbNavXT is available.
+		if ( function_exists( 'bcn_display' ) ) : ?>
+			<ul class="breadcrumbs">
+				<?php bcn_display(); ?>
+			</ul>
+		<?php return;
+
+		endif; // End bcn check. ?>
+
+		<?php global $post; ?>
 
 		<ul class="breadcrumbs">
-
-		<?php if ( function_exists( 'bcn_display' ) ) : // Use BreadCrumbNavXT is available.
-				bcn_display();
-				// Be sure to close our opening UL. ?>
-				</ul>
-		<?php return;
-		endif; // End bcn check. ?>
 
 		<?php if ( ! is_home() ) { ?>
 
@@ -94,7 +111,7 @@ class HatchUtilities {
 
 				<?php if ( $categories = get_the_category() ) : ?>
 					<li>
-						<a href="<?php echo get_term_link( current( $categories ), 'category' ); ?>"><?php echo current( $categories )->name; ?></a>
+						<a href="<?php esc_attr_e( get_term_link( current( $categories ), 'category' ) ); ?>"><?php esc_html_e( current( $categories )->name ); ?></a>
 					</li>
 				<?php endif; ?>
 

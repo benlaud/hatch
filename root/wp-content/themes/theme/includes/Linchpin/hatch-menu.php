@@ -3,7 +3,7 @@
  * HatchMenu class.
  *
  * @package Hatch
- * @since 1.0
+ * @since 1.0.0
  */
 
 /**
@@ -11,7 +11,7 @@
  */
 class HatchMenu {
 	/**
-	 * __construct function.
+	 * Construct.
 	 *
 	 * @access public
 	 */

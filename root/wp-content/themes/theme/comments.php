@@ -12,7 +12,9 @@
 
 ?>
 
-<?php do_action( 'hatch_comments_before' ); ?>
+<?php
+/** This action is documented in includes/Linchpin/hatch-hooks.php */
+do_action( 'hatch_comments_before' ); ?>
 
 <?php
 
@@ -134,4 +136,6 @@ if ( post_password_required() ) { ?>
 </section>
 <?php endif; ?>
 
-<?php do_action( 'hatch_comments_after' );
+<?php
+/** This action is documented in includes/Linchpin/hatch-hooks.php */
+do_action( 'hatch_comments_after' );

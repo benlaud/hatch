@@ -12,7 +12,9 @@
 
 ?>
 
-<?php do_action( 'hatch_post_before' ); ?>
+<?php
+/** This action is documented in includes/Linchpin/hatch-hooks.php */
+do_action( 'hatch_post_before' ); ?>
 
 	<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
@@ -31,11 +33,15 @@
 				</div>
 			<?php endif; ?>
 
-			<?php do_action( 'hatch_post_entry_content_before' ); ?>
+			<?php
+			/** This action is documented in includes/Linchpin/hatch-hooks.php */
+			do_action( 'hatch_post_entry_content_before' ); ?>
 
 			<?php the_content(); ?>
 
-			<?php do_action( 'hatch_post_entry_content_after' ); ?>
+			<?php
+			/** This action is documented in includes/Linchpin/hatch-hooks.php */
+			do_action( 'hatch_post_entry_content_after' ); ?>
 		</div>
 
 		<footer>
@@ -58,4 +64,6 @@
 		endif; ?>
 
 	</article>
-<?php do_action( 'hatch_post_after' );
+<?php
+/** This action is documented in includes/Linchpin/hatch-hooks.php */
+do_action( 'hatch_post_after' );

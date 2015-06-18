@@ -3,7 +3,7 @@
  * Modifications to the TinyMCE editor.
  *
  * @package Hatch
- * @since 1.0
+ * @since 1.2.0
  */
 
 /**
@@ -12,7 +12,9 @@
 class Hatch_TinyMCE {
 
 	/**
-	 * __construct function.
+	 * Construct.
+	 *
+	 * @since 1.2.0
 	 *
 	 * @access public
 	 */
@@ -21,9 +23,9 @@ class Hatch_TinyMCE {
 	}
 
 	/**
-	 *
 	 * Add custom css to our admin editor
-	 * admin_init function.
+	 *
+	 * @since 1.2.0
 	 *
 	 * @access public
 	 */

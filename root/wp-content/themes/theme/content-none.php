@@ -12,7 +12,9 @@
 
 ?>
 
-<?php do_action( 'hatch_post_before' ); ?>
+<?php
+/** This action is documented in includes/Linchpin/hatch-hooks.php */
+do_action( 'hatch_post_before' ); ?>
 
 <header class="page-header">
 	<h1 class="page-title"><?php esc_html_e( 'Nothing Found', '{%= text_domain %}' ); ?></h1>
@@ -36,4 +38,6 @@
 	<?php endif; ?>
 </div>
 
-<?php do_action( 'hatch_post_after' );
+<?php
+/** This action is documented in includes/Linchpin/hatch-hooks.php */
+do_action( 'hatch_post_after' );

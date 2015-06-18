@@ -17,11 +17,15 @@
 <div class="row">
 	<div class="small-12 large-12 columns" role="main">
 
-		<?php do_action( 'hatch_content_before' ); ?>
+		<?php
+		/** This action is documented in includes/Linchpin/hatch-hooks.php */
+		do_action( 'hatch_content_before' ); ?>
 
 		<?php if ( have_posts() ) : ?>
 
-			<?php do_action( 'hatch_loop_before' ); ?>
+			<?php
+			/** This action is documented in includes/Linchpin/hatch-hooks.php */
+			do_action( 'hatch_loop_before' ); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
@@ -29,7 +33,9 @@
 
 			<?php endwhile; ?>
 
-			<?php do_action( 'hatch_loop_after' ); ?>
+			<?php
+			/** This action is documented in includes/Linchpin/hatch-hooks.php */
+			do_action( 'hatch_loop_after' ); ?>
 
 		<?php else : ?>
 
@@ -37,7 +43,9 @@
 
 		<?php endif;?>
 
-		<?php do_action( 'hatch_content_after' ); ?>
+		<?php
+		/** This action is documented in includes/Linchpin/hatch-hooks.php */
+		do_action( 'hatch_content_after' ); ?>
 
 		<?php
 

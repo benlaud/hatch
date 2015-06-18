@@ -16,9 +16,15 @@
 
 		<h2><?php esc_html_e( 'Search Results for', '{%= text_domain %}' ); ?> "<?php esc_html_e( get_search_query() ); ?>"</h2>
 
-        <?php do_action( 'hatch_before_content' ); ?>
+        <?php
+        /** This action is documented in includes/Linchpin/hatch-hooks.php */
+        do_action( 'hatch_content_before' ); ?>
 
         <?php if ( have_posts() ) : ?>
+
+            <?php
+            /** This action is documented in includes/Linchpin/hatch-hooks.php */
+            do_action( 'hatch_loop_before' ); ?>
 
             <?php while ( have_posts() ) : the_post(); ?>
 
