@@ -11,19 +11,51 @@
  */
 
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header>
-		<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-		<?php hatch_entry_meta(); ?>
-	</header>
-	<div class="entry-content">
-		<?php the_content( __( 'Continue reading...', '{%= text_domain %}' ) ); ?>
-	</div>
-	<footer>
-		<?php $tag = get_the_tags(); if ( $tag ) : ?><p><?php the_tags(); ?></p><?php endif; ?>
-	</footer>
-	<ul class="button-group utility right">
-		<?php edit_post_link( __( 'Edit Content', '{%= text_domain %}' ) , '<li class="tiny button">', '</li>' ); ?>
-	</ul>
-	<hr />
-</article>
+
+<?php do_action( 'hatch_post_before' ); ?>
+
+	<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
+
+		<header>
+			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			<?php hatch_entry_meta(); ?>
+		</header>
+
+		<div class="entry-content">
+
+			<?php if ( has_post_thumbnail() ) : ?>
+				<div class="row">
+					<div class="small-12 columns">
+						<?php the_post_thumbnail( '', array( 'class' => 'th' ) ); ?>
+					</div>
+				</div>
+			<?php endif; ?>
+
+			<?php do_action( 'hatch_post_entry_content_before' ); ?>
+
+			<?php the_content(); ?>
+
+			<?php do_action( 'hatch_post_entry_content_after' ); ?>
+		</div>
+
+		<footer>
+			<?php wp_link_pages( array(
+				'before' => '<nav id="page-nav"><p>' . __( 'Pages:', '{%= text_domain %}' ),
+				'after'  => '</p></nav>',
+			) ); ?>
+			<div class="tags"><?php the_tags(); ?></div>
+		</footer>
+
+		<?php get_template_part( 'includes/partials/edit-controls' ); ?>
+
+		<hr/>
+
+		<?php
+
+		// If comments are open or we have at least one comment, load up the comment template.
+		if ( comments_open() || get_comments_number() ) :
+			comments_template();
+		endif; ?>
+
+	</article>
+<?php do_action( 'hatch_post_after' );

@@ -17,27 +17,29 @@
 <div class="row">
 	<div class="small-12 large-8 columns" role="main">
 
-	<?php if ( have_posts() ) : ?>
+		<?php do_action( 'hatch_content_before' ); ?>
 
-		<?php do_action( 'hatch_before_content' ); ?>
+		<?php if ( have_posts() ) : ?>
 
-		<?php while ( have_posts() ) : the_post(); ?>
+			<?php do_action( 'hatch_loop_before' ); ?>
 
-			<?php get_template_part( 'content', get_post_format() ); ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php endwhile; ?>
+				<?php get_template_part( 'content', get_post_format() ); ?>
 
-	<?php else : ?>
+			<?php endwhile; ?>
 
-		<?php get_template_part( 'content', 'none' ); ?>
+			<?php do_action( 'hatch_loop_after' ); ?>
 
-	<?php endif;?>
+		<?php else : ?>
 
-	<?php do_action( 'hatch_before_pagination' ); ?>
+			<?php get_template_part( 'content', 'none' ); ?>
 
-	<?php get_template_part( 'includes/partials/pagination' ); ?>
+		<?php endif;?>
 
-	<?php do_action( 'hatch_after_content' ); ?>
+		<?php get_template_part( 'includes/partials/pagination' ); ?>
+
+		<?php do_action( 'hatch_content_after' ); ?>
 
 	</div>
 	<?php get_sidebar(); ?>

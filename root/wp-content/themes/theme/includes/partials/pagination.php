@@ -4,13 +4,16 @@
  *
  * Display navigation to next/previous pages when applicable.
  *
- * @since 1.0
+ * @since {%= base_version %}
  *
  * @package {%= class_name %}
  * @subpackage Partials
  */
 
 ?>
+
+<?php do_action( 'hatch_pagination_before' ); ?>
+
 <?php if ( function_exists( 'hatch_pagination' ) ) :
 	hatch_pagination( '&laquo;', '&raquo;' );
 elseif ( is_paged() ) : ?>
@@ -19,3 +22,5 @@ elseif ( is_paged() ) : ?>
 		<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', '{%= text_domain %}' ) ); ?></div>
 	</nav>
 <?php endif; ?>
+
+<?php do_action( 'hatch_pagination_after' );

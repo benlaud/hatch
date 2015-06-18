@@ -4,7 +4,7 @@
  *
  * This template handles our main navigation markup
  *
- * @since 1.0
+ * @since {%= base_version %}
  *
  * @package {%= class_name %}
  * @subpackage Partials
@@ -61,7 +61,7 @@ if ( isset( $options['logo_upload'] ) ) {
 				<a href="<?php esc_attr_e( home_url() ); ?>">
 					<?php if ( ! empty( $logo ) ) : ?>
 						<img src="<?php esc_attr_e( $options['logo_upload'] ); ?>"
-						     alt="<?php esc_attr_e( get_bloginfo( 'name' ) ); ?>"/>
+						     alt="<?php esc_attr_e( get_bloginfo( 'name' ) ); ?>" />
 					<?php else : ?>
 						<?php bloginfo( 'name' ); ?>
 					<?php endif; ?>

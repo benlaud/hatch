@@ -11,6 +11,9 @@
  */
 
 ?>
+
+<?php do_action( 'hatch_comments_before' ); ?>
+
 <?php
 
 /**
@@ -129,4 +132,6 @@ if ( post_password_required() ) { ?>
 	</form>
 	<?php endif; ?>
 </section>
-<?php endif;
+<?php endif; ?>
+
+<?php do_action( 'hatch_comments_after' );

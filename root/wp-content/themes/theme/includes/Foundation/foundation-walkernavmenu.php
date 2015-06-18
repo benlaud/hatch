@@ -3,7 +3,7 @@
  * Foundation Nav Walker Class
  *
  * This is a custom nav walker that will add in custom styles based on
- * the foundation structure.
+ * the foundation structure and the items found in FoundationPress
  *
  * @package Foundation
  * @author olfredrik, aware
@@ -18,13 +18,16 @@ class Foundation_Walker_Nav_Menu extends Walker_Nav_Menu {
 	/**
 	 * Display our menu element
 	 *
+	 * @since 1.0
+	 *
 	 * @param object $element Menu element.
 	 * @param array  $children_elements List of child element.
 	 * @param int    $max_depth Max depth of children.
 	 * @param int    $depth Current Depth.
 	 * @param array  $args Extra args for control.
 	 * @param string $output HTML output.
-	 * @return void
+	 *
+	 * @return mixed
 	 */
 	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 		$element->has_children = ! empty( $children_elements[ $element->ID ] );
@@ -37,6 +40,8 @@ class Foundation_Walker_Nav_Menu extends Walker_Nav_Menu {
 	/**
 	 * Start our element structure.
 	 *
+	 * @since 1.0
+	 *
 	 * @param string $output HTML output.
 	 * @param object $object Our current object.
 	 * @param int    $depth Out current depth.
@@ -44,7 +49,9 @@ class Foundation_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param int    $current_object_id Our current object.
 	 */
 	function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 ) {
+
 		$item_html = '';
+
 		parent::start_el( $item_html, $object, $depth, $args );
 
 		$output .= ( 0 === $depth ) ? '<li class="divider"><span></span></li>' : '';
@@ -65,6 +72,8 @@ class Foundation_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 	/**
 	 * Start our current level
+	 *
+	 * @since 1.0
 	 *
 	 * @param string $output HTML output.
 	 * @param int    $depth Our current depth.

@@ -17,23 +17,35 @@
 <div class="row">
 	<div class="small-12 large-12 columns" role="main">
 
-	<?php while ( have_posts() ) : the_post(); ?>
-		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-			<header>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
-			</header>
-			<div class="entry-content">
-				<?php the_content(); ?>
-			</div>
-			<footer>
-				<?php wp_link_pages( array( 'before' => '<nav id="page-nav"><p>' . __( 'Pages:', '{%= text_domain %}' ), 'after' => '</p></nav>' ) ); ?>
-				<p><?php the_tags(); ?></p>
-			</footer>
-			<?php do_action( 'hatch_post_before_comments' ); ?>
-			<?php comments_template(); ?>
-			<?php do_action( 'hatch_post_after_comments' ); ?>
-		</article>
-	<?php endwhile; ?>
+		<?php do_action( 'hatch_content_before' ); ?>
+
+		<?php if ( have_posts() ) : ?>
+
+			<?php do_action( 'hatch_loop_before' ); ?>
+
+			<?php while ( have_posts() ) : the_post(); ?>
+
+				<?php get_template_part( 'content', 'page' ); ?>
+
+			<?php endwhile; ?>
+
+			<?php do_action( 'hatch_loop_after' ); ?>
+
+		<?php else : ?>
+
+			<?php get_template_part( 'content', 'none' ); ?>
+
+		<?php endif;?>
+
+		<?php do_action( 'hatch_content_after' ); ?>
+
+		<?php
+
+		// If comments are open or we have at least one comment, load up the comment template.
+		if ( comments_open() || get_comments_number() ) :
+			comments_template();
+		endif; ?>
+
 	</div>
 </div>
 

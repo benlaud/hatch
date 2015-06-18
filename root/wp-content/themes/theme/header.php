@@ -39,16 +39,24 @@
 	<meta name="theme-color" content="#ffffff">
 
     <?php wp_head(); ?>
+
+	<?php do_action( 'hatch_head' ); ?>
+
 </head>
 <body <?php body_class(); ?>>
 
-<?php do_action( 'hatch_after_body_tag' ); ?>
+<?php do_action( 'hatch_body_tag_after' ); ?>
 
 <div class="off-canvas-wrap" data-offcanvas>
 	<div class="inner-wrap">
 
-		<?php do_action( 'hatch_layout_start' ); ?>
+		<?php do_action( 'hatch_layout_before' ); ?>
+
+		<?php do_action( 'hatch_header_before' ); ?>
 
 		<?php get_template_part( 'includes/partials/navigation' ); ?>
+
+		<?php do_action( 'hatch_header_after' ); ?>
+
 		<section class="container" role="document">
-			<?php do_action( 'hatch_after_header' ); ?>
+
