@@ -37,7 +37,9 @@ exports.after = 'You should now _cd to_your_base_path' +
     'http://gruntjs.com/getting-started';
 
 // Any existing file or directory matching this wildcard will cause a warning.
-exports.warnOn = '*';
+// exports.warnOn = '*';
+
+exports.warnOn = ['*.php', '*.js'];
 
 // The actual init template
 exports.template = function( grunt, init, done ) {
@@ -56,7 +58,7 @@ exports.template = function( grunt, init, done ) {
         {
             name   : 'prefix',
             message: 'PHP and JavaScript function prefix (alpha and underscore characters only)',
-            default: 'lp_'
+            default: 'mytheme_'
         },
         {
             name   : 'create_base_directories',
@@ -72,7 +74,7 @@ exports.template = function( grunt, init, done ) {
         {
             name   : 'text_domain',
             message: 'Text domain used for localization',
-            default: 'hatch'
+            default: 'mytheme'
         }
     ], function( err, props ) {
         props.keywords = [];
@@ -93,25 +95,26 @@ exports.template = function( grunt, init, done ) {
         };
 
         // Sanitize names where we need to for PHP/JS
-        props.name              = props.title.replace( /\s+/g, '-' ).toLowerCase();
+        props.name               = props.title.replace( /\s+/g, '-' ).toLowerCase();
 
         // Development prefix (i.e. to prefix PHP function names, variables)
-        props.prefix            = props.prefix.replace('/[^a-z_]/i', '').toLowerCase();
+        props.prefix             = props.prefix.replace('/[^a-z_]/i', '').toLowerCase();
 
         // Text Domain for localization
-        props.text_domain       = props.text_domain.replace('/[^a-z_]/i', '').toLowerCase();
+        props.text_domain        = props.text_domain.replace('/[^a-z_]/i', '').toLowerCase();
 
         // Development prefix in all caps (e.g. for constants)
-        props.prefix_caps       = props.prefix.toUpperCase();
+        props.prefix_caps        = props.prefix.toUpperCase();
 
         // An additional value, safe to use as a JavaScript identifier.
-        props.js_name           = props.php_class_name.replace( /\s+/g, '-' ).toLowerCase();
-        props.js_safe_name      = props.js_name.replace(/[\W_]+/g, '_').replace(/^(\d)/, '_$1');
-        props.js_object_name    = props.php_class_name.replace('/[^a-z_]/i', '').toLowerCase();
+        props.js_name            = props.php_class_name.replace( /\s+/g, '-' ).toLowerCase();
+        props.js_safe_name       = props.js_name.replace(/[\W_]+/g, '_').replace(/^(\d)/, '_$1');
+        props.js_object_name     = props.php_class_name.replace('/[^a-z_]/i', '').toLowerCase();
 
-        // An additional value that won't conflict with NodeUnit unit tests.
-        props.js_test_safe_name = props.js_safe_name === 'hatch' ? 'MyHatch' : props.js_safe_name;
-        props.js_safe_name_caps = props.js_safe_name.toUpperCase();
+        // An additional values
+        props.js_test_safe_name  = props.js_safe_name === 'hatch' ? 'MyHatch' : props.js_safe_name;
+        props.js_safe_name_caps  = props.js_safe_name.toUpperCase();
+        props.js_safe_name_lower = props.js_safe_name.toLowerCase();
 
         // Files to copy and process
         var files = init.filesToCopy( props );
@@ -151,12 +154,12 @@ exports.template = function( grunt, init, done ) {
 
         }
 
-        // Generate package.json file
-        init.writePackageJSON( base_path + 'theme/package.json', props );
-
         var fs = require('fs');
         fs.rename( init.destpath() + base_path + 'theme/js/theme/', init.destpath() + base_path + '/theme/js/'+ props.js_safe_name + '/'); // Rename our javascript directory
         fs.rename( init.destpath() + base_path + 'theme/', init.destpath() + base_path + props.js_safe_name + '/'); // Rename our base directory
+
+        // Generate package.json file
+        init.writePackageJSON( base_path + props.js_safe_name + '/package.json', props );
 
         // Done!
         done();
