@@ -1,8 +1,8 @@
 /**
  * hatch grunt scaffold
- * heavily based on the following project
+ * heavily based on the grunt-wp-them
  * Copyright (c) 2015 Aaron Aaron Ware, Maxwell Morgan, Jonathan Desrosiers, Linchpin
- * Updated by aware on 10/7/14.
+ * Updated by aware on 6/21/15.
  *
  * Cleaned up and removed some unneeded elements
  *
