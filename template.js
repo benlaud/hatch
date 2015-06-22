@@ -43,6 +43,9 @@ exports.warnOn = ['*.php', '*.js'];
 
 // The actual init template
 exports.template = function( grunt, init, done ) {
+
+    var base_path = 'wp-content/themes/'; // define our default base path
+
     init.process( {}, [
         // Prompt for these values.
         {
@@ -100,9 +103,6 @@ exports.template = function( grunt, init, done ) {
         // Development prefix (i.e. to prefix PHP function names, variables)
         props.prefix             = props.prefix.replace('/[^a-z_]/i', '').toLowerCase();
 
-        // Text Domain for localization
-        props.text_domain        = props.text_domain.replace('/[^a-z_]/i', '').toLowerCase();
-
         // Development prefix in all caps (e.g. for constants)
         props.prefix_caps        = props.prefix.toUpperCase();
 
@@ -116,50 +116,33 @@ exports.template = function( grunt, init, done ) {
         props.js_safe_name_caps  = props.js_safe_name.toUpperCase();
         props.js_safe_name_lower = props.js_safe_name.toLowerCase();
 
+        // Text Domain for localization
+        props.text_domain        = props.text_domain.replace('/[^a-z_]/i', '').toLowerCase();
+
         // Files to copy and process
         var files = init.filesToCopy( props );
 
-        var base_path = 'wp-content/themes/'; // define our default base path
+        base_path = base_path + props.name + '/'; // update our path and folder name
 
         if( 'N' == props.create_base_directories.toUpperCase() ) {
             base_path = '';
         }
 
-        base_path = '/' + base_path; // Add a slash prefix to our base path.
+        // Update the path the files correctly
+        for ( var file in files ) {
+            if ( file.indexOf( 'theme/' ) > -1 ) {
+                var path = files[ file ],
+                    newFile = file.replace( 'theme/', base_path );
+                files[ newFile ] = path;
+                delete files[ file ];
+            }
+        }
 
         // Actually copy and process files
         init.copyAndProcess( files, props );
 
-        if( 'N' !== props.create_base_directories.toUpperCase() ) {
-            // Create directories if needed.
-            grunt.file.mkdir('wp-content');
-            grunt.file.mkdir('wp-content/themes');
-
-            var src_path = init.destpath() + '/theme/';
-            var dest_path = init.destpath() + base_path + props.js_safe_name + '/';
-
-            // Copy Our folder to the new sub directory.
-            grunt.file.recurse( src_path, function( abspath, rootdir, subdir, filename ) {
-
-                if ( subdir == undefined ) {
-                    var dest = dest_path + filename;
-                } else {
-                    var dest = dest_path + '/' + subdir + '/' + filename;
-                }
-
-                grunt.file.copy( abspath, dest );
-            });
-
-            grunt.file.delete( src_path );
-
-        }
-
-        var fs = require('fs');
-        fs.rename( init.destpath() + base_path + 'theme/js/theme/', init.destpath() + base_path + '/theme/js/'+ props.js_safe_name + '/'); // Rename our javascript directory
-        fs.rename( init.destpath() + base_path + 'theme/', init.destpath() + base_path + props.js_safe_name + '/'); // Rename our base directory
-
         // Generate package.json file
-        init.writePackageJSON( base_path + props.js_safe_name + '/package.json', props );
+        init.writePackageJSON( base_path + '/package.json', props );
 
         // Done!
         done();
